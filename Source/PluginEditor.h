@@ -26,9 +26,16 @@ public:
     Label title;
     void configGUI();
     TextButton newGame;
+    TextButton howTo;
     void timerCallback();
     int frameRate = 30;
     bool isPageChanged = false;
+    Label title2;
+    TextButton menu;
+    Label title3;
+    TextButton scales;
+    TextButton chords;
+    TextButton harmony;
 
 private:
     // This reference is provided as a quick way for your editor to
