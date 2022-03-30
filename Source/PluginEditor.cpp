@@ -24,27 +24,35 @@ RandomNameAudioProcessorEditor::~RandomNameAudioProcessorEditor()
 {
 }
 void RandomNameAudioProcessorEditor::configGUI() {
+    //Parameters for the main title
     addAndMakeVisible(title);
     title.setText("P4 - Amazing digital synthesizer",dontSendNotification);
     title.setFont(40);
+    //Parameters for the "Skip to lessons" button
     addAndMakeVisible(newGame);
     newGame.setButtonText("Skip to lessons");
     newGame.changeWidthToFitText();
     newGame.setColour(newGame.buttonColourId, Colours::blue);
     newGame.onClick = [this]
     {
+        //When a button is clicked, pageNum switches to a new page number that then makes the corresponding page visible
         audioProcessor.pageNum = 2;
     };
+    //Parameters for the "How to use and setup music glove" button
     addAndMakeVisible(howTo);
     howTo.setButtonText("How to use and setup music glove");
     howTo.changeWidthToFitText();
+    howTo.setColour(newGame.buttonColourId, Colours::green);
     howTo.onClick = [this] {
         audioProcessor.pageNum = 1;
     };
+    //Parameters for the main title of music glove page
     addAndMakeVisible(title2);
+    //It starts off as not visible because we only want it to be visible when pagenum==2
     title2.setVisible(false);
     title2.setText("Introduction to musicglove", dontSendNotification);
     title2.setFont(40);
+    //Parameters for the "Menu" button
     addAndMakeVisible(menu);
     menu.setVisible(false);
     menu.setButtonText("Menu");
@@ -53,10 +61,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     {
         audioProcessor.pageNum = 0;
     };
+    //Parameters for the learning page
     addAndMakeVisible(title3);
     title3.setVisible(false);
     title3.setText("What do you want to learn?", dontSendNotification);
     title3.setFont(40);
+    //Chords button
     addAndMakeVisible(chords);
     chords.setVisible(false);
     chords.setButtonText("Chords");
@@ -64,6 +74,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     chords.onClick = [this] {
         audioProcessor.pageNum = 3;
     };
+    //Scales button
     addAndMakeVisible(scales);
     scales.setVisible(false);
     scales.setButtonText("Scales");
@@ -71,16 +82,20 @@ void RandomNameAudioProcessorEditor::configGUI() {
     scales.onClick = [this] {
         audioProcessor.pageNum = 4;
     };
-    addAndMakeVisible(harmony);
+    //Harmony is commented out, because of Prithvis feedback
+
+    /*addAndMakeVisible(harmony);
     harmony.setVisible(false);
     harmony.setButtonText("Harmony");
     harmony.changeWidthToFitText();
     harmony.onClick = [this] {
         audioProcessor.pageNum = 5;
-    };
+    };*/
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
+//The page counter/mechanism that changes the page.
+//If the current page number as not the same as the old page number, then change the page.
 {
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {
@@ -88,7 +103,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
     }
     else
         isPageChanged = false;
-
+    //Switch for each possible page
     if (isPageChanged)
     {
         switch (audioProcessor.pageNum)
@@ -137,7 +152,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
         }
     }
-
+    //Whenever a switch happens pageNum_OLD is overwrited to the value of pageNum.
+    //Meaning that the program can then detect that a change in page number has happened.
     audioProcessor.pageNum_OLD = audioProcessor.pageNum;
 }
 
@@ -155,7 +171,7 @@ void RandomNameAudioProcessorEditor::paint(juce::Graphics& g)
 void RandomNameAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    // subcomponents in your editor.. this is where you set height, width etc. of the buttons
     title.setBounds(325, 10, 500, 40);
     newGame.setBounds(450, 400, 50, 50);
     howTo.setBounds(400, 300, 100, 50);

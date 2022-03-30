@@ -5,7 +5,7 @@
 
   ==============================================================================
 */
-
+//Sort of a constructor with all the classes declared.
 #pragma once
 
 #include <JuceHeader.h>
