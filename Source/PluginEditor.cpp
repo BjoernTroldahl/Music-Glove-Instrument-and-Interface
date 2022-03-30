@@ -30,6 +30,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(newGame);
     newGame.setButtonText("Skip to lessons");
     newGame.changeWidthToFitText();
+    newGame.setColour(newGame.buttonColourId, Colours::blue);
     newGame.onClick = [this]
     {
         audioProcessor.pageNum = 2;
@@ -144,7 +145,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 void RandomNameAudioProcessorEditor::paint(juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
+    g.fillAll(Colours::black);
 
     g.setColour(juce::Colours::white);
     g.setFont(15.0f);

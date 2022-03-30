@@ -36,7 +36,6 @@ public:
     TextButton scales;
     TextButton chords;
     TextButton harmony;
-    Label hej;
 
 private:
     // This reference is provided as a quick way for your editor to
