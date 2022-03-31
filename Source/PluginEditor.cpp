@@ -42,7 +42,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(howTo);
     howTo.setButtonText("How to use and setup music glove");
     howTo.changeWidthToFitText();
-    howTo.setColour(newGame.buttonColourId, Colours::green);
+    howTo.setColour(howTo.buttonColourId, Colours::green);
     howTo.onClick = [this] {
         audioProcessor.pageNum = 1;
     };
@@ -55,6 +55,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     //Parameters for the "Menu" button
     addAndMakeVisible(menu);
     menu.setVisible(false);
+    menu.setColour(menu.buttonColourId, Colours::red);
     menu.setButtonText("Menu");
     menu.changeWidthToFitText();
     menu.onClick = [this]
@@ -71,26 +72,52 @@ void RandomNameAudioProcessorEditor::configGUI() {
     chords.setVisible(false);
     chords.setButtonText("Chords");
     chords.changeWidthToFitText();
+    chords.setColour(chords.buttonColourId, Colours::dodgerblue);
     chords.onClick = [this] {
         audioProcessor.pageNum = 3;
     };
     //Scales button
     addAndMakeVisible(scales);
     scales.setVisible(false);
+    scales.setColour(scales.buttonColourId, Colours::rebeccapurple);
     scales.setButtonText("Scales");
     scales.changeWidthToFitText();
     scales.onClick = [this] {
         audioProcessor.pageNum = 4;
     };
-    //Harmony is commented out, because of Prithvis feedback
-
-    /*addAndMakeVisible(harmony);
-    harmony.setVisible(false);
-    harmony.setButtonText("Harmony");
-    harmony.changeWidthToFitText();
-    harmony.onClick = [this] {
+    addAndMakeVisible(title4);
+    title4.setVisible(false);
+    title4.setText("Scales", dontSendNotification);
+    title4.setFont(40);
+    addAndMakeVisible(scalesTheory);
+    scalesTheory.setVisible(false);
+    scalesTheory.setText("Scales theory. What is a scale? Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat n", dontSendNotification);
+    scalesTheory.setFont(30);
+    addAndMakeVisible(tryScales);
+    tryScales.setVisible(false);
+    tryScales.setButtonText("Try it yourself!");
+    tryScales.setColour(tryScales.buttonColourId, Colours::deepskyblue);
+    tryScales.changeWidthToFitText();
+    tryScales.onClick = [this] {
         audioProcessor.pageNum = 5;
-    };*/
+    };
+    addAndMakeVisible(title5);
+    title5.setVisible(false);
+    title5.setText("Chords", dontSendNotification);
+    title5.setFont(40);
+    addAndMakeVisible(chordsTheory);
+    chordsTheory.setVisible(false);
+    chordsTheory.setText("Chords Theory. What is a chord? Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat n", dontSendNotification);
+    chordsTheory.setFont(30);
+    addAndMakeVisible(tryChords);
+    tryChords.setVisible(false);
+    tryChords.setButtonText("Try it yourself!");
+    tryChords.setColour(tryScales.buttonColourId, Colours::deepskyblue);
+    tryChords.changeWidthToFitText();
+    tryChords.onClick = [this] {
+        audioProcessor.pageNum = 6;
+    };
+
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -118,11 +145,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             title3.setVisible(false);
             chords.setVisible(false);
             scales.setVisible(false);
-            harmony.setVisible(false);
-
-            
-
-
+            title4.setVisible(false);
+            scalesTheory.setVisible(false);
+            tryScales.setVisible(false);
+            title5.setVisible(false);
+            tryChords.setVisible(false);
+            chordsTheory.setVisible(false);
+       
             break;
         case 1:
             title2.setVisible(true);
@@ -138,7 +167,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             title3.setVisible(true);
             chords.setVisible(true);
             scales.setVisible(true);
-            harmony.setVisible(true);
+         
 
             title.setVisible(false);
             title2.setVisible(false);
@@ -149,7 +178,51 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 3:
 
+            title5.setVisible(true);
+            tryChords.setVisible(true);
+            chordsTheory.setVisible(true);
+
+            chords.setVisible(false);
+            title3.setVisible(false);
+            scales.setVisible(false);
+
             break;
+
+        case 4:
+            title4.setVisible(true);
+            scalesTheory.setVisible(true);
+            tryScales.setVisible(true);
+
+            chords.setVisible(false);
+            title3.setVisible(false);
+            scales.setVisible(false);
+
+
+            break;
+        case 5: 
+
+            title4.setVisible(false);
+            scalesTheory.setVisible(false);
+            tryScales.setVisible(false);
+
+
+            break;
+
+
+        case 6: 
+
+            title5.setVisible(false);
+            chordsTheory.setVisible(false);
+            tryChords.setVisible(false);
+
+            break;
+
+
+        case 7:
+
+
+            break;
+
         }
     }
     //Whenever a switch happens pageNum_OLD is overwrited to the value of pageNum.
@@ -178,7 +251,12 @@ void RandomNameAudioProcessorEditor::resized()
     title2.setBounds(325, 10, 500, 40);
     menu.setBounds(1000, 10, 100, 40);
     title3.setBounds(325, 10, 500, 40);
-    chords.setBounds(400, 300, 100, 50);
-    scales.setBounds(400, 400, 100, 50);
-    harmony.setBounds(400, 500, 100, 50);
+    chords.setBounds(500, 300, 100, 50);
+    scales.setBounds(500, 400, 100, 50);
+    title4.setBounds(500, 10, 500, 40);
+    scalesTheory.setBounds(100, 10, 500, 700);
+    tryScales.setBounds(850, 600, 100, 100);
+    title5.setBounds(500, 10, 500, 40);
+    chordsTheory.setBounds(100, 10, 500, 700);
+    tryChords.setBounds(850, 600, 100, 100);
 }

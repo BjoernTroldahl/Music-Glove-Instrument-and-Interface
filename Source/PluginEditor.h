@@ -35,7 +35,12 @@ public:
     Label title3;
     TextButton scales;
     TextButton chords;
-    TextButton harmony;
+    Label title4;
+    Label scalesTheory;
+    TextButton tryScales;
+    Label title5;
+    Label chordsTheory;
+    TextButton tryChords;
 
 private:
     // This reference is provided as a quick way for your editor to
