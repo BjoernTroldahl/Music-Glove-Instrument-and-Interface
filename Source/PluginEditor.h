@@ -41,6 +41,15 @@ public:
     Label title5;
     Label chordsTheory;
     TextButton tryChords;
+    Label practiceScale;
+    Label currentNote;
+    Label nextNote;
+    Label Note;
+    TextButton buttonNote;
+    TextButton doneScales1;
+    Label playScales;
+    TextButton startScales;
+    Label remainingNotes;
 
 private:
     // This reference is provided as a quick way for your editor to

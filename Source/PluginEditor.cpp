@@ -117,6 +117,50 @@ void RandomNameAudioProcessorEditor::configGUI() {
     tryChords.onClick = [this] {
         audioProcessor.pageNum = 6;
     };
+    addAndMakeVisible(practiceScale);
+    practiceScale.setVisible(false);
+    practiceScale.setText("Practice playing the notes of an A-minor scale in ascending order", dontSendNotification);
+    practiceScale.setFont(40);
+    addAndMakeVisible(currentNote);
+    currentNote.setVisible(false);
+    currentNote.setText("Currently playing ", dontSendNotification);
+    currentNote.setFont(40);
+    addAndMakeVisible(Note);
+    Note.setVisible(false);
+    Note.setText("a", dontSendNotification);
+    Note.setFont(40);
+    addAndMakeVisible(nextNote);
+    nextNote.setVisible(false);
+    nextNote.setText("Next note:", dontSendNotification);
+    nextNote.setFont(40);
+    addAndMakeVisible(buttonNote);
+    buttonNote.setVisible(false);
+    buttonNote.setButtonText("a");
+    buttonNote.changeWidthToFitText();
+    buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
+    buttonNote.onClick = [this] {
+        buttonNote.setButtonText("b");
+    };
+    addAndMakeVisible(doneScales1);
+    doneScales1.setVisible(false);
+    doneScales1.setButtonText("Done/next");
+    doneScales1.setColour(doneScales1.buttonColourId, Colours::deepskyblue);
+    doneScales1.changeWidthToFitText();
+    doneScales1.onClick = [this] {
+        audioProcessor.pageNum = 7;
+    };
+    addAndMakeVisible(playScales);
+    playScales.setVisible(false);
+    playScales.setText("Now try playing the notes of an A-minor scale in ascending order without assistance.", dontSendNotification);
+    playScales.setFont(40);
+    addAndMakeVisible(startScales);
+    startScales.setVisible(false);
+    startScales.setButtonText("Done/next");
+    startScales.setColour(doneScales1.buttonColourId, Colours::deepskyblue);
+    startScales.changeWidthToFitText();
+    startScales.onClick = [this] {
+        audioProcessor.pageNum = 8;
+    };
 
 }
 
@@ -151,6 +195,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             title5.setVisible(false);
             tryChords.setVisible(false);
             chordsTheory.setVisible(false);
+            practiceScale.setVisible(false);
+            currentNote.setVisible(false);
+            Note.setVisible(false);
+            nextNote.setVisible(false);
        
             break;
         case 1:
@@ -200,10 +248,17 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
         case 5: 
+            practiceScale.setVisible(true);
+            currentNote.setVisible(true);
+            Note.setVisible(true);
+            nextNote.setVisible(true);
+            buttonNote.setVisible(true);
+            doneScales1.setVisible(true);
 
             title4.setVisible(false);
             scalesTheory.setVisible(false);
             tryScales.setVisible(false);
+
 
 
             break;
@@ -219,6 +274,42 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
         case 7:
+            startScales.setVisible(true);
+            playScales.setVisible(true);
+
+
+
+            practiceScale.setVisible(false);
+            currentNote.setVisible(false);
+            Note.setVisible(false);
+            nextNote.setVisible(false);
+            buttonNote.setVisible(false);
+            doneScales1.setVisible(false);
+
+
+            break;
+
+        case 8:
+
+
+            startScales.setVisible(false);
+            playScales.setVisible(false);
+
+            break;
+
+
+        case 9:
+
+            break;
+
+
+        case 10:
+
+             
+            break;
+
+
+        case 11:
 
 
             break;
@@ -259,4 +350,13 @@ void RandomNameAudioProcessorEditor::resized()
     title5.setBounds(500, 10, 500, 40);
     chordsTheory.setBounds(100, 10, 500, 700);
     tryChords.setBounds(850, 600, 100, 100);
+    practiceScale.setBounds(200, 10, 700, 200);
+    currentNote.setBounds(200, 200, 300, 100);
+    Note.setBounds(500, 200, 300, 100);
+    nextNote.setBounds(200, 400, 300, 100);
+    buttonNote.setBounds(400, 400, 300, 100);
+    doneScales1.setBounds(850, 600, 100, 100);
+    startScales.setBounds(500, 400, 100, 100);
+    playScales.setBounds(200, 10, 900, 200);
 }
+
