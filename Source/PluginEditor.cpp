@@ -166,7 +166,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
 void RandomNameAudioProcessorEditor::timerCallback()
 //The page counter/mechanism that changes the page.
-//If the current page number as not the same as the old page number, then change the page.
+//If the current page number is not the same as the old page number, then change the page.
 {
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {

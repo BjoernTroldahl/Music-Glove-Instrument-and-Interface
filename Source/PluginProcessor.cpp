@@ -22,10 +22,20 @@ RandomNameAudioProcessor::RandomNameAudioProcessor()
                        )
 #endif
 {
+    initSerialPort();
+
+    // START THE HIGH RESOLUTION TIMER AT A RATE OF 100 Hz (Or it runs every 10 ms)
+    startTimer(8);
 }
 
 RandomNameAudioProcessor::~RandomNameAudioProcessor()
 {
+}
+
+// THIS IS WHERE THE DATA READ HAPPENS
+void RandomNameAudioProcessor::hiResTimerCallback()
+{
+    readSerialPort();
 }
 
 //==============================================================================

@@ -10,6 +10,10 @@
             file="Source/PluginProcessor.h"/>
       <FILE id="bEkdkU" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
+      <FILE id="Ubyghn" name="juce_serialport.h" compile="0" resource="0"
+            file="../../../../../JUCE stuff/JUCE/SerialPortTester/Source/juce_serialport.h"/>
+      <FILE id="c8N9Ak" name="juce_serialport_Windows.cpp" compile="1" resource="0"
+            file="../../../../../JUCE stuff/JUCE/SerialPortTester/Source/juce_serialport_Windows.cpp"/>
       <FILE id="n7FErV" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
