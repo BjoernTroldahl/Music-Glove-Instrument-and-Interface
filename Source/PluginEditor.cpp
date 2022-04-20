@@ -26,7 +26,7 @@ RandomNameAudioProcessorEditor::~RandomNameAudioProcessorEditor()
 void RandomNameAudioProcessorEditor::configGUI() {
     //Parameters for the main title
     addAndMakeVisible(title);
-    title.setText("P4 - Amazing digital synthesizer",dontSendNotification);
+    title.setText("P4 - Amazing digital synthesizer", dontSendNotification);
     title.setFont(40);
     //Parameters for the "Skip to lessons" button
     addAndMakeVisible(newGame);
@@ -134,17 +134,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
     nextNote.setFont(40);
     addAndMakeVisible(buttonNote);
     buttonNote.setVisible(false);
-    buttonNote.setButtonText(buttonTextNote);
+    buttonNote.setButtonText("a");
     buttonNote.changeWidthToFitText();
     buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
     buttonNote.onClick = [this] {
-        if (buttonNoteInt == 0);
-        {
-            buttonTextNote = "b";
-            buttonNote.setButtonText(buttonTextNote);
-            buttonNoteInt = 1;
-        } 
+        buttonNote.setButtonText("b");
     };
+
 
     addAndMakeVisible(doneScales1);
     doneScales1.setVisible(false);
@@ -223,6 +219,55 @@ void RandomNameAudioProcessorEditor::configGUI() {
     tryAgain.onClick = [this] {
         audioProcessor.pageNum = 8;
     };
+
+    addAndMakeVisible(practiceScaleDescending);
+    practiceScaleDescending.setVisible(false);
+    practiceScaleDescending.setText("Good job. Now practice playing the notes of an A-minor scale in DESCENDING order", dontSendNotification);
+    practiceScaleDescending.setFont(40);
+
+    addAndMakeVisible(currentNoteDescending);
+    currentNoteDescending.setVisible(false);
+    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    currentNoteDescending.setText("Currently playing " + stringNoteDescending, dontSendNotification);
+    currentNoteDescending.setFont(40);
+
+    addAndMakeVisible(nextNoteDescending);
+    nextNoteDescending.setVisible(false);
+    nextNoteDescending.setText("Next note:", dontSendNotification);
+    nextNoteDescending.setFont(40);
+
+    addAndMakeVisible(buttonNoteDescending);
+    buttonNoteDescending.setVisible(false);
+    buttonNoteDescending.setButtonText("G");
+    buttonNoteDescending.changeWidthToFitText();
+    buttonNoteDescending.setColour(chords.buttonColourId, Colours::dodgerblue);
+    buttonNoteDescending.onClick = [this] {
+        buttonNoteDescending.setButtonText("F");
+    };
+
+    addAndMakeVisible(doneScalesDescending);
+    doneScalesDescending.setVisible(false);
+    doneScalesDescending.setButtonText("Done/next");
+    doneScalesDescending.setColour(doneScalesDescending.buttonColourId, Colours::deepskyblue);
+    doneScalesDescending.changeWidthToFitText();
+    doneScalesDescending.onClick = [this] {
+        audioProcessor.pageNum = 11;
+    };
+
+    addAndMakeVisible(playScalesDescending);
+    playScalesDescending.setVisible(false);
+    playScalesDescending.setText("Now try playing the notes of an A-minor scale in DESCENDING order without assistance.", dontSendNotification);
+    playScalesDescending.setFont(40);
+
+
+    addAndMakeVisible(startScalesDescending);
+    startScalesDescending.setVisible(false);
+    startScalesDescending.setButtonText("Done/next");
+    startScalesDescending.setColour(startScalesDescending.buttonColourId, Colours::deepskyblue);
+    startScalesDescending.changeWidthToFitText();
+    startScalesDescending.onClick = [this] {
+        audioProcessor.pageNum = 12;
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -259,6 +304,17 @@ void RandomNameAudioProcessorEditor::timerCallback()
             practiceScale.setVisible(false);
             currentNote.setVisible(false);
             nextNote.setVisible(false);
+            buttonNote.setVisible(false);
+            doneScales1.setVisible(false);
+            startScales.setVisible(false);
+            playScales.setVisible(false);
+            remainingNotes.setVisible(false);
+            Suceeded.setVisible(false);
+            Failed.setVisible(false);
+            failedString.setVisible(false);
+            correctnoteWas.setVisible(false);
+            remainingAttempts.setVisible(false);
+            tryAgain.setVisible(false);
        
             break;
         case 1:
@@ -379,13 +435,52 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
         case 10:
-
+            practiceScaleDescending.setVisible(true);
+            currentNoteDescending.setVisible(true);
+            nextNoteDescending.setVisible(true);
+            buttonNoteDescending.setVisible(true);
+            doneScalesDescending.setVisible(true);
              
+
+            remainingNotes.setVisible(false);
+            Failed.setVisible(false);
+            Suceeded.setVisible(false);
             break;
 
 
         case 11:
+            startScalesDescending.setVisible(true);
+            playScalesDescending.setVisible(true);
 
+
+            practiceScaleDescending.setVisible(false);
+            currentNoteDescending.setVisible(false);
+            nextNoteDescending.setVisible(false);
+            buttonNoteDescending.setVisible(false);
+            doneScalesDescending.setVisible(false);
+            break;
+
+        case 12:
+            
+            
+            
+            
+            startScalesDescending.setVisible(false);
+            playScalesDescending.setVisible(false);
+
+        case 13:
+
+
+        case 14:
+
+
+        case 15:
+
+
+        case 16:
+
+
+        case 17:
 
             break;
 
@@ -433,12 +528,19 @@ void RandomNameAudioProcessorEditor::resized()
     doneScales1.setBounds(850, 600, 100, 100);
     startScales.setBounds(500, 400, 100, 100);
     playScales.setBounds(200, 10, 900, 200);
-    remainingNotes.setBounds(300, 300, 500, 40);
+    remainingNotes.setBounds(350, 300, 500, 40);
     Suceeded.setBounds(850, 600, 100, 100);
     Failed.setBounds(100, 600, 100, 100);
     failedString.setBounds(350, 200, 500, 40);
     correctnoteWas.setBounds(350, 250, 500, 40);
     remainingAttempts.setBounds(350, 450, 500, 40);
     tryAgain.setBounds(450, 550, 100, 100);
+    practiceScaleDescending.setBounds(200, 10, 700, 200);
+    currentNoteDescending.setBounds(200, 200, 300, 100);
+    nextNoteDescending.setBounds(200, 400, 300, 100);
+    buttonNoteDescending.setBounds(400, 400, 300, 100);
+    doneScalesDescending.setBounds(850, 600, 100, 100);
+    startScalesDescending.setBounds(500, 400, 100, 100);
+    playScalesDescending.setBounds(200, 10, 900, 200);
 }
 

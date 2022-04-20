@@ -54,8 +54,6 @@ public:
     TextButton Failed;
     TextButton Suceeded;
     String stringNote = "a";
-    String buttonTextNote = "a";
-    int buttonNoteInt = 0;
     Label failedString;
     int attemptsRemaining = 3;
     Label remainingAttempts;
@@ -63,6 +61,18 @@ public:
     Label correctnoteWas;
     String correctNote = "b";
     TextButton tryAgain;
+    Label practiceScaleDescending;
+    Label currentNoteDescending;
+    String stringNoteDescending = "G";
+    Label nextNoteDescending;
+    TextButton buttonNoteDescending;
+    TextButton doneScalesDescending;
+    Label playScalesDescending;
+    TextButton startScalesDescending;
+
+
+   
+
 
 
 
