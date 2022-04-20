@@ -123,24 +123,29 @@ void RandomNameAudioProcessorEditor::configGUI() {
     practiceScale.setFont(40);
     addAndMakeVisible(currentNote);
     currentNote.setVisible(false);
-    currentNote.setText("Currently playing ", dontSendNotification);
+    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    currentNote.setText("Currently playing " + stringNote, dontSendNotification);
     currentNote.setFont(40);
-    addAndMakeVisible(Note);
-    Note.setVisible(false);
-    Note.setText("a", dontSendNotification);
-    Note.setFont(40);
+
+    //teksten skal ændre sig alt efter hvilken note man spiller
     addAndMakeVisible(nextNote);
     nextNote.setVisible(false);
     nextNote.setText("Next note:", dontSendNotification);
     nextNote.setFont(40);
     addAndMakeVisible(buttonNote);
     buttonNote.setVisible(false);
-    buttonNote.setButtonText("a");
+    buttonNote.setButtonText(buttonTextNote);
     buttonNote.changeWidthToFitText();
     buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
     buttonNote.onClick = [this] {
-        buttonNote.setButtonText("b");
+        if (buttonNoteInt == 0);
+        {
+            buttonTextNote = "b";
+            buttonNote.setButtonText(buttonTextNote);
+            buttonNoteInt = 1;
+        } 
     };
+
     addAndMakeVisible(doneScales1);
     doneScales1.setVisible(false);
     doneScales1.setButtonText("Done/next");
@@ -161,7 +166,63 @@ void RandomNameAudioProcessorEditor::configGUI() {
     startScales.onClick = [this] {
         audioProcessor.pageNum = 8;
     };
+    addAndMakeVisible(remainingNotes);
+    auto str = String(remainingNotesInt);
+    remainingNotes.setVisible(false);
+    remainingNotes.setText("Remaining Notes " + str, dontSendNotification);
+    remainingNotes.setFont(40);
 
+    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
+    addAndMakeVisible(Failed);
+    Failed.setVisible(false);
+    Failed.setButtonText("Failed");
+    Failed.setColour(Failed.buttonColourId, Colours::deepskyblue);
+    Failed.changeWidthToFitText();
+    Failed.onClick = [this] {
+
+        audioProcessor.pageNum = 9;
+
+    };
+
+    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR remainingnotes når 0 SKER SKAL DEN GØRE DET HER
+    addAndMakeVisible(Suceeded);
+    Suceeded.setVisible(false);
+    Suceeded.setButtonText("Suceeded");
+    Suceeded.setColour(Suceeded.buttonColourId, Colours::deepskyblue);
+    Suceeded.changeWidthToFitText();
+    Suceeded.onClick = [this] {
+        audioProcessor.pageNum = 10;
+    };
+
+    //her skal failed string ændres til den note man spillede forkert
+    addAndMakeVisible(failedString);
+    auto failed = String(wrongNote);
+    failedString.setVisible(false);
+    failedString.setText("Try again! you played " + failed, dontSendNotification);
+    failedString.setFont(40);
+
+    //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
+    addAndMakeVisible(correctnoteWas);
+    auto failed2 = String(correctNote);
+    correctnoteWas.setVisible(false);
+    correctnoteWas.setText("The correct note was " + failed2, dontSendNotification);
+    correctnoteWas.setFont(40);
+
+    //failed 3 skal gå én ned når man fäiler
+    addAndMakeVisible(remainingAttempts);
+    auto failed3 = String(attemptsRemaining);
+    remainingAttempts.setVisible(false);
+    remainingAttempts.setText(failed3 + " attempts remaining", dontSendNotification);
+    remainingAttempts.setFont(40);
+
+    addAndMakeVisible(tryAgain);
+    tryAgain.setVisible(false);
+    tryAgain.setButtonText("Try again!");
+    tryAgain.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    tryAgain.changeWidthToFitText();
+    tryAgain.onClick = [this] {
+        audioProcessor.pageNum = 8;
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -197,7 +258,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
             chordsTheory.setVisible(false);
             practiceScale.setVisible(false);
             currentNote.setVisible(false);
-            Note.setVisible(false);
             nextNote.setVisible(false);
        
             break;
@@ -250,7 +310,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 5: 
             practiceScale.setVisible(true);
             currentNote.setVisible(true);
-            Note.setVisible(true);
             nextNote.setVisible(true);
             buttonNote.setVisible(true);
             doneScales1.setVisible(true);
@@ -281,7 +340,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             practiceScale.setVisible(false);
             currentNote.setVisible(false);
-            Note.setVisible(false);
             nextNote.setVisible(false);
             buttonNote.setVisible(false);
             doneScales1.setVisible(false);
@@ -291,15 +349,32 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 8:
 
+            remainingNotes.setVisible(true);
+            Failed.setVisible(true);
+            Suceeded.setVisible(true);
+
 
             startScales.setVisible(false);
             playScales.setVisible(false);
+            failedString.setVisible(false);
+            correctnoteWas.setVisible(false);
+            remainingAttempts.setVisible(false);
+            tryAgain.setVisible(false);
 
             break;
 
 
         case 9:
-
+            failedString.setVisible(true);
+            correctnoteWas.setVisible(true);
+            remainingAttempts.setVisible(true);
+            tryAgain.setVisible(true);
+            
+        
+            
+            remainingNotes.setVisible(false);
+            Failed.setVisible(false);
+            Suceeded.setVisible(false);
             break;
 
 
@@ -358,5 +433,12 @@ void RandomNameAudioProcessorEditor::resized()
     doneScales1.setBounds(850, 600, 100, 100);
     startScales.setBounds(500, 400, 100, 100);
     playScales.setBounds(200, 10, 900, 200);
+    remainingNotes.setBounds(300, 300, 500, 40);
+    Suceeded.setBounds(850, 600, 100, 100);
+    Failed.setBounds(100, 600, 100, 100);
+    failedString.setBounds(350, 200, 500, 40);
+    correctnoteWas.setBounds(350, 250, 500, 40);
+    remainingAttempts.setBounds(350, 450, 500, 40);
+    tryAgain.setBounds(450, 550, 100, 100);
 }
 

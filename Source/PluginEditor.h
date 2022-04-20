@@ -50,6 +50,22 @@ public:
     Label playScales;
     TextButton startScales;
     Label remainingNotes;
+    int remainingNotesInt = 7;
+    TextButton Failed;
+    TextButton Suceeded;
+    String stringNote = "a";
+    String buttonTextNote = "a";
+    int buttonNoteInt = 0;
+    Label failedString;
+    int attemptsRemaining = 3;
+    Label remainingAttempts;
+    String wrongNote = "c";
+    Label correctnoteWas;
+    String correctNote = "b";
+    TextButton tryAgain;
+
+
+
 
 private:
     // This reference is provided as a quick way for your editor to
