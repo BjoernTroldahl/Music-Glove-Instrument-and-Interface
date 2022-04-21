@@ -69,6 +69,38 @@ public:
     TextButton doneScalesDescending;
     Label playScalesDescending;
     TextButton startScalesDescending;
+    Label remainingNotesDescending;
+    int remainingNotesIntDescending = 7;
+    TextButton FailedDescending;
+    TextButton SuceededDescending;
+    Label failedStringDescending;
+    int attemptsRemainingDescending = 3;
+    Label remainingAttemptsDescending;
+    String wrongNoteDescending = "G";
+    Label correctnoteWasDescending;
+    String correctNoteDescending = "F";
+    TextButton tryAgainDescending;
+    Label practiceScaleC;
+    Label currentNoteC;
+    String stringNoteC = "C";
+    Label nextNoteC;
+    TextButton buttonNoteC;
+    TextButton doneScalesC;
+    Label playScalesC;
+    TextButton startScalesC;
+    Label remainingNotesC;
+    int remainingNotesIntC = 7;
+    TextButton FailedC;
+    TextButton SuceededC;
+    Label failedStringC;
+    int attemptsRemainingC = 3;
+    Label remainingAttemptsC;
+    String wrongNoteC = "c";
+    Label correctnoteWasC;
+    String correctNoteC = "b";
+    TextButton tryAgainC;
+    Label scalesCompleded;
+    TextButton finishScale;
 
 
    
