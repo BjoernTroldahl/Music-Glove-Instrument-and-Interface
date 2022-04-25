@@ -111,14 +111,13 @@ private:
                 {
                     s = pInputStream->readNextLine();
                     DBG(s);
-                    int num;
-                    stringstream NEWs;
-                    NEWs << s;
-                    NEWs >> num;
+                    float num=s.getFloatValue();
 
-                    if (num>=7) {
-                        printf("TRIGGERED");
+                    if (num>=500) {
+                        DBG("TRIGGERED");
                     }
+                    //CONCATENATE
+                    //upToFirstOccurrenceOf()
                 }
             }
         }
