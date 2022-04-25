@@ -102,6 +102,19 @@ public:
     Label scalesCompleded;
     TextButton finishScale;
 
+    //chords
+
+    Label practiceChords;
+    Label currentChord;
+    String stringChord = "A-minor (A-C-E)";
+    TextButton doneChords1;
+    Label chordProgression;
+    TextButton doneChords2;
+    Label playChords;
+    TextButton startChords;
+    Label remainingChords;
+
+
 
    
 

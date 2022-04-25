@@ -452,6 +452,58 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 2;
     };
 
+    //her begynder chords delen 
+    addAndMakeVisible(practiceChords);
+    practiceChords.setVisible(false);
+    practiceChords.setText("Practice playing different chords. Try moving different fingers and play different notes simultaneously ", dontSendNotification);
+    practiceChords.setFont(40);
+    addAndMakeVisible(currentChord);
+    currentChord.setVisible(false);
+    //stringChord skal ændre sig alt efter hvilken Chord der bliver spillet 
+    currentChord.setText("Currently playing: " + stringChord, dontSendNotification);
+    currentChord.setFont(40);
+
+    addAndMakeVisible(doneChords1);
+    doneChords1.setVisible(false);
+    doneChords1.setButtonText("Done/next");
+    doneChords1.setColour(doneScales1.buttonColourId, Colours::deepskyblue);
+    doneChords1.changeWidthToFitText();
+    doneChords1.onClick = [this] {
+        audioProcessor.pageNum = 19;
+    };
+    addAndMakeVisible(chordProgression);
+    chordProgression.setVisible(false);
+    chordProgression.setText("A typical chord progression is: c major , f major, g major                                                                       Try playing these three chords in order:                             C-major: C + E + G                                  F-major: F + A + C                                 G-major: G + B + D", dontSendNotification);
+    chordProgression.setFont(40);
+
+    addAndMakeVisible(doneChords2);
+    doneChords2.setVisible(false);
+    doneChords2.setButtonText("Done/next");
+    doneChords2.setColour(doneScales1.buttonColourId, Colours::deepskyblue);
+    doneChords2.changeWidthToFitText();
+    doneChords2.onClick = [this] {
+        audioProcessor.pageNum = 20;
+    };
+
+    addAndMakeVisible(playChords);
+    playChords.setVisible(false);
+    playChords.setText("Try playing these chords in the correct order; C-major, F-major and a G-major ", dontSendNotification);
+    playChords.setFont(40);
+    addAndMakeVisible(startChords);
+    startChords.setVisible(false);
+    startChords.setButtonText("Done/next");
+    startChords.setColour(doneScales1.buttonColourId, Colours::deepskyblue);
+    startChords.changeWidthToFitText();
+    startChords.onClick = [this] {
+        audioProcessor.pageNum = 21;
+    };
+
+    addAndMakeVisible(remainingChords);
+    remainingChords.setVisible(false);
+    remainingChords.setText("Remaining Chords:                    C MAJOR - F MAJOR - G MAJOR", dontSendNotification);
+    remainingChords.setFont(40);
+
+
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -528,7 +580,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             correctnoteWasC.setVisible(false);
             remainingAttemptsC.setVisible(false);
             tryAgainC.setVisible(false);
-       
+
             break;
         case 1:
             title2.setVisible(true);
@@ -544,7 +596,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             title3.setVisible(true);
             chords.setVisible(true);
             scales.setVisible(true);
-         
+
 
             title.setVisible(false);
             title2.setVisible(false);
@@ -578,7 +630,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
             break;
-        case 5: 
+        case 5:
             practiceScale.setVisible(true);
             currentNote.setVisible(true);
             nextNote.setVisible(true);
@@ -594,7 +646,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
 
-        case 6: 
+        case 6:
+
+            practiceChords.setVisible(true);
+            currentChord.setVisible(true);
+            doneChords1.setVisible(true);
+
 
             title5.setVisible(false);
             chordsTheory.setVisible(false);
@@ -640,9 +697,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             correctnoteWas.setVisible(true);
             remainingAttempts.setVisible(true);
             tryAgain.setVisible(true);
-            
-        
-            
+
+
+
             remainingNotes.setVisible(false);
             Failed.setVisible(false);
             Suceeded.setVisible(false);
@@ -655,7 +712,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nextNoteDescending.setVisible(true);
             buttonNoteDescending.setVisible(true);
             doneScalesDescending.setVisible(true);
-             
+
 
             remainingNotes.setVisible(false);
             Failed.setVisible(false);
@@ -679,7 +736,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesDescending.setVisible(true);
             FailedDescending.setVisible(true);
             SuceededDescending.setVisible(true);
-            
+
             startScalesDescending.setVisible(false);
             playScalesDescending.setVisible(false);
             failedStringDescending.setVisible(false);
@@ -727,7 +784,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nextNoteC.setVisible(false);
             buttonNoteC.setVisible(false);
             doneScalesC.setVisible(false);
-           
+
             break;
 
         case 16:
@@ -735,7 +792,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             FailedC.setVisible(true);
             SuceededC.setVisible(true);
 
-            
+
             startScalesC.setVisible(false);
             playScalesC.setVisible(false);
             failedStringC.setVisible(false);
@@ -772,17 +829,47 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 19:
 
-            
+            chordProgression.setVisible(true);
+            doneChords2.setVisible(true);
+
+            practiceChords.setVisible(false);
+            currentChord.setVisible(false);
+            doneChords1.setVisible(false);
+
+
             break;
 
 
         case 20:
+            playChords.setVisible(true);
+            startChords.setVisible(true);
 
+            chordProgression.setVisible(false);
+            doneChords2.setVisible(false);
 
             break;
 
 
         case 21:
+
+            remainingChords.setVisible(true);
+
+
+            playChords.setVisible(false);
+            startChords.setVisible(false);
+            break;
+
+
+
+        case 22:
+
+
+
+            break;
+
+
+        case 23:
+          
 
 
             break;
@@ -868,5 +955,13 @@ void RandomNameAudioProcessorEditor::resized()
     tryAgainC.setBounds(450, 550, 100, 100);
     finishScale.setBounds(450, 400, 100, 100);
     scalesCompleded.setBounds(150, 10, 900, 200);
+    practiceChords.setBounds(200, 10, 700, 200);
+    currentChord.setBounds(200, 200, 300, 100);
+    doneChords1.setBounds(850, 600, 100, 100);
+    chordProgression.setBounds(300, 20, 500, 500);
+    doneChords2.setBounds(850, 600, 100, 100);
+    startChords.setBounds(500, 400, 100, 100);
+    playChords.setBounds(200, 10, 900, 200);
+    remainingChords.setBounds(300, 200, 600, 200);
 }
 
