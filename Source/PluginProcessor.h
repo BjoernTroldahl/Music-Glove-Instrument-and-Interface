@@ -113,7 +113,7 @@ private:
                     DBG(s);
                     float num=s.getFloatValue();
 
-                    if (num>=500) {
+                    if (num>=450) {
                         DBG("TRIGGERED");
                     }
                     //CONCATENATE
