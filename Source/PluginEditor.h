@@ -53,7 +53,7 @@ public:
     int remainingNotesInt = 7;
     TextButton Failed;
     TextButton Suceeded;
-    String stringNote = "a";
+    String stringNote = "a"; //CHANGE THIS VALUE***
     Label failedString;
     int attemptsRemaining = 3;
     Label remainingAttempts;

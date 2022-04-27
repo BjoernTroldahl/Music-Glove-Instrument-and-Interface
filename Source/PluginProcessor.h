@@ -67,6 +67,11 @@ public:
     String ring;
     String pinky;
 
+    float indexNum;
+    float middleNum;
+    float ringNum;
+    float pinkyNum;
+
 private:
 
     StringPairArray portlist;
@@ -121,21 +126,27 @@ private:
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
                     //DBG(index);
-                    float indexNum = index.getFloatValue();
+                    indexNum = index.getFloatValue();
 
-                    if (indexNum <= 360) {
-                        DBG("INDEX TRIGGERED");
+                    if (indexNum <= 370 && indexNum >= 340) {
+                        DBG("A");
+                    }
+                    else if (indexNum <= 340) {
+                        DBG("B");
                     }
 
                     //MIDDLE FINGER
                     String temp1 = s.fromFirstOccurrenceOf(",", false, true);
                     middle = temp1.upToFirstOccurrenceOf(",", false, true);
                     //DBG(temp1);
-                    //DBG(middle);
-                    float middleNum = middle.getFloatValue();
+                    //DBG(middle); 
+                    middleNum = middle.getFloatValue();
 
-                    if (middleNum <= 380) {
-                        DBG("MIDDLE TRIGGERED");
+                    if (middleNum <= 380 && middleNum >= 360) {
+                        DBG("C");
+                    }
+                    else if (middleNum <= 360) {
+                        DBG("D");
                     }
 
                     //RING FINGER
@@ -143,19 +154,22 @@ private:
                     ring = temp2.upToFirstOccurrenceOf(",", false, true);
                     //DBG(temp2);
                     //DBG(ring);
-                    float ringNum = ring.getFloatValue();
+                    ringNum = ring.getFloatValue();
 
-                    if (ringNum <= 400) {
-                        DBG("RING TRIGGERED");
+                    if (ringNum <= 440 && ringNum >=400) {
+                        DBG("E");
+                    }
+                    else if (ringNum <= 400) {
+                        DBG("F");
                     }
 
                     //PINKY FINGER
                     pinky = s.fromLastOccurrenceOf(",", false, true);
                     //DBG(pinky);
-                    float pinkyNum=pinky.getFloatValue();
+                    pinkyNum=pinky.getFloatValue();
 
                     if (pinkyNum <= 400) {
-                        DBG("PINKY TRIGGERED");
+                        DBG("G");
                     }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
