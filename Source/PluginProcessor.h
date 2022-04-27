@@ -111,9 +111,30 @@ private:
                 {
                     s = pInputStream->readNextLine();
                     DBG(s);
+
+                    //INDEX FINGER
+                    String index = s.upToFirstOccurrenceOf(",", false, true);
+                    //DBG(index);
+
+                    //MIDDLE FINGER
+                    String temp1 = s.fromFirstOccurrenceOf(",", false, true);
+                    String middle = temp1.upToFirstOccurrenceOf(",", false, true);
+                    //DBG(temp1);
+                    //DBG(middle);
+
+                    //RING FINGER
+                    String temp2 = temp1.fromFirstOccurrenceOf(",", false, true);
+                    String ring = temp2.upToFirstOccurrenceOf(",", false, true);
+                    //DBG(temp2);
+                    //DBG(ring);
+
+                    //PINKY FINGER
+                    String pinky = s.fromLastOccurrenceOf(",", false, true);
+                    //DBG(pinky);
+
                     float num=s.getFloatValue();
 
-                    if (num>=450) {
+                    if (num>=500) {
                         DBG("TRIGGERED");
                     }
                     //CONCATENATE
