@@ -62,6 +62,11 @@ public:
     int pageNum = 0;
     int pageNum_OLD = 0;
 
+    String index;
+    String middle;
+    String ring;
+    String pinky;
+
 private:
 
     StringPairArray portlist;
@@ -108,34 +113,49 @@ private:
 
                 String s;
                 if (pInputStream->canReadLine())
-                {
+                {   //This part of the code is what makes us able to read the values from each individual flex sensor
+
                     s = pInputStream->readNextLine();
                     DBG(s);
 
                     //INDEX FINGER
-                    String index = s.upToFirstOccurrenceOf(",", false, true);
+                    index = s.upToFirstOccurrenceOf(",", false, true);
                     //DBG(index);
+                    float indexNum = index.getFloatValue();
+
+                    if (indexNum <= 360) {
+                        DBG("INDEX TRIGGERED");
+                    }
 
                     //MIDDLE FINGER
                     String temp1 = s.fromFirstOccurrenceOf(",", false, true);
-                    String middle = temp1.upToFirstOccurrenceOf(",", false, true);
+                    middle = temp1.upToFirstOccurrenceOf(",", false, true);
                     //DBG(temp1);
                     //DBG(middle);
+                    float middleNum = middle.getFloatValue();
+
+                    if (middleNum <= 380) {
+                        DBG("MIDDLE TRIGGERED");
+                    }
 
                     //RING FINGER
                     String temp2 = temp1.fromFirstOccurrenceOf(",", false, true);
-                    String ring = temp2.upToFirstOccurrenceOf(",", false, true);
+                    ring = temp2.upToFirstOccurrenceOf(",", false, true);
                     //DBG(temp2);
                     //DBG(ring);
+                    float ringNum = ring.getFloatValue();
+
+                    if (ringNum <= 400) {
+                        DBG("RING TRIGGERED");
+                    }
 
                     //PINKY FINGER
-                    String pinky = s.fromLastOccurrenceOf(",", false, true);
+                    pinky = s.fromLastOccurrenceOf(",", false, true);
                     //DBG(pinky);
+                    float pinkyNum=pinky.getFloatValue();
 
-                    float num=s.getFloatValue();
-
-                    if (num>=500) {
-                        DBG("TRIGGERED");
+                    if (pinkyNum <= 400) {
+                        DBG("PINKY TRIGGERED");
                     }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
