@@ -30,6 +30,7 @@ public:
     void timerCallback();
     int frameRate = 30;
     bool isPageChanged = false;
+    bool updateNote = false;
     Label title2;
     TextButton menu;
     Label title3;

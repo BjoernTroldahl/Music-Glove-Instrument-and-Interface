@@ -124,8 +124,8 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(currentNote);
     currentNote.setVisible(false);
     //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
-    stringNote = audioProcessor.playedNote;
-    currentNote.setText("Currently playing " + stringNote, dontSendNotification);
+    stringNote=audioProcessor.playedNote; //DEN HER ÆNDRER HVILKEN NOTE SOM BLIVER DISPLAYED
+    currentNote.setText("Currently playing ", dontSendNotification);
     currentNote.setFont(40);
 
     //teksten skal ændre sig alt efter hvilken note man spiller
@@ -511,6 +511,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 //The page counter/mechanism that changes the page.
 //If the current page number is not the same as the old page number, then change the page.
 {
+
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {
         isPageChanged = true;
@@ -634,6 +635,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 5:
             practiceScale.setVisible(true);
             currentNote.setVisible(true);
+            
             nextNote.setVisible(true);
             buttonNote.setVisible(true);
             doneScales1.setVisible(true);
@@ -880,6 +882,23 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //Whenever a switch happens pageNum_OLD is overwrited to the value of pageNum.
     //Meaning that the program can then detect that a change in page number has happened.
     audioProcessor.pageNum_OLD = audioProcessor.pageNum;
+
+    if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
+        updateNote = true;
+    }
+    else {
+        updateNote = false;
+    }
+
+    if (updateNote) {
+        //DBG("updated");
+        stringNote = audioProcessor.playedNote;
+        currentNote.setText("Currently playing " + stringNote, dontSendNotification);
+        currentNote.setVisible(true);
+    }
+
+    audioProcessor.playedNoteOLD = audioProcessor.playedNote;
+
 }
 
 //==============================================================================
