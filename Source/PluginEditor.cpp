@@ -124,6 +124,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(currentNote);
     currentNote.setVisible(false);
     //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    stringNote = audioProcessor.playedNote;
     currentNote.setText("Currently playing " + stringNote, dontSendNotification);
     currentNote.setFont(40);
 
@@ -329,7 +330,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(practiceScaleC);
     practiceScaleC.setVisible(false);
-    practiceScaleC.setText("Good job. Now practice playing the notes of an C-MINOR scale in ASCENDING order", dontSendNotification);
+    practiceScaleC.setText("Good job. Now practice playing the notes of an C-MAJOR scale in ASCENDING order", dontSendNotification);
     practiceScaleC.setFont(40);
 
     addAndMakeVisible(currentNoteC);
@@ -363,7 +364,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(playScalesC);
     playScalesC.setVisible(false);
-    playScalesC.setText("Now try playing the notes of a C-MINOR scale in ASCENDING order without assistance.", dontSendNotification);
+    playScalesC.setText("Now try playing the notes of a C-major scale in ASCENDING order without assistance.", dontSendNotification);
     playScalesC.setFont(40);
 
 

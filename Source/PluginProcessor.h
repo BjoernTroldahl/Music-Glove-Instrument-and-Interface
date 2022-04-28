@@ -72,6 +72,8 @@ public:
     float ringNum;
     float pinkyNum;
 
+    String playedNote = "";
+
 private:
 
     StringPairArray portlist;
@@ -130,9 +132,11 @@ private:
 
                     if (indexNum <= 370 && indexNum >= 340) {
                         DBG("A");
+                        playedNote = "A";
                     }
                     else if (indexNum <= 340) {
                         DBG("B");
+                        playedNote = "B";
                     }
 
                     //MIDDLE FINGER
@@ -144,9 +148,11 @@ private:
 
                     if (middleNum <= 380 && middleNum >= 360) {
                         DBG("C");
+                        playedNote = "C";
                     }
                     else if (middleNum <= 360) {
                         DBG("D");
+                        playedNote = "D";
                     }
 
                     //RING FINGER
@@ -158,9 +164,11 @@ private:
 
                     if (ringNum <= 440 && ringNum >=400) {
                         DBG("E");
+                        playedNote = "E";
                     }
                     else if (ringNum <= 400) {
                         DBG("F");
+                        playedNote = "F";
                     }
 
                     //PINKY FINGER
@@ -170,6 +178,7 @@ private:
 
                     if (pinkyNum <= 400) {
                         DBG("G");
+                        playedNote = "G";
                     }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
