@@ -135,7 +135,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     nextNote.setFont(40);
     addAndMakeVisible(buttonNote);
     buttonNote.setVisible(false);
-    buttonNote.setButtonText("a");
+    buttonNote.setButtonText("a"); //DET HER SKAL ÆNDRES TIL EN VARIABLE
     buttonNote.changeWidthToFitText();
     buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
     buttonNote.onClick = [this] {

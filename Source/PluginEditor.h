@@ -115,7 +115,7 @@ public:
     TextButton startChords;
     Label remainingChords;
 
-
+    String notes[8] = { "a, b, c, d, e, f, g, a" };
 
    
 
