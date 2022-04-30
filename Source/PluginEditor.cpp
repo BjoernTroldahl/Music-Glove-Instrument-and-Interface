@@ -123,10 +123,10 @@ void RandomNameAudioProcessorEditor::configGUI() {
     practiceScale.setFont(40);
     addAndMakeVisible(currentNote);
     currentNote.setVisible(false);
-    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
-    //stringNote=audioProcessor.playedNote; //DEN HER ÆNDRER HVILKEN NOTE SOM BLIVER DISPLAYED
     currentNote.setText("Currently playing ", dontSendNotification);
     currentNote.setFont(40);
+
+    //**
 
     //teksten skal ændre sig alt efter hvilken note man spiller
     addAndMakeVisible(nextNote);
@@ -135,12 +135,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     nextNote.setFont(40);
     addAndMakeVisible(buttonNote);
     buttonNote.setVisible(false);
-    buttonNote.setButtonText("a"); //DET HER SKAL ÆNDRES TIL EN VARIABLE
+    buttonNote.setButtonText(nextNoteArray); //DET HER SKAL ÆNDRES TIL EN VARIABLE
     buttonNote.changeWidthToFitText();
     buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
-    buttonNote.onClick = [this] {
+    /*buttonNote.onClick = [this] {
         buttonNote.setButtonText("b");
-    };
+    };*/
 
 
     addAndMakeVisible(doneScales1);
@@ -891,18 +891,60 @@ void RandomNameAudioProcessorEditor::timerCallback()
     else {
         updateNote = false;
     }
+
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     if (updateNote && audioProcessor.pageNum == 5) {
-        //DBG("updated");
-        stringNote = audioProcessor.playedNote;
-        currentNote.setText("Currently playing " + stringNote, dontSendNotification);
-        currentNote.setVisible(true);
-        
-    }
+    //DBG("updated");
+    stringNote = audioProcessor.playedNote;
+    currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
+        if (audioProcessor.playedNote == "A" && arrayCounter==0) {
+            nextNoteArray = A_min_ascending_notes[1];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter==1) {
+            nextNoteArray = A_min_ascending_notes[2];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 2) {
+            nextNoteArray = A_min_ascending_notes[3];
+            arrayCounter = arrayCounter + 1;
+        }
+        
+        if (audioProcessor.playedNote == "D" && arrayCounter == 3) {
+            nextNoteArray = A_min_ascending_notes[4];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter == 4) {
+            nextNoteArray = A_min_ascending_notes[5];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "F" && arrayCounter == 5) {
+            nextNoteArray = A_min_ascending_notes[6];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter == 6) {
+            nextNoteArray = A_min_ascending_notes[7];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 7) {
+            nextNoteArray = "task completed";
+            buttonNote.setColour(chords.buttonColourId, Colours::green);
+        }
+
+        buttonNote.setButtonText(nextNoteArray);
+            
+    }
+    
+    
     //Same logic as with the page number, this is just for playedNote
     audioProcessor.playedNoteOLD = audioProcessor.playedNote;
-
 }
 
 //==============================================================================
