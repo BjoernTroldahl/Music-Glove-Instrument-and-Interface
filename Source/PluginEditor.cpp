@@ -633,10 +633,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
         case 5:
+            arrayCounter = 0;
             practiceScale.setVisible(true);
             currentNote.setVisible(true);
             
             nextNote.setVisible(true);
+            nextNoteArray = A_min_ascending_notes[0];
+            buttonNote.setButtonText("a");
+            buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
             buttonNote.setVisible(true);
             doneScales1.setVisible(true);
 
@@ -893,17 +897,17 @@ void RandomNameAudioProcessorEditor::timerCallback()
     }
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
+    
     if (updateNote && audioProcessor.pageNum == 5) {
-    //DBG("updated");
-    stringNote = audioProcessor.playedNote;
-    currentNote.setText("Currently playing " + stringNote, dontSendNotification);
+        stringNote = audioProcessor.playedNote;
+        currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
-        if (audioProcessor.playedNote == "A" && arrayCounter==0) {
+        if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
             nextNoteArray = A_min_ascending_notes[1];
             arrayCounter = arrayCounter + 1;
         }
 
-        if (audioProcessor.playedNote == "B" && arrayCounter==1) {
+        if (audioProcessor.playedNote == "B" && arrayCounter == 1) {
             nextNoteArray = A_min_ascending_notes[2];
             arrayCounter = arrayCounter + 1;
         }
@@ -936,13 +940,15 @@ void RandomNameAudioProcessorEditor::timerCallback()
         if (audioProcessor.playedNote == "A" && arrayCounter == 7) {
             nextNoteArray = "task completed";
             buttonNote.setColour(chords.buttonColourId, Colours::green);
+            
         }
 
+        
         buttonNote.setButtonText(nextNoteArray);
             
     }
     
-    
+    DBG(arrayCounter);
     //Same logic as with the page number, this is just for playedNote
     audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 }
