@@ -124,7 +124,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(currentNote);
     currentNote.setVisible(false);
     //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
-    stringNote=audioProcessor.playedNote; //DEN HER ÆNDRER HVILKEN NOTE SOM BLIVER DISPLAYED
+    //stringNote=audioProcessor.playedNote; //DEN HER ÆNDRER HVILKEN NOTE SOM BLIVER DISPLAYED
     currentNote.setText("Currently playing ", dontSendNotification);
     currentNote.setFont(40);
 
@@ -883,20 +883,24 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //Meaning that the program can then detect that a change in page number has happened.
     audioProcessor.pageNum_OLD = audioProcessor.pageNum;
 
+    //If the program registers that a note has been played, it updates so that the currently played note
+    //is not the same as the previously played note.
     if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
         updateNote = true;
     }
     else {
         updateNote = false;
     }
-
-    if (updateNote) {
+    //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
+    if (updateNote && audioProcessor.pageNum == 5) {
         //DBG("updated");
         stringNote = audioProcessor.playedNote;
         currentNote.setText("Currently playing " + stringNote, dontSendNotification);
         currentNote.setVisible(true);
+        
     }
 
+    //Same logic as with the page number, this is just for playedNote
     audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 
 }
