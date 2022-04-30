@@ -992,6 +992,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             stringtoTrim.clear();
             remainingNotesA = "WELL DONE!";
             remainingNotes.setBounds(440, 300, 500, 40);
+            remainingNotes.setColour(remainingNotes.textColourId,Colours::green);
         }
 
 
