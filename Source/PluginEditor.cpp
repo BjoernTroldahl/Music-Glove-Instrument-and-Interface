@@ -8,6 +8,8 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include <iostream>
+#include <string>
 
 //==============================================================================
 RandomNameAudioProcessorEditor::RandomNameAudioProcessorEditor (RandomNameAudioProcessor& p)
@@ -164,9 +166,8 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 8;
     };
     addAndMakeVisible(remainingNotes);
-    auto str = String(remainingNotesInt);
     remainingNotes.setVisible(false);
-    remainingNotes.setText("Remaining Notes " + str, dontSendNotification);
+    remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
     remainingNotes.setFont(40);
 
     //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
@@ -635,6 +636,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 5:
             arrayCounter = 0;
             practiceScale.setVisible(true);
+            currentNote.setText("Currently playing ", dontSendNotification);
             currentNote.setVisible(true);
             
             nextNote.setVisible(true);
@@ -683,7 +685,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
         case 8:
-
+            arrayCounter = 0;
             remainingNotes.setVisible(true);
             Failed.setVisible(true);
             Suceeded.setVisible(true);
@@ -946,6 +948,55 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         buttonNote.setButtonText(nextNoteArray);
             
+    }
+
+    if (updateNote && audioProcessor.pageNum == 8) {
+        remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
+            remainingNotesA = "7";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter == 1) {
+            remainingNotesA = "6";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 2) {
+            remainingNotesA = "5";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "D" && arrayCounter == 3) {
+            remainingNotesA = "4";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter == 4) {
+            remainingNotesA = "3";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "F" && arrayCounter == 5) {
+            remainingNotesA = "2";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter == 6) {
+            remainingNotesA = "1";
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 7) {
+            stringtoTrim.clear();
+            remainingNotesA = "WELL DONE!";
+            remainingNotes.setBounds(440, 300, 500, 40);
+        }
+
+
+        remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
+
     }
     
     DBG(arrayCounter);

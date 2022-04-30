@@ -51,7 +51,8 @@ public:
     Label playScales;
     TextButton startScales;
     Label remainingNotes;
-    int remainingNotesInt = 7;
+    String remainingNotesA = "8";
+    String stringtoTrim = "Remaining Notes ";
     TextButton Failed;
     TextButton Suceeded;
     String stringNote; //CHANGE THIS VALUE***
