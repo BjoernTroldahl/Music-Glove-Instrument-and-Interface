@@ -958,12 +958,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
 
-        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0 && isTimerRunning) {
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0 /* && isTimerRunning == false*/) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1 && isTimerRunning) {
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1 /* && isTimerRunning == false*/) {
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
         }
