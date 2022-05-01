@@ -10,6 +10,7 @@
 #include "PluginEditor.h"
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 //==============================================================================
 RandomNameAudioProcessorEditor::RandomNameAudioProcessorEditor (RandomNameAudioProcessor& p)
@@ -670,6 +671,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
         case 7:
+            arrayCounter2 = 0;
             startScales.setVisible(true);
             playScales.setVisible(true);
 
@@ -685,7 +687,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
         case 8:
-            arrayCounter = 0;
             remainingNotes.setVisible(true);
             Failed.setVisible(true);
             Suceeded.setVisible(true);
@@ -893,9 +894,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //is not the same as the previously played note.
     if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
         updateNote = true;
+        //RESET TIMER HERE
+        startTimer(500);
     }
     else {
         updateNote = false;
+        //START TIMER HERE
     }
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
@@ -951,56 +955,56 @@ void RandomNameAudioProcessorEditor::timerCallback()
     }
 
     if (updateNote && audioProcessor.pageNum == 8) {
+        
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
 
-        if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0 && isTimerRunning) {
             remainingNotesA = "7";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "B" && arrayCounter == 1) {
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1 && isTimerRunning) {
             remainingNotesA = "6";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "C" && arrayCounter == 2) {
+        if (audioProcessor.playedNote == "C" && arrayCounter2 == 2) {
             remainingNotesA = "5";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "D" && arrayCounter == 3) {
+        if (audioProcessor.playedNote == "D" && arrayCounter2 == 3) {
             remainingNotesA = "4";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "E" && arrayCounter == 4) {
+        if (audioProcessor.playedNote == "E" && arrayCounter2 == 4) {
             remainingNotesA = "3";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "F" && arrayCounter == 5) {
+        if (audioProcessor.playedNote == "F" && arrayCounter2 == 5) {
             remainingNotesA = "2";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "G" && arrayCounter == 6) {
+        if (audioProcessor.playedNote == "G" && arrayCounter2 == 6) {
             remainingNotesA = "1";
-            arrayCounter = arrayCounter + 1;
+            arrayCounter2 = arrayCounter2 + 1;
         }
 
-        if (audioProcessor.playedNote == "A" && arrayCounter == 7) {
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 7) {
             stringtoTrim.clear();
             remainingNotesA = "WELL DONE!";
             remainingNotes.setBounds(440, 300, 500, 40);
             remainingNotes.setColour(remainingNotes.textColourId,Colours::green);
         }
 
-
         remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
 
     }
     
-    DBG(arrayCounter);
+    DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote
     audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 }

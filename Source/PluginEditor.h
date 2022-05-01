@@ -119,10 +119,10 @@ public:
     String A_min_ascending_notes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};
 
     String nextNoteArray="a";
-    int arrayCounter=0;
+    int arrayCounter = 0;
+    int arrayCounter2 = 0;
 
-
-
+    
 
 
 private:

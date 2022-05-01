@@ -132,11 +132,11 @@ private:
                     indexNum = index.getFloatValue();
 
                     if (indexNum <= 370 && indexNum >= 340) {
-                        //DBG("A");
+                        DBG("A");
                         playedNote = "A";
                     }
                     else if (indexNum <= 340) {
-                        //DBG("B");
+                        DBG("B");
                         playedNote = "B";
                     }
 
@@ -148,11 +148,11 @@ private:
                     middleNum = middle.getFloatValue();
 
                     if (middleNum <= 380 && middleNum >= 360) {
-                        //DBG("C");
+                        DBG("C");
                         playedNote = "C";
                     }
                     else if (middleNum <= 360) {
-                        //DBG("D");
+                        DBG("D");
                         playedNote = "D";
                     }
 
@@ -164,11 +164,11 @@ private:
                     ringNum = ring.getFloatValue();
 
                     if (ringNum <= 440 && ringNum >=400) {
-                        //DBG("E");
+                        DBG("E");
                         playedNote = "E";
                     }
                     else if (ringNum <= 400) {
-                        //DBG("F");
+                        DBG("F");
                         playedNote = "F";
                     }
 
@@ -178,7 +178,7 @@ private:
                     pinkyNum=pinky.getFloatValue();
 
                     if (pinkyNum <= 400) {
-                        //DBG("G");
+                        DBG("G");
                         playedNote = "G";
                     }
                     //CONCATENATE
