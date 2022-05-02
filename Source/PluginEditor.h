@@ -10,6 +10,10 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include <stdio.h>
+#include <time.h>
+#include <chrono>
+
 using namespace juce;
 //==============================================================================
 /**
@@ -103,8 +107,9 @@ public:
     TextButton tryAgainC;
     Label scalesCompleded;
     TextButton finishScale;
-    float Time;
-
+    float passedTime=0;
+    clock_t start, end;
+    
     //chords
 
     Label practiceChords;

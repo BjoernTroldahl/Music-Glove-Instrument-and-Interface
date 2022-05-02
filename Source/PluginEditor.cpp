@@ -11,6 +11,11 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <stdio.h>
+#include <time.h>
+#include <chrono>
+
+using namespace std;
 
 //==============================================================================
 RandomNameAudioProcessorEditor::RandomNameAudioProcessorEditor (RandomNameAudioProcessor& p)
@@ -580,6 +585,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         switch (audioProcessor.pageNum)
         {
         case 0:
+            passedTime = 0;
             title.setVisible(true);
             newGame.setVisible(true);
             howTo.setVisible(true);
@@ -756,6 +762,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
         case 8:
+            passedTime = 0;
             remainingNotes.setVisible(true);
             Failed.setVisible(true);
             Suceeded.setVisible(true);
@@ -989,16 +996,20 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //is not the same as the previously played note.
     if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
         updateNote = true;
+        passedTime = 0;
         //DBG("updated");
-        
+        end = clock();
         
     }
     
     else {
         updateNote = false;
-        //KAN MULIGVIS GODT SLETTES
+        start = clock();
         
     }
+
+    passedTime = (start - end) / CLOCKS_PER_SEC;
+    DBG(passedTime);
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     
@@ -1052,18 +1063,21 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
     }
 
-    if (updateNote && audioProcessor.pageNum == 8) {
+    if (audioProcessor.pageNum == 8) {
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
 
-        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0 && passedTime>=1) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
             
         }
+        else {
+            audioProcessor.pageNum = 9;
+        }
         
 
-        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1) {
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1 && passedTime>= 1) {
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
             
