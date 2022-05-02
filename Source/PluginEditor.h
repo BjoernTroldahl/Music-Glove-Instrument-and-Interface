@@ -103,6 +103,7 @@ public:
     TextButton tryAgainC;
     Label scalesCompleded;
     TextButton finishScale;
+    float Time;
 
     //chords
 

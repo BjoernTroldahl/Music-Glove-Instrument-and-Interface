@@ -895,15 +895,19 @@ void RandomNameAudioProcessorEditor::timerCallback()
     if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
         updateNote = true;
         //DBG("updated");
+        
+        
     }
+    
     else {
         updateNote = false;
         //KAN MULIGVIS GODT SLETTES
+        
     }
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     
-    if (audioProcessor.pageNum == 5) {
+    if (updateNote && audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
         currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
@@ -953,20 +957,24 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
     }
 
-    if (audioProcessor.pageNum == 8) {
+    if (updateNote && audioProcessor.pageNum == 8) {
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
+            
         }
         
 
         if (audioProcessor.playedNote == "B" && arrayCounter2 == 1) {
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
+            
         }
+        
+
 
         if (audioProcessor.playedNote == "C" && arrayCounter2 == 2) {
             remainingNotesA = "5";
