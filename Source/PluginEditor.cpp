@@ -894,17 +894,16 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //is not the same as the previously played note.
     if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
         updateNote = true;
-        //RESET TIMER HERE
-        startTimer(500);
+        //DBG("updated");
     }
     else {
         updateNote = false;
-        //START TIMER HERE
+        //KAN MULIGVIS GODT SLETTES
     }
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     
-    if (updateNote && audioProcessor.pageNum == 5) {
+    if (audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
         currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
@@ -954,16 +953,17 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
     }
 
-    if (updateNote && audioProcessor.pageNum == 8) {
+    if (audioProcessor.pageNum == 8) {
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
 
-        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0 /* && isTimerRunning == false*/) {
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
         }
+        
 
-        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1 /* && isTimerRunning == false*/) {
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1) {
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
         }
@@ -999,12 +999,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotes.setBounds(440, 300, 500, 40);
             remainingNotes.setColour(remainingNotes.textColourId,Colours::green);
         }
-
+        
+        
         remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
 
     }
     
-    DBG(arrayCounter2);
+    //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote
     audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 }

@@ -124,18 +124,18 @@ private:
                 {   //This part of the code is what makes us able to read the values from each individual flex sensor
 
                     s = pInputStream->readNextLine();
-                    //DBG(s);
+                    DBG(s);
 
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
                     //DBG(index);
                     indexNum = index.getFloatValue();
 
-                    if (indexNum <= 370 && indexNum >= 340) {
+                    if (indexNum <= 350 && indexNum >= 320) {
                         DBG("A");
                         playedNote = "A";
                     }
-                    else if (indexNum <= 340) {
+                    else if (indexNum <= 320) {
                         DBG("B");
                         playedNote = "B";
                     }
@@ -147,11 +147,11 @@ private:
                     //DBG(middle); 
                     middleNum = middle.getFloatValue();
 
-                    if (middleNum <= 380 && middleNum >= 360) {
+                    if (middleNum <= 370 && middleNum >= 340) {
                         DBG("C");
                         playedNote = "C";
                     }
-                    else if (middleNum <= 360) {
+                    else if (middleNum <= 340) {
                         DBG("D");
                         playedNote = "D";
                     }
@@ -163,11 +163,11 @@ private:
                     //DBG(ring);
                     ringNum = ring.getFloatValue();
 
-                    if (ringNum <= 440 && ringNum >=400) {
+                    if (ringNum <= 420 && ringNum >=380) {
                         DBG("E");
                         playedNote = "E";
                     }
-                    else if (ringNum <= 400) {
+                    else if (ringNum <= 380) {
                         DBG("F");
                         playedNote = "F";
                     }
@@ -177,7 +177,7 @@ private:
                     //DBG(pinky);
                     pinkyNum=pinky.getFloatValue();
 
-                    if (pinkyNum <= 400) {
+                    if (pinkyNum <= 430) {
                         DBG("G");
                         playedNote = "G";
                     }
