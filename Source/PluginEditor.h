@@ -115,6 +115,14 @@ public:
     Label playChords;
     TextButton startChords;
     Label remainingChords;
+    TextButton doneChords3;
+    Label chordProgression2;
+    TextButton doneChords4;
+    Label playChords2;
+    TextButton startChords2;
+    Label remainingChords2;
+    TextButton doneChords5;
+
 
     String A_min_ascending_notes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};
 
