@@ -994,17 +994,16 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     //If the program registers that a note has been played, it updates so that the currently played note
     //is not the same as the previously played note.
-    if (audioProcessor.playedNote != audioProcessor.playedNoteOLD) {
+    if (audioProcessor.playedNote != "") {
         updateNote = true;
-        passedTime = 0;
         //DBG("updated");
-        end = clock();
-        
+        start = clock();
     }
     
-    else {
+    else{
         updateNote = false;
-        start = clock();
+        end = clock();
+        start = end;
         
     }
 
@@ -1063,27 +1062,23 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
     }
 
-    if (audioProcessor.pageNum == 8) {
+    if (audioProcessor.pageNum == 8 && updateNote && passedTime > timeThreshold) {
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
+        timeThreshold = change;
 
-        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0 && passedTime>=1) {
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
-            
+            change = 5;
         }
-        else {
-            audioProcessor.pageNum = 9;
-        }
-        
 
-        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1 && passedTime>= 1) {
+
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1) {
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
-            
         }
         
-
 
         if (audioProcessor.playedNote == "C" && arrayCounter2 == 2) {
             remainingNotesA = "5";
@@ -1116,15 +1111,18 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotes.setBounds(440, 300, 500, 40);
             remainingNotes.setColour(remainingNotes.textColourId,Colours::green);
         }
-        
-        
+
+        else {
+            audioProcessor.pageNum = 9;
+        }
+
         remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
 
     }
     
     //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote
-    audioProcessor.playedNoteOLD = audioProcessor.playedNote;
+    //audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 }
 
 //==============================================================================

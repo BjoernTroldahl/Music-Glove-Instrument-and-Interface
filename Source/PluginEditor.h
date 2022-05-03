@@ -109,6 +109,8 @@ public:
     TextButton finishScale;
     float passedTime=0;
     clock_t start, end;
+    int timeThreshold;
+    int change=1;
     
     //chords
 
