@@ -1065,7 +1065,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
     if (audioProcessor.pageNum == 8 && updateNote) {
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
-        timeThreshold = 0;
+        timeThreshold = 1;
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
