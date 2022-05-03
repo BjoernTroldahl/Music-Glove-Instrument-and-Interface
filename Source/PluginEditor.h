@@ -110,7 +110,6 @@ public:
     float passedTime=0;
     clock_t start, end;
     int timeThreshold;
-    int change=1;
     
     //chords
 
