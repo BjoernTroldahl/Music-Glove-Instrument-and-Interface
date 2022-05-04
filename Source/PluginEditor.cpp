@@ -409,7 +409,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     SuceededC.setColour(SuceededC.buttonColourId, Colours::deepskyblue);
     SuceededC.changeWidthToFitText();
     SuceededC.onClick = [this] {
-        audioProcessor.pageNum = 18;
+        audioProcessor.pageNum = 25;
     };
 
 
@@ -561,6 +561,113 @@ void RandomNameAudioProcessorEditor::configGUI() {
     doneChords5.changeWidthToFitText();
     doneChords5.onClick = [this] {
         audioProcessor.pageNum = 25;
+    };
+
+    addAndMakeVisible(practiceScaleCDescending);
+    practiceScaleCDescending.setVisible(false);
+    practiceScaleCDescending.setText("Good job. Now practice playing the notes of an C-MAJOR scale in DESCENDING order", dontSendNotification);
+    practiceScaleCDescending.setFont(40);
+
+    addAndMakeVisible(currentNoteCDescending);
+    currentNoteCDescending.setVisible(false);
+    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    currentNoteCDescending.setText("Currently playing " + stringNoteCDescending, dontSendNotification);
+    currentNoteCDescending.setFont(40);
+
+    addAndMakeVisible(nextNoteCDescending);
+    nextNoteCDescending.setVisible(false);
+    nextNoteCDescending.setText("Next note:", dontSendNotification);
+    nextNoteCDescending.setFont(40);
+
+    addAndMakeVisible(buttonNoteCDescending);
+    buttonNoteCDescending.setVisible(false);
+    buttonNoteCDescending.setButtonText("G");
+    buttonNoteCDescending.changeWidthToFitText();
+    buttonNoteCDescending.setColour(chords.buttonColourId, Colours::dodgerblue);
+    buttonNoteCDescending.onClick = [this] {
+        buttonNoteCDescending.setButtonText("F");
+    };
+
+    addAndMakeVisible(doneScalesCDescending);
+    doneScalesCDescending.setVisible(false);
+    doneScalesCDescending.setButtonText("Done/next");
+    doneScalesCDescending.setColour(doneScalesCDescending.buttonColourId, Colours::deepskyblue);
+    doneScalesCDescending.changeWidthToFitText();
+    doneScalesCDescending.onClick = [this] {
+        audioProcessor.pageNum = 26;
+    };
+
+    addAndMakeVisible(playScalesCDescending);
+    playScalesCDescending.setVisible(false);
+    playScalesCDescending.setText("Now try playing the notes of an C-MAJOR scale in DESCENDING order without assistance.", dontSendNotification);
+    playScalesCDescending.setFont(40);
+
+
+    addAndMakeVisible(startScalesCDescending);
+    startScalesCDescending.setVisible(false);
+    startScalesCDescending.setButtonText("Done/next");
+    startScalesCDescending.setColour(startScalesCDescending.buttonColourId, Colours::deepskyblue);
+    startScalesCDescending.changeWidthToFitText();
+    startScalesCDescending.onClick = [this] {
+        audioProcessor.pageNum = 27;
+    };
+
+    addAndMakeVisible(remainingNotesCDescending);
+    auto strCDescending = String(remainingNotesIntCDescending);
+    remainingNotesCDescending.setVisible(false);
+    remainingNotesCDescending.setText("Remaining Notes " + strCDescending, dontSendNotification);
+    remainingNotesCDescending.setFont(40);
+
+    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
+    addAndMakeVisible(FailedCDescending);
+    FailedCDescending.setVisible(false);
+    FailedCDescending.setButtonText("Failed");
+    FailedCDescending.setColour(FailedCDescending.buttonColourId, Colours::deepskyblue);
+    FailedCDescending.changeWidthToFitText();
+    FailedCDescending.onClick = [this] {
+
+        audioProcessor.pageNum = 28;
+
+    };
+
+    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR remainingnotes når 0 SKER SKAL DEN GØRE DET HER
+    addAndMakeVisible(SuceededCDescending);
+    SuceededCDescending.setVisible(false);
+    SuceededCDescending.setButtonText("Suceeded");
+    SuceededCDescending.setColour(Suceeded.buttonColourId, Colours::deepskyblue);
+    SuceededCDescending.changeWidthToFitText();
+    SuceededCDescending.onClick = [this] {
+        audioProcessor.pageNum = 18;
+    };
+
+    //her skal failed string ændres til den note man spillede forkert
+    addAndMakeVisible(failedStringCDescending);
+    auto failedCDescending = String(wrongNoteCDescending);
+    failedStringCDescending.setVisible(false);
+    failedStringCDescending.setText("Try again! you played " + failedCDescending, dontSendNotification);
+    failedStringCDescending.setFont(40);
+
+    //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
+    addAndMakeVisible(correctnoteWasCDescending);
+    auto failed2CDescending = String(correctNoteCDescending);
+    correctnoteWasCDescending.setVisible(false);
+    correctnoteWasCDescending.setText("The correct note was " + failed2CDescending, dontSendNotification);
+    correctnoteWasCDescending.setFont(40);
+
+    //failed 3 skal gå én ned når man fäiler
+    addAndMakeVisible(remainingAttemptsCDescending);
+    auto failed3CDescending = String(attemptsRemainingCDescending);
+    remainingAttemptsCDescending.setVisible(false);
+    remainingAttemptsCDescending.setText(failed3CDescending + " attempts remaining", dontSendNotification);
+    remainingAttemptsCDescending.setFont(40);
+
+    addAndMakeVisible(tryAgainCDescending);
+    tryAgainCDescending.setVisible(false);
+    tryAgainCDescending.setButtonText("Try again!");
+    tryAgainCDescending.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    tryAgainCDescending.changeWidthToFitText();
+    tryAgainCDescending.onClick = [this] {
+        audioProcessor.pageNum = 27;
     };
 
 
@@ -933,6 +1040,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesC.setVisible(false);
             FailedC.setVisible(false);
             SuceededC.setVisible(false);
+            remainingNotesCDescending.setVisible(false);
+            FailedCDescending.setVisible(false);
+            SuceededCDescending.setVisible(false);
             break;
 
 
@@ -1003,6 +1113,63 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
         case 25:
+            practiceScaleCDescending.setVisible(true);
+            currentNoteCDescending.setVisible(true);
+            nextNoteCDescending.setVisible(true);
+            buttonNoteCDescending.setVisible(true);
+            doneScalesCDescending.setVisible(true);
+
+
+
+            remainingNotesC.setVisible(false);
+            FailedC.setVisible(false);
+            SuceededC.setVisible(false);
+            break; 
+
+
+        case 26:
+            playScalesCDescending.setVisible(true);
+            startScalesCDescending.setVisible(true);
+
+
+            practiceScaleCDescending.setVisible(false);
+            currentNoteCDescending.setVisible(false);
+            nextNoteCDescending.setVisible(false);
+            buttonNoteCDescending.setVisible(false);
+            doneScalesCDescending.setVisible(false);
+
+            break;
+
+
+        case 27:
+            remainingNotesCDescending.setVisible(true);
+            FailedCDescending.setVisible(true);
+            SuceededCDescending.setVisible(true);
+
+            playScalesCDescending.setVisible(false);
+            startScalesCDescending.setVisible(false);
+            failedStringCDescending.setVisible(false);
+            correctnoteWasCDescending.setVisible(false);
+            remainingAttemptsCDescending.setVisible(false);
+            tryAgainCDescending.setVisible(false);
+            break;
+
+
+
+        case 28:
+            failedStringCDescending.setVisible(true);
+            correctnoteWasCDescending.setVisible(true);
+            remainingAttemptsCDescending.setVisible(true);
+            tryAgainCDescending.setVisible(true);
+
+
+            remainingNotesCDescending.setVisible(false);
+            FailedCDescending.setVisible(false);
+            SuceededCDescending.setVisible(false);
+            break;
+
+
+        case 29:
 
 
             break; 
@@ -1265,5 +1432,19 @@ void RandomNameAudioProcessorEditor::resized()
     playChords2.setBounds(200, 10, 900, 200);
     remainingChords2.setBounds(300, 200, 600, 200);
     doneChords5.setBounds(850, 600, 100, 100);
+    practiceScaleCDescending.setBounds(200, 10, 700, 200);
+    currentNoteCDescending.setBounds(200, 200, 300, 100);
+    nextNoteCDescending.setBounds(200, 400, 300, 100);
+    buttonNoteCDescending.setBounds(400, 400, 300, 100);
+    doneScalesCDescending.setBounds(850, 600, 100, 100);
+    startScalesCDescending.setBounds(500, 400, 100, 100);
+    playScalesCDescending.setBounds(200, 10, 900, 200);
+    remainingNotesCDescending.setBounds(350, 300, 500, 40);
+    SuceededCDescending.setBounds(850, 600, 100, 100);
+    FailedCDescending.setBounds(100, 600, 100, 100);
+    failedStringCDescending.setBounds(350, 200, 500, 40);
+    correctnoteWasCDescending.setBounds(350, 250, 500, 40);
+    remainingAttemptsCDescending.setBounds(350, 450, 500, 40);
+    tryAgainCDescending.setBounds(450, 550, 100, 100);
 }
 

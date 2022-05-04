@@ -111,6 +111,25 @@ public:
     clock_t start, end;
     int timeThreshold;
     String failed3;
+    Label practiceScaleCDescending;
+    Label currentNoteCDescending;
+    String stringNoteCDescending = "G";
+    Label nextNoteCDescending;
+    TextButton buttonNoteCDescending;
+    TextButton doneScalesCDescending;
+    Label playScalesCDescending;
+    TextButton startScalesCDescending;
+    Label remainingNotesCDescending;
+    int remainingNotesIntCDescending = 7;
+    TextButton FailedCDescending;
+    TextButton SuceededCDescending;
+    Label failedStringCDescending;
+    int attemptsRemainingCDescending = 3;
+    Label remainingAttemptsCDescending;
+    String wrongNoteCDescending = "G";
+    Label correctnoteWasCDescending;
+    String correctNoteCDescending = "F";
+    TextButton tryAgainCDescending;
     
     //chords
 
