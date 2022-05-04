@@ -133,7 +133,7 @@ private:
                     //DBG(index);
                     indexNum = index.getFloatValue();
 
-                    playedNote = "";
+                    playedNote = " ";
 
                     if (indexNum <= 350 && indexNum >= 320) {
                         //DBG("A");

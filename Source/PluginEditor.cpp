@@ -998,7 +998,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     //If the program registers that a note has been played, it updates so that the currently played note
     //is not the same as the previously played note.
-    if (audioProcessor.playedNote != "") {
+    if (audioProcessor.playedNote != " ") {
         updateNote = true;
         //DBG("updated");
         start = clock();
