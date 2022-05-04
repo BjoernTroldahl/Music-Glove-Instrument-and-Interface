@@ -786,7 +786,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 9:
 
-            remainingAttempts.setText(failed3 + " attempts remaining", dontSendNotification);
+            remainingAttempts.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             failedString.setVisible(true);
             correctnoteWas.setVisible(true);
             remainingAttempts.setVisible(true);
@@ -1101,6 +1101,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "C" && passedTime > timeThreshold && arrayCounter2 == 2) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         if (audioProcessor.playedNote == "D" && arrayCounter2 == 3) {
@@ -1109,6 +1110,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "D" && passedTime > timeThreshold && arrayCounter2 == 3) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         if (audioProcessor.playedNote == "E" && arrayCounter2 == 4) {
@@ -1117,6 +1119,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "E" && passedTime > timeThreshold && arrayCounter2 == 4) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         if (audioProcessor.playedNote == "F" && arrayCounter2 == 5) {
@@ -1125,6 +1128,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "F" && passedTime > timeThreshold && arrayCounter2 == 5) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         if (audioProcessor.playedNote == "G" && arrayCounter2 == 6) {
@@ -1133,6 +1137,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "G" && passedTime > timeThreshold && arrayCounter2 == 6) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 7) {
@@ -1144,6 +1149,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 7) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
