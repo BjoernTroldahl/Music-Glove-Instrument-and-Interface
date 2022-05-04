@@ -919,6 +919,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
         case 10:
+            arrayCounter = 0;
+            nextNoteArray = A_min_ascending_notes[7];
             practiceScaleDescending.setVisible(true);
             currentNoteDescending.setVisible(true);
             nextNoteDescending.setVisible(true);
@@ -1256,7 +1258,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
     if (audioProcessor.pageNum == 8 && updateNote) {
         
         remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
-        timeThreshold = 1;
+        timeThreshold = 0;
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
@@ -1335,6 +1337,57 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
 
         remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
+
+    }
+
+    if (audioProcessor.pageNum == 10) {
+        
+        stringNoteDescending = audioProcessor.playedNote;
+        currentNoteDescending.setText("Currently playing " + stringNoteDescending, dontSendNotification);
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
+            nextNoteArray = A_min_ascending_notes[6];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter == 1) {
+            nextNoteArray = A_min_ascending_notes[5];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "F" && arrayCounter == 2) {
+            nextNoteArray = A_min_ascending_notes[4];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter == 3) {
+            nextNoteArray = A_min_ascending_notes[3];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "D" && arrayCounter == 4) {
+            nextNoteArray = A_min_ascending_notes[2];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 5) {
+            nextNoteArray = A_min_ascending_notes[1];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter == 6) {
+            nextNoteArray = A_min_ascending_notes[0];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 7) {
+            nextNoteArray = "task completed";
+            buttonNoteDescending.setColour(chords.buttonColourId, Colours::green);
+
+        }
+
+
+        buttonNoteDescending.setButtonText(nextNoteArray);
 
     }
     
