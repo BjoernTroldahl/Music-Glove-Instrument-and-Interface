@@ -780,7 +780,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgain.setVisible(false);
 
             break;
-
+            
 
         case 9:
             failedString.setVisible(true);
@@ -1016,7 +1016,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     
-    if (updateNote && audioProcessor.pageNum == 5) {
+    if (audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
         currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
