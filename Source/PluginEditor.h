@@ -59,7 +59,7 @@ public:
     String stringtoTrim = "Remaining Notes ";
     TextButton Failed;
     TextButton Suceeded;
-    String stringNote; //CHANGE THIS VALUE***
+    String stringNote;
     Label failedString;
     int attemptsRemaining = 3;
     Label remainingAttempts;
@@ -110,6 +110,7 @@ public:
     float passedTime=0;
     clock_t start, end;
     int timeThreshold;
+    String failed3;
     
     //chords
 

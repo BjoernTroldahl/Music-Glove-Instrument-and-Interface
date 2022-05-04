@@ -200,21 +200,21 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     //her skal failed string ændres til den note man spillede forkert
     addAndMakeVisible(failedString);
-    auto failed = String(wrongNote);
+    //auto failed = String(wrongNote);
     failedString.setVisible(false);
-    failedString.setText("Try again! you played " + failed, dontSendNotification);
+    failedString.setText("You played a wrong note, try again! ", dontSendNotification);
     failedString.setFont(40);
 
     //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
     addAndMakeVisible(correctnoteWas);
-    auto failed2 = String(correctNote);
+    //auto failed2 = String(correctNote);
     correctnoteWas.setVisible(false);
-    correctnoteWas.setText("The correct note was " + failed2, dontSendNotification);
+    correctnoteWas.setText("Remember sequence: A-B-C-D-E-F-G-A", dontSendNotification);
     correctnoteWas.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
     addAndMakeVisible(remainingAttempts);
-    auto failed3 = String(attemptsRemaining);
+    failed3 = to_string(attemptsRemaining);
     remainingAttempts.setVisible(false);
     remainingAttempts.setText(failed3 + " attempts remaining", dontSendNotification);
     remainingAttempts.setFont(40);
@@ -572,6 +572,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 //The page counter/mechanism that changes the page.
 //If the current page number is not the same as the old page number, then change the page.
 {
+    failed3 = to_string(attemptsRemaining);
 
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {
@@ -747,6 +748,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 7:
             arrayCounter2 = 0;
+            attemptsRemaining = 3;
             remainingNotes.setColour(remainingNotes.textColourId, Colours::white);
             remainingNotesA = "8";
             stringtoTrim = "Remaining Notes ";
@@ -783,6 +785,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
 
         case 9:
+
+            remainingAttempts.setText(failed3 + " attempts remaining", dontSendNotification);
             failedString.setVisible(true);
             correctnoteWas.setVisible(true);
             remainingAttempts.setVisible(true);
@@ -1013,6 +1017,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     passedTime = (start - end) / CLOCKS_PER_SEC;
     DBG(passedTime);
+    DBG(failed3);
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     
@@ -1077,6 +1082,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "B" && passedTime > timeThreshold && arrayCounter2 == 0) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
 
         if (audioProcessor.playedNote == "B" && arrayCounter2 == 1) {
@@ -1085,6 +1091,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         }
         else if (audioProcessor.playedNote != "B" && passedTime > timeThreshold && arrayCounter2 == 1) {
             audioProcessor.pageNum = 9;
+            attemptsRemaining = attemptsRemaining - 1;
         }
         
 
