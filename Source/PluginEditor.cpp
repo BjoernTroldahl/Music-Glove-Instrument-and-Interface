@@ -573,6 +573,17 @@ void RandomNameAudioProcessorEditor::timerCallback()
 //If the current page number is not the same as the old page number, then change the page.
 {
     failed3 = to_string(attemptsRemaining);
+    if (attemptsRemaining == 0) {
+        failedString.setColour(failedString.textColourId, Colours::red);
+        failedString.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        correctnoteWas.setColour(correctnoteWas.textColourId, Colours::red);
+        correctnoteWas.setText("Continue to the next page", dontSendNotification);
+        remainingAttempts.setText("", dontSendNotification);
+        tryAgain.setButtonText("Next page");
+        tryAgain.onClick = [this] {
+            audioProcessor.pageNum = 10;
+        };
+    }
 
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {
@@ -811,6 +822,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotes.setVisible(false);
             Failed.setVisible(false);
             Suceeded.setVisible(false);
+            failedString.setVisible(false);
+            correctnoteWas.setVisible(false);
+            remainingAttempts.setVisible(false);
+            tryAgain.setVisible(false);
             break;
 
 
