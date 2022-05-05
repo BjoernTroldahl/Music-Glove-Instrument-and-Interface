@@ -146,6 +146,11 @@ private:
                     playedNote = " ";
                     fUI->setParamValue("A",0);
                     fUI->setParamValue("B",0);
+                    fUI->setParamValue("C",0);
+                    fUI->setParamValue("D",0);
+                    fUI->setParamValue("E",0);
+                    fUI->setParamValue("F",0);
+                    fUI->setParamValue("G",0);
 
                     if (indexNum <= 350 && indexNum >= 320) {
                         //DBG("A");
@@ -169,10 +174,12 @@ private:
                     if (middleNum <= 370 && middleNum >= 340) {
                         //DBG("C");
                         playedNote = "C";
+                        fUI->setParamValue("C",1);
                     }
                     if (middleNum <= 340) {
                         ///DBG("D");
                         playedNote = "D";
+                        fUI->setParamValue("D",1);
                     }
 
                     //RING FINGER
@@ -185,11 +192,12 @@ private:
                     if (ringNum <= 420 && ringNum >=380) {
                         //DBG("E");
                         playedNote = "E";
-                        triggered = 5;
+                        fUI->setParamValue("E",1);
                     }
                     if (ringNum <= 380) {
                         //DBG("F");
                         playedNote = "F";
+                        fUI->setParamValue("F", 1);
                     }
 
                     //PINKY FINGER
@@ -200,6 +208,7 @@ private:
                     if (pinkyNum <= 430) {
                         //DBG("G");
                         playedNote = "G";
+                        fUI->setParamValue("G", 1);
                     }
 
                     
