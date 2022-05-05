@@ -126,7 +126,7 @@ private:
                 {   //This part of the code is what makes us able to read the values from each individual flex sensor
 
                     s = pInputStream->readNextLine();
-                    DBG(s);
+                    //DBG(s);
 
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
@@ -185,7 +185,7 @@ private:
                     //DBG(pinky);
                     pinkyNum=pinky.getFloatValue();
 
-                    if (pinkyNum <= 410) {
+                    if (pinkyNum <= 430) {
                         //DBG("G");
                         playedNote = "G";
                     }
@@ -194,7 +194,7 @@ private:
                     
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
-                    DBG(playedNote);
+                    //DBG(playedNote);
                     
                 }
             }
