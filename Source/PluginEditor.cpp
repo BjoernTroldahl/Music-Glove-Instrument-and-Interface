@@ -679,19 +679,31 @@ void RandomNameAudioProcessorEditor::timerCallback()
 //If the current page number is not the same as the old page number, then change the page.
 {
     failed3 = to_string(attemptsRemaining);
-    if (attemptsRemaining == 0) {
-        FailedDescending.setVisible(false);
-        SuceededDescending.setVisible(false);
-        remainingNotesDescending.setVisible(false);
+
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD==8) {
         failedString.setColour(failedString.textColourId, Colours::red);
         failedString.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
         correctnoteWas.setColour(correctnoteWas.textColourId, Colours::red);
         correctnoteWas.setText("Continue to the next page", dontSendNotification);
-        remainingAttempts.setText("", dontSendNotification);
+        remainingAttempts.setVisible(false);
         tryAgain.setButtonText("Next page");
             tryAgain.onClick = [this] {
                 audioProcessor.pageNum = 10;
             };
+    }
+
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD==12) {
+       
+        failedStringDescending.setColour(failedString.textColourId, Colours::red);
+        failedStringDescending.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        correctnoteWasDescending.setColour(correctnoteWas.textColourId, Colours::red);
+        correctnoteWasDescending.setText("Continue to the next page", dontSendNotification);
+        remainingAttemptsDescending.setVisible(false);
+        //remainingAttemptsDescending.setText("", dontSendNotification);
+        tryAgainDescending.setButtonText("Next page");
+        tryAgainDescending.onClick = [this] {
+            audioProcessor.pageNum = 14;
+        };
     }
 
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
@@ -913,10 +925,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgain.setVisible(true);
 
 
-
+            if (attemptsRemaining == 0) {
+                remainingAttempts.setVisible(false);
+            }
             remainingNotes.setVisible(false);
             Failed.setVisible(false);
             Suceeded.setVisible(false);
+            
             break;
 
 
@@ -981,7 +996,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgainDescending.setVisible(true);
 
 
-
+            if (attemptsRemaining == 0) {
+                remainingAttemptsDescending.setVisible(false);
+            }
             remainingNotesDescending.setVisible(false);
             FailedDescending.setVisible(false);
             SuceededDescending.setVisible(false);
@@ -996,7 +1013,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             buttonNoteC.setVisible(true);
             doneScalesC.setVisible(true);
 
-
+            failedStringDescending.setVisible(false);
+            correctnoteWasDescending.setVisible(false);
+            tryAgainDescending.setVisible(false);
             remainingNotesDescending.setVisible(false);
             FailedDescending.setVisible(false);
             SuceededDescending.setVisible(false);
