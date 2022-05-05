@@ -4,6 +4,7 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="XKjc2J" name="P4 project">
     <GROUP id="{E0037D3C-0002-1C8C-BF86-E692449854BA}" name="Source">
+      <FILE id="DXxffy" name="lyd.h" compile="0" resource="0" file="Source/lyd.h"/>
       <FILE id="Fl4LMH" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="ZqhMYm" name="PluginProcessor.h" compile="0" resource="0"
