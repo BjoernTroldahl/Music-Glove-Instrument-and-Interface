@@ -13,9 +13,14 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "lyd.h"
+
+
 using namespace juce;
 using namespace std;
 
+class dsp;
+class MapUI;
 //==============================================================================
 /**
 */
@@ -79,6 +84,10 @@ public:
 
 private:
 
+    MapUI* fUI;
+    dsp* fDSP;
+    float** outputs;
+
     StringPairArray portlist;
     DebugFunction theDebugLog;
     SerialPort* pSP;
@@ -138,7 +147,7 @@ private:
                     if (indexNum <= 350 && indexNum >= 320) {
                         //DBG("A");
                         playedNote = "A";
-                        
+                        fUI->setParamValue("A",1);
                     }
 
                     if (indexNum <= 320) {
@@ -194,7 +203,7 @@ private:
                     
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
-                    //DBG(playedNote);
+                    DBG(playedNote);
                     
                 }
             }
