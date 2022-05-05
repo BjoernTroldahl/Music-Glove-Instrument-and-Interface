@@ -36,6 +36,7 @@ RandomNameAudioProcessor::~RandomNameAudioProcessor()
 // THIS IS WHERE THE DATA READ HAPPENS
 void RandomNameAudioProcessor::hiResTimerCallback()
 {
+    if(isReady)
     readSerialPort();
 }
 
@@ -112,7 +113,7 @@ void RandomNameAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
     for (int channel = 0; channel < 2; ++channel) {
         outputs[channel] = new float[samplesPerBlock];
     }
-    fUI->setParamValue("A",0);
+    isReady = true;
 }
 
 void RandomNameAudioProcessor::releaseResources()
@@ -156,7 +157,7 @@ void RandomNameAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     ScopedNoDenormals noDenormals;
     auto totalNumInputChannels = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-
+    if(isReady)
     fDSP->compute(buffer.getNumSamples(), NULL, outputs);
 
     for (int channel = 0; channel < totalNumOutputChannels; ++channel) {

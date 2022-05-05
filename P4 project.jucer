@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="JTX3qs" name="P4 project" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              pluginCharacteristicsValue="pluginIsSynth">
   <MAINGROUP id="XKjc2J" name="P4 project">
     <GROUP id="{E0037D3C-0002-1C8C-BF86-E692449854BA}" name="Source">
       <FILE id="vssmX1" name="lyd.h" compile="0" resource="0" file="Source/lyd.h"/>

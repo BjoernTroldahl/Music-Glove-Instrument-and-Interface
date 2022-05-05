@@ -93,6 +93,7 @@ private:
     SerialPort* pSP;
     SerialPortOutputStream* pOutputStream;
     SerialPortInputStream* pInputStream;
+    bool isReady = false;
 
     void hiResTimerCallback();
 
@@ -143,6 +144,8 @@ private:
                     indexNum = index.getFloatValue();
 
                     playedNote = " ";
+                    fUI->setParamValue("A",0);
+                    fUI->setParamValue("B",0);
 
                     if (indexNum <= 350 && indexNum >= 320) {
                         //DBG("A");
@@ -153,7 +156,7 @@ private:
                     if (indexNum <= 320) {
                         //DBG("B");
                         playedNote = "B";
-                        
+                        fUI->setParamValue("B",1);
                     }
 
                     //MIDDLE FINGER

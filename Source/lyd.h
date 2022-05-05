@@ -815,7 +815,7 @@ class mydsp : public dsp {
 		return 0;
 	}
 	virtual int getNumOutputs() {
-		return 1;
+		return 2;
 	}
 	virtual int getInputRate(int channel) {
 		int rate;
@@ -831,6 +831,10 @@ class mydsp : public dsp {
 		int rate;
 		switch ((channel)) {
 			case 0: {
+				rate = 1;
+				break;
+			}
+			case 1: {
 				rate = 1;
 				break;
 			}
@@ -1051,6 +1055,7 @@ class mydsp : public dsp {
 	
 	virtual void compute(int count, FAUSTFLOAT** inputs, FAUSTFLOAT** outputs) {
 		FAUSTFLOAT* output0 = outputs[0];
+		FAUSTFLOAT* output1 = outputs[1];
 		float fSlow0 = float(fButton0);
 		float fSlow1 = (2.0f / std::max<float>(1.0f, (fConst0 * float(fHslider0))));
 		int iSlow2 = (fSlow0 == 0.0f);
@@ -1109,7 +1114,9 @@ class mydsp : public dsp {
 			fRec33[0] = (fConst22 + (fRec33[1] - std::floor((fConst22 + fRec33[1]))));
 			fRec34[0] = (fConst23 + (fRec34[1] - std::floor((fConst23 + fRec34[1]))));
 			fRec35[0] = (fConst24 + (fRec35[1] - std::floor((fConst24 + fRec35[1]))));
-			output0[i] = FAUSTFLOAT((0.333333343f * ((std::max<float>(0.0f, (std::min<float>((fConst2 * fRec0[0]), std::max<float>(((fConst3 * (fConst1 - fRec0[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec1[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec3[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec4[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec5[0]))]))) + ((((((std::max<float>(0.0f, (std::min<float>((fConst2 * fRec6[0]), std::max<float>(((fConst3 * (fConst1 - fRec6[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec7[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec8[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec9[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec10[0]))]))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec11[0]), std::max<float>(((fConst3 * (fConst1 - fRec11[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec12[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec13[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec14[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec15[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec16[0]), std::max<float>(((fConst3 * (fConst1 - fRec16[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec17[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec18[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec19[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec20[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec21[0]), std::max<float>(((fConst3 * (fConst1 - fRec21[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec22[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec23[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec24[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec25[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec26[0]), std::max<float>(((fConst3 * (fConst1 - fRec26[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec27[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec28[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec29[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec30[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec31[0]), std::max<float>(((fConst3 * (fConst1 - fRec31[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec32[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec33[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec34[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec35[0]))])))))));
+			float fTemp0 = (0.333333343f * ((std::max<float>(0.0f, (std::min<float>((fConst2 * fRec0[0]), std::max<float>(((fConst3 * (fConst1 - fRec0[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec1[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec3[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec4[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec5[0]))]))) + ((((((std::max<float>(0.0f, (std::min<float>((fConst2 * fRec6[0]), std::max<float>(((fConst3 * (fConst1 - fRec6[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec7[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec8[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec9[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec10[0]))]))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec11[0]), std::max<float>(((fConst3 * (fConst1 - fRec11[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec12[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec13[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec14[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec15[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec16[0]), std::max<float>(((fConst3 * (fConst1 - fRec16[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec17[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec18[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec19[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec20[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec21[0]), std::max<float>(((fConst3 * (fConst1 - fRec21[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec22[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec23[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec24[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec25[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec26[0]), std::max<float>(((fConst3 * (fConst1 - fRec26[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec27[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec28[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec29[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec30[0]))])))) + (std::max<float>(0.0f, (std::min<float>((fConst2 * fRec31[0]), std::max<float>(((fConst3 * (fConst1 - fRec31[0])) + 1.0f), 2.0f)) - (fSlow1 * float(iRec32[0])))) * (((0.5f * ftbl0mydspSIG0[int((65536.0f * fRec33[0]))]) + (0.25f * ftbl0mydspSIG0[int((65536.0f * fRec34[0]))])) + (0.125f * ftbl0mydspSIG0[int((65536.0f * fRec35[0]))]))))));
+			output0[i] = FAUSTFLOAT(fTemp0);
+			output1[i] = FAUSTFLOAT(fTemp0);
 			fVec0[1] = fVec0[0];
 			fRec0[1] = fRec0[0];
 			iRec1[1] = iRec1[0];
