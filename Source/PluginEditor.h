@@ -151,7 +151,8 @@ public:
     TextButton doneChords5;
 
 
-    String A_min_ascending_notes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};
+    String A_min_scalenotes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};
+    String C_maj_scalenotes[8] = { "c", "d", "e", "f", "g", "a", "b", "c" };
 
     String nextNoteArray="a";
     int arrayCounter = 0;

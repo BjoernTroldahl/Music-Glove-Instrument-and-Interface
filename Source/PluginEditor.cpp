@@ -278,9 +278,8 @@ void RandomNameAudioProcessorEditor::configGUI() {
     };
 
     addAndMakeVisible(remainingNotesDescending);
-    auto strDescending = String(remainingNotesIntDescending);
     remainingNotesDescending.setVisible(false);
-    remainingNotesDescending.setText("Remaining Notes " + strDescending, dontSendNotification);
+    remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
     remainingNotesDescending.setFont(40);
 
     //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
@@ -307,23 +306,23 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     //her skal failed string ændres til den note man spillede forkert
     addAndMakeVisible(failedStringDescending);
-    auto failedDescending = String(wrongNoteDescending);
+    //auto failedDescending = String(wrongNoteDescending);
     failedStringDescending.setVisible(false);
-    failedStringDescending.setText("Try again! you played " + failedDescending, dontSendNotification);
+    failedStringDescending.setText("You played a wrong note, try again! ", dontSendNotification);
     failedStringDescending.setFont(40);
 
     //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
     addAndMakeVisible(correctnoteWasDescending);
-    auto failed2Descending = String(correctNoteDescending);
+    //auto failed2Descending = String(correctNoteDescending);
     correctnoteWasDescending.setVisible(false);
-    correctnoteWasDescending.setText("The correct note was " + failed2Descending, dontSendNotification);
+    correctnoteWasDescending.setText("Remember sequence: A-G-F-E-D-C-B-A", dontSendNotification);
     correctnoteWasDescending.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
     addAndMakeVisible(remainingAttemptsDescending);
-    auto failed3Descending = String(attemptsRemainingDescending);
+    failed3 = to_string(attemptsRemaining);
     remainingAttemptsDescending.setVisible(false);
-    remainingAttemptsDescending.setText(failed3Descending + " attempts remaining", dontSendNotification);
+    remainingAttemptsDescending.setText(failed3 + " attempts remaining", dontSendNotification);
     remainingAttemptsDescending.setFont(40);
 
     addAndMakeVisible(tryAgainDescending);
@@ -680,15 +679,30 @@ void RandomNameAudioProcessorEditor::timerCallback()
 //If the current page number is not the same as the old page number, then change the page.
 {
     failed3 = to_string(attemptsRemaining);
-    if (attemptsRemaining == 0) {
+
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD==8) {
         failedString.setColour(failedString.textColourId, Colours::red);
         failedString.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
         correctnoteWas.setColour(correctnoteWas.textColourId, Colours::red);
         correctnoteWas.setText("Continue to the next page", dontSendNotification);
-        remainingAttempts.setText("", dontSendNotification);
+        remainingAttempts.setVisible(false);
         tryAgain.setButtonText("Next page");
-        tryAgain.onClick = [this] {
-            audioProcessor.pageNum = 10;
+            tryAgain.onClick = [this] {
+                audioProcessor.pageNum = 10;
+            };
+    }
+
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD==12) {
+       
+        failedStringDescending.setColour(failedString.textColourId, Colours::red);
+        failedStringDescending.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        correctnoteWasDescending.setColour(correctnoteWas.textColourId, Colours::red);
+        correctnoteWasDescending.setText("Continue to the next page", dontSendNotification);
+        remainingAttemptsDescending.setVisible(false);
+        //remainingAttemptsDescending.setText("", dontSendNotification);
+        tryAgainDescending.setButtonText("Next page");
+        tryAgainDescending.onClick = [this] {
+            audioProcessor.pageNum = 14;
         };
     }
 
@@ -835,7 +849,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             currentNote.setVisible(true);
             
             nextNote.setVisible(true);
-            nextNoteArray = A_min_ascending_notes[0];
+            nextNoteArray = A_min_scalenotes[0];
             buttonNote.setButtonText("a");
             buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
             buttonNote.setVisible(true);
@@ -911,16 +925,20 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgain.setVisible(true);
 
 
-
+            if (attemptsRemaining == 0) {
+                remainingAttempts.setVisible(false);
+            }
             remainingNotes.setVisible(false);
             Failed.setVisible(false);
             Suceeded.setVisible(false);
+            
             break;
 
 
         case 10:
             arrayCounter = 0;
-            nextNoteArray = A_min_ascending_notes[7];
+            nextNoteArray = A_min_scalenotes[7];
+            buttonNoteDescending.setColour(chords.buttonColourId, Colours::dodgerblue);
             practiceScaleDescending.setVisible(true);
             currentNoteDescending.setVisible(true);
             nextNoteDescending.setVisible(true);
@@ -939,6 +957,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
         case 11:
+            arrayCounter2 = 0;
+            attemptsRemaining = 3;
             startScalesDescending.setVisible(true);
             playScalesDescending.setVisible(true);
 
@@ -952,6 +972,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 12:
             remainingNotesDescending.setVisible(true);
+            remainingNotesA = "8";
+            stringtoTrim = "Remaining Notes ";
+            remainingNotesDescending.setColour(remainingNotes.textColourId, Colours::white);
+            remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
             FailedDescending.setVisible(true);
             SuceededDescending.setVisible(true);
 
@@ -965,13 +989,16 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
         case 13:
+            remainingAttemptsDescending.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             failedStringDescending.setVisible(true);
             correctnoteWasDescending.setVisible(true);
             remainingAttemptsDescending.setVisible(true);
             tryAgainDescending.setVisible(true);
 
 
-
+            if (attemptsRemaining == 0) {
+                remainingAttemptsDescending.setVisible(false);
+            }
             remainingNotesDescending.setVisible(false);
             FailedDescending.setVisible(false);
             SuceededDescending.setVisible(false);
@@ -986,7 +1013,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             buttonNoteC.setVisible(true);
             doneScalesC.setVisible(true);
 
-
+            failedStringDescending.setVisible(false);
+            correctnoteWasDescending.setVisible(false);
+            tryAgainDescending.setVisible(false);
             remainingNotesDescending.setVisible(false);
             FailedDescending.setVisible(false);
             SuceededDescending.setVisible(false);
@@ -1196,12 +1225,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
         updateNote = false;
         end = clock();
         start = end;
-        
     }
 
     passedTime = (start - end) / CLOCKS_PER_SEC;
     DBG(passedTime);
-    DBG(failed3);
+    DBG(audioProcessor.pageNum_OLD);
+    //DBG(failed3);
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
     
@@ -1210,37 +1239,37 @@ void RandomNameAudioProcessorEditor::timerCallback()
         currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
         if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
-            nextNoteArray = A_min_ascending_notes[1];
+            nextNoteArray = A_min_scalenotes[1];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "B" && arrayCounter == 1) {
-            nextNoteArray = A_min_ascending_notes[2];
+            nextNoteArray = A_min_scalenotes[2];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "C" && arrayCounter == 2) {
-            nextNoteArray = A_min_ascending_notes[3];
+            nextNoteArray = A_min_scalenotes[3];
             arrayCounter = arrayCounter + 1;
         }
         
         if (audioProcessor.playedNote == "D" && arrayCounter == 3) {
-            nextNoteArray = A_min_ascending_notes[4];
+            nextNoteArray = A_min_scalenotes[4];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "E" && arrayCounter == 4) {
-            nextNoteArray = A_min_ascending_notes[5];
+            nextNoteArray = A_min_scalenotes[5];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "F" && arrayCounter == 5) {
-            nextNoteArray = A_min_ascending_notes[6];
+            nextNoteArray = A_min_scalenotes[6];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "G" && arrayCounter == 6) {
-            nextNoteArray = A_min_ascending_notes[7];
+            nextNoteArray = A_min_scalenotes[7];
             arrayCounter = arrayCounter + 1;
         }
 
@@ -1257,14 +1286,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     if (audioProcessor.pageNum == 8 && updateNote) {
         
-        remainingNotes.setText("Remaining Notes " + remainingNotesA, dontSendNotification);
         timeThreshold = 0;
+        //DBG(timeThreshold);
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "B" && passedTime > timeThreshold && arrayCounter2 == 0) {
+        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 0) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1346,37 +1375,37 @@ void RandomNameAudioProcessorEditor::timerCallback()
         currentNoteDescending.setText("Currently playing " + stringNoteDescending, dontSendNotification);
 
         if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
-            nextNoteArray = A_min_ascending_notes[6];
+            nextNoteArray = A_min_scalenotes[6];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "G" && arrayCounter == 1) {
-            nextNoteArray = A_min_ascending_notes[5];
+            nextNoteArray = A_min_scalenotes[5];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "F" && arrayCounter == 2) {
-            nextNoteArray = A_min_ascending_notes[4];
+            nextNoteArray = A_min_scalenotes[4];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "E" && arrayCounter == 3) {
-            nextNoteArray = A_min_ascending_notes[3];
+            nextNoteArray = A_min_scalenotes[3];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "D" && arrayCounter == 4) {
-            nextNoteArray = A_min_ascending_notes[2];
+            nextNoteArray = A_min_scalenotes[2];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "C" && arrayCounter == 5) {
-            nextNoteArray = A_min_ascending_notes[1];
+            nextNoteArray = A_min_scalenotes[1];
             arrayCounter = arrayCounter + 1;
         }
 
         if (audioProcessor.playedNote == "B" && arrayCounter == 6) {
-            nextNoteArray = A_min_ascending_notes[0];
+            nextNoteArray = A_min_scalenotes[0];
             arrayCounter = arrayCounter + 1;
         }
 
@@ -1390,6 +1419,92 @@ void RandomNameAudioProcessorEditor::timerCallback()
         buttonNoteDescending.setButtonText(nextNoteArray);
 
     }
+
+    if (audioProcessor.pageNum == 12 && updateNote) {
+
+        timeThreshold = 0;
+
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
+            remainingNotesA = "7";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 0) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter2 == 1) {
+            remainingNotesA = "6";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "G" && passedTime > timeThreshold && arrayCounter2 == 1) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+
+        if (audioProcessor.playedNote == "F" && arrayCounter2 == 2) {
+            remainingNotesA = "5";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "F" && passedTime > timeThreshold && arrayCounter2 == 2) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter2 == 3) {
+            remainingNotesA = "4";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "E" && passedTime > timeThreshold && arrayCounter2 == 3) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "D" && arrayCounter2 == 4) {
+            remainingNotesA = "3";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "D" && passedTime > timeThreshold && arrayCounter2 == 4) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter2 == 5) {
+            remainingNotesA = "2";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "C" && passedTime > timeThreshold && arrayCounter2 == 5) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 6) {
+            remainingNotesA = "1";
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "B" && passedTime > timeThreshold && arrayCounter2 == 6) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 7) {
+            stringtoTrim.clear();
+            remainingNotesA = "WELL DONE!";
+            remainingNotesDescending.setBounds(440, 300, 500, 40);
+            remainingNotesDescending.setColour(remainingNotes.textColourId, Colours::green);
+            arrayCounter2 = arrayCounter2 + 1;
+        }
+        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 7) {
+            audioProcessor.pageNum = 13;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
+
+    }
+
+
     
     //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote
