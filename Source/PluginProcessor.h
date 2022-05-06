@@ -14,6 +14,7 @@
 #include <sstream>
 #include <string>
 #include "lyd.h"
+#include <Windows.h>
 
 
 using namespace juce;
@@ -77,7 +78,7 @@ public:
     float ringNum;
     float pinkyNum;
 
-    String playedNote="";
+    string playedNote="";
     String playedNoteOLD="";
 
     int triggered;
@@ -215,7 +216,7 @@ private:
                     
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
-                    DBG(playedNote);
+                    //DBG(playedNote);
                     
                 }
             }

@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <chrono>
+#include <vector>
 
 using namespace std;
 
@@ -1219,17 +1220,19 @@ void RandomNameAudioProcessorEditor::timerCallback()
         updateNote = true;
         //DBG("updated");
         start = clock();
+        //wait = true;
     }
     
     else{
         updateNote = false;
         end = clock();
         start = end;
+        //wait = false;
     }
 
     passedTime = (start - end) / CLOCKS_PER_SEC;
-    DBG(passedTime);
-    DBG(audioProcessor.pageNum_OLD);
+    //DBG(passedTime);
+    //DBG(audioProcessor.pageNum);
     //DBG(failed3);
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
@@ -1503,8 +1506,16 @@ void RandomNameAudioProcessorEditor::timerCallback()
         remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
 
     }
+    //CHORDS-----------------------------------------------------------
+    if (audioProcessor.pageNum == 6) {
+        
+        chordnote = audioProcessor.playedNote;
+        Triad_Chord_notes.push_back(chordnote);
+        Triad_Chord_notes.resize(3, chordnote);
 
-
+        DBG(Triad_Chord_notes.size());
+        
+    }
     
     //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote

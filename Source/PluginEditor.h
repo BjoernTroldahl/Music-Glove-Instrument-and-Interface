@@ -10,9 +10,11 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include <vector>
 #include <stdio.h>
 #include <time.h>
 #include <chrono>
+#include <list>
 
 using namespace juce;
 //==============================================================================
@@ -108,6 +110,9 @@ public:
     Label scalesCompleded;
     TextButton finishScale;
     float passedTime=0;
+    bool wait = false;
+    string chordnote;
+
     clock_t start, end;
     int timeThreshold;
     String failed3;
@@ -133,6 +138,7 @@ public:
     
     //chords
 
+    vector<string> Triad_Chord_notes;
     Label practiceChords;
     Label currentChord;
     String stringChord = "A-minor (A-C-E)";
