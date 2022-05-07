@@ -1291,7 +1291,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     if (audioProcessor.pageNum == 8) {
         
-        timeThreshold = 0;
+        timeThreshold = 1000;
         //DBG(timeThreshold);
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
@@ -1425,9 +1425,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
 
-    if (audioProcessor.pageNum == 12 && updateNote) {
+    if (audioProcessor.pageNum == 12) {
 
-        timeThreshold = 0;
+        timeThreshold = 1000;
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
@@ -1513,25 +1513,25 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         stringChord = audioProcessor.playedNote;
 
-        if (chordNoteCounter==0 && audioProcessor.elapsedTime>timeThreshold) {
+        if (chordNoteCounter==0) {
             Triad_Chord_notes[0] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             first_note = stringChord;
         }
 
-        if (chordNoteCounter == 1 && first_note != stringChord && audioProcessor.elapsedTime > timeThreshold) {
+        if (chordNoteCounter == 1 && first_note != stringChord) {
             Triad_Chord_notes[1] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             second_note = stringChord;
         }
 
-        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord && audioProcessor.elapsedTime > timeThreshold) {
+        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord) {
             Triad_Chord_notes[2] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             third_note = stringChord;
         }
 
-        if (chordNoteCounter == 3 && third_note != stringChord && audioProcessor.elapsedTime > timeThreshold) {
+        if (chordNoteCounter == 3 && third_note != stringChord) {
             chordNoteCounter = 0;
             Triad_Chord_notes[0] = "";
             Triad_Chord_notes[1] = "";

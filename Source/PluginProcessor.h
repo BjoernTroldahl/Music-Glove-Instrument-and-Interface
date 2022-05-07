@@ -264,6 +264,8 @@ private:
                         start = clock();
                     }
 
+                    //LAV OGSÅ FOR E, F OG G******
+
                     else {
                         updateNoteA = false;
                         updateNoteB = false;
