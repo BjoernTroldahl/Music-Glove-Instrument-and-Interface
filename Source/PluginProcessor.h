@@ -233,7 +233,7 @@ private:
                     }
 
                     else {
-                        fUI->setParamValue("rel", 1);
+                        fUI->setParamValue("rel", 0.5);
                     }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
