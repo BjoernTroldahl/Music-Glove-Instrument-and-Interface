@@ -89,6 +89,7 @@ public:
     bool updateNoteD = false;
     clock_t start, end, startA, startB, startC, startD;
     float elapsedTime;
+    float timeLimit = 200;
 
 private:
 
@@ -161,7 +162,7 @@ private:
                     fUI->setParamValue("F",0);
                     fUI->setParamValue("G",0);
 
-                    if (updateNoteA && elapsedTime > 0) {
+                    if (updateNoteA && elapsedTime > timeLimit) {
                         fUI->setParamValue("B", 0);
                         //DBG("A");
                         playedNote = "A";
@@ -169,7 +170,7 @@ private:
                         
                     }
 
-                    if (updateNoteB && elapsedTime > 0){
+                    if (updateNoteB && elapsedTime > timeLimit){
                         fUI->setParamValue("A", 0);
                         //DBG("B");
                         playedNote = "B";
@@ -184,13 +185,13 @@ private:
                     //DBG(middle); 
                     middleNum = middle.getFloatValue();
 
-                    if (updateNoteC && elapsedTime>0){
+                    if (updateNoteC && elapsedTime>timeLimit){
                         fUI->setParamValue("D",0);
                         //DBG("C");
                         playedNote = "C";
                         fUI->setParamValue("C",1);
                     }
-                    if (updateNoteD && elapsedTime>0) {
+                    if (updateNoteD && elapsedTime> timeLimit) {
                         fUI->setParamValue("C",0);
                         ///DBG("D");
                         playedNote = "D";
@@ -273,7 +274,7 @@ private:
                         //wait = false;
                     }
 
-                    elapsedTime = (start - end) / CLOCKS_PER_SEC;
+                    elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
                     DBG(elapsedTime);
                     
                 }
