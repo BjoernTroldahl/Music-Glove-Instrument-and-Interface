@@ -80,8 +80,15 @@ public:
 
     string playedNote="";
     String playedNoteOLD="";
+    String test;
 
     int triggered;
+    bool updateNoteA = false;
+    bool updateNoteB = false;
+    bool updateNoteC = false;
+    bool updateNoteD = false;
+    clock_t start, end, startA, startB, startC, startD;
+    float elapsedTime;
 
 private:
 
@@ -137,7 +144,7 @@ private:
                 {   //This part of the code is what makes us able to read the values from each individual flex sensor
 
                     s = pInputStream->readNextLine();
-                    //DBG(s);
+                    DBG(s);
 
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
@@ -145,6 +152,7 @@ private:
                     indexNum = index.getFloatValue();
 
                     playedNote = " ";
+                    
                     fUI->setParamValue("A",0);
                     fUI->setParamValue("B",0);
                     fUI->setParamValue("C",0);
@@ -153,16 +161,20 @@ private:
                     fUI->setParamValue("F",0);
                     fUI->setParamValue("G",0);
 
-                    if (indexNum <= 350 && indexNum >= 320) {
+                    if (updateNoteA && elapsedTime > 0) {
+                        fUI->setParamValue("B", 0);
                         //DBG("A");
                         playedNote = "A";
                         fUI->setParamValue("A",1);
+                        
                     }
 
-                    if (indexNum <= 320) {
+                    if (updateNoteB && elapsedTime > 0){
+                        fUI->setParamValue("A", 0);
                         //DBG("B");
                         playedNote = "B";
                         fUI->setParamValue("B",1);
+                        
                     }
 
                     //MIDDLE FINGER
@@ -172,12 +184,14 @@ private:
                     //DBG(middle); 
                     middleNum = middle.getFloatValue();
 
-                    if (middleNum <= 370 && middleNum >= 340) {
+                    if (updateNoteC && elapsedTime>0){
+                        fUI->setParamValue("D",0);
                         //DBG("C");
                         playedNote = "C";
                         fUI->setParamValue("C",1);
                     }
-                    if (middleNum <= 340) {
+                    if (updateNoteD && elapsedTime>0) {
+                        fUI->setParamValue("C",0);
                         ///DBG("D");
                         playedNote = "D";
                         fUI->setParamValue("D",1);
@@ -222,7 +236,45 @@ private:
                     }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
-                    //DBG(playedNote);
+                    DBG(playedNote);
+
+                    
+
+                    if (indexNum < 360 && indexNum > 330) {
+                        updateNoteA = true;
+                        //DBG("updated");
+                        start = clock();
+                        
+                        
+                    }
+
+                    else if (indexNum < 330) {
+                        updateNoteB = true;
+                        start = clock();
+                    }
+
+                    else if (middleNum <= 385 && middleNum >= 350) {
+                        updateNoteC = true;
+                        start = clock();
+                    }
+
+                    else if (middleNum <= 350) {
+                        updateNoteD = true;
+                        start = clock();
+                    }
+
+                    else {
+                        updateNoteA = false;
+                        updateNoteB = false;
+                        updateNoteC = false;
+                        updateNoteD = false;
+                        end = clock();
+                        start = end;
+                        //wait = false;
+                    }
+
+                    elapsedTime = (start - end) / CLOCKS_PER_SEC;
+                    DBG(elapsedTime);
                     
                 }
             }

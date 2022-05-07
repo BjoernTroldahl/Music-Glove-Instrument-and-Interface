@@ -1216,21 +1216,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     //If the program registers that a note has been played, it updates so that the currently played note
     //is not the same as the previously played note.
-    if (audioProcessor.playedNote != " ") {
-        updateNote = true;
-        //DBG("updated");
-        start = clock();
-        //wait = true;
-    }
-    
-    else{
-        updateNote = false;
-        end = clock();
-        start = end;
-        //wait = false;
-    }
 
-    passedTime = (start - end) / CLOCKS_PER_SEC;
     //DBG(passedTime);
     //DBG(audioProcessor.pageNum);
     //DBG(failed3);
@@ -1240,7 +1226,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
     if (audioProcessor.playedNote != audioProcessor.playedNoteOLD && updateNote) {
         newNote = true;
         audioProcessor.playedNoteOLD = oldNote;
-        DBG(oldNote);
+        //DBG(oldNote);
     }
     else {
         newNote = false;
@@ -1248,10 +1234,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     
 
-    DBG(passedTime);
+    //DBG(passedTime);
     
 
-    audioProcessor.playedNoteOLD = audioProcessor.playedNote;
+    //audioProcessor.playedNoteOLD = audioProcessor.playedNote;
     
     if (audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
@@ -1303,7 +1289,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
     }
 
-    if (audioProcessor.pageNum == 8 && updateNote) {
+    if (audioProcessor.pageNum == 8) {
         
         timeThreshold = 0;
         //DBG(timeThreshold);
@@ -1312,7 +1298,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 0) {
+        else if (audioProcessor.playedNote != "A" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 0) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1321,7 +1307,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "B" && passedTime > timeThreshold && arrayCounter2 == 1) {
+        else if (audioProcessor.playedNote != "B" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 1) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1331,7 +1317,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "5";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "C" && passedTime > timeThreshold && arrayCounter2 == 2) {
+        else if (audioProcessor.playedNote != "C" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 2) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1340,7 +1326,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "4";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "D" && passedTime > timeThreshold && arrayCounter2 == 3) {
+        else if (audioProcessor.playedNote != "D" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 3) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1349,7 +1335,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "3";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "E" && passedTime > timeThreshold && arrayCounter2 == 4) {
+        else if (audioProcessor.playedNote != "E" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 4) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1358,7 +1344,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "2";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "F" && passedTime > timeThreshold && arrayCounter2 == 5) {
+        else if (audioProcessor.playedNote != "F" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 5) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1367,7 +1353,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "1";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "G" && passedTime > timeThreshold && arrayCounter2 == 6) {
+        else if (audioProcessor.playedNote != "G" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 6) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1379,7 +1365,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotes.setColour(remainingNotes.textColourId,Colours::green);
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 7) {
+        else if (audioProcessor.playedNote != "A" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 7) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1523,29 +1509,29 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
     //CHORDS-----------------------------------------------------------
-    if (audioProcessor.pageNum == 6 && updateNote) {
+    if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " ") {
 
         stringChord = audioProcessor.playedNote;
 
-        if (chordNoteCounter==0 && passedTime>timeThreshold) {
+        if (chordNoteCounter==0 && audioProcessor.elapsedTime>timeThreshold) {
             Triad_Chord_notes[0] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             first_note = stringChord;
         }
 
-        if (chordNoteCounter == 1 && first_note != stringChord && passedTime > timeThreshold) {
+        if (chordNoteCounter == 1 && first_note != stringChord && audioProcessor.elapsedTime > timeThreshold) {
             Triad_Chord_notes[1] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             second_note = stringChord;
         }
 
-        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord && passedTime > timeThreshold) {
+        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord && audioProcessor.elapsedTime > timeThreshold) {
             Triad_Chord_notes[2] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             third_note = stringChord;
         }
 
-        if (chordNoteCounter == 3 && third_note != stringChord && passedTime > timeThreshold) {
+        if (chordNoteCounter == 3 && third_note != stringChord && audioProcessor.elapsedTime > timeThreshold) {
             chordNoteCounter = 0;
             Triad_Chord_notes[0] = "";
             Triad_Chord_notes[1] = "";
@@ -1556,7 +1542,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //Triad_Chord_notes.resize(3, chordnote);
         //DBG(Triad_Chord_notes[i]);
         
-        //DBG(Triad_Chord_notes.length());
+        //(Triad_Chord_notes.length());
         }
     
     //DBG(arrayCounter2);
