@@ -1236,6 +1236,22 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //DBG(failed3);
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
+
+    if (audioProcessor.playedNote != audioProcessor.playedNoteOLD && updateNote) {
+        newNote = true;
+        audioProcessor.playedNoteOLD = oldNote;
+        DBG(oldNote);
+    }
+    else {
+        newNote = false;
+    }
+
+    
+
+    DBG(passedTime);
+    
+
+    audioProcessor.playedNoteOLD = audioProcessor.playedNote;
     
     if (audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
@@ -1507,15 +1523,41 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
     //CHORDS-----------------------------------------------------------
-    if (audioProcessor.pageNum == 6) {
-        
-        chordnote = audioProcessor.playedNote;
-        Triad_Chord_notes.push_back(chordnote);
-        Triad_Chord_notes.resize(3, chordnote);
+    if (audioProcessor.pageNum == 6 && updateNote) {
 
-        DBG(Triad_Chord_notes.size());
+        stringChord = audioProcessor.playedNote;
+
+        if (chordNoteCounter==0 && passedTime>timeThreshold) {
+            Triad_Chord_notes[0] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            first_note = stringChord;
+        }
+
+        if (chordNoteCounter == 1 && first_note != stringChord && passedTime > timeThreshold) {
+            Triad_Chord_notes[1] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            second_note = stringChord;
+        }
+
+        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord && passedTime > timeThreshold) {
+            Triad_Chord_notes[2] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            third_note = stringChord;
+        }
+
+        if (chordNoteCounter == 3 && third_note != stringChord && passedTime > timeThreshold) {
+            chordNoteCounter = 0;
+            Triad_Chord_notes[0] = "";
+            Triad_Chord_notes[1] = "";
+            Triad_Chord_notes[2] = "";
+        }
+
+        currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
+        //Triad_Chord_notes.resize(3, chordnote);
+        //DBG(Triad_Chord_notes[i]);
         
-    }
+        //DBG(Triad_Chord_notes.length());
+        }
     
     //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote

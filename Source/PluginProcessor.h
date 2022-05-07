@@ -213,7 +213,13 @@ private:
                     }
 
                     
-                    
+                    if (pageNum == 6) {
+                        fUI->setParamValue("rel", 4);
+                    }
+
+                    else {
+                        fUI->setParamValue("rel", 1);
+                    }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
                     //DBG(playedNote);

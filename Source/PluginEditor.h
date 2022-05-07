@@ -137,11 +137,18 @@ public:
     TextButton tryAgainCDescending;
     
     //chords
+    String first_note;
+    String second_note;
+    String third_note;
+    String oldNote;
 
-    vector<string> Triad_Chord_notes;
+    bool newNote = false;
+    int arrSize;
+    int chordNoteCounter=0;
+    String Triad_Chord_notes[3] = { "","","" };
     Label practiceChords;
     Label currentChord;
-    String stringChord = "A-minor (A-C-E)";
+    String stringChord;
     TextButton doneChords1;
     Label chordProgression;
     TextButton doneChords2;
