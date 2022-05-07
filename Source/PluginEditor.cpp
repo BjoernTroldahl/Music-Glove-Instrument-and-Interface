@@ -1536,6 +1536,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             Triad_Chord_notes[0] = "";
             Triad_Chord_notes[1] = "";
             Triad_Chord_notes[2] = "";
+            
         }
 
         currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
