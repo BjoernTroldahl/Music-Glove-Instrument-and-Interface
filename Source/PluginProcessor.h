@@ -260,29 +260,29 @@ private:
                         start = clock();
                     }
 
-                    else if (middleNum <= 385 && middleNum >= 350) {
+                    else if (middleNum <= 380 && middleNum >= 360) {
                         updateNoteC = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 350) {
+                    else if (middleNum <= 360) {
                         updateNoteD = true;
                         start = clock();
                     }
 
                    
 
-                    else if (ringNum <= 420 && ringNum >= 380) {
+                    else if (ringNum <= 430 && ringNum >= 390) {
                         updateNoteE = true;
                         start = clock();
                     }
 
-                    else if (ringNum <= 380) {
+                    else if (ringNum <= 390) {
                         updateNoteF = true;
                         start = clock();
                     }
 
-                    else if (pinkyNum <= 430) {
+                    else if (pinkyNum <= 420) {
                         updateNoteG = true;
                         start = clock();
                     }

@@ -981,8 +981,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 12:
             remainingNotesDescending.setVisible(true);
-            remainingNotesA = "8";
-            stringtoTrim = "Remaining Notes ";
+            //remainingNotesA = "8";
+            //stringtoTrim = "Remaining Notes ";
             remainingNotesDescending.setColour(remainingNotes.textColourId, Colours::white);
             remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
             FailedDescending.setVisible(true);
@@ -1441,7 +1441,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 0) {
+        else if (audioProcessor.playedNote != "A" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 0) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1450,7 +1450,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "6";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "G" && passedTime > timeThreshold && arrayCounter2 == 1) {
+        else if (audioProcessor.playedNote != "G" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 1) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1460,7 +1460,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "5";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "F" && passedTime > timeThreshold && arrayCounter2 == 2) {
+        else if (audioProcessor.playedNote != "F" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 2) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1469,7 +1469,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "4";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "E" && passedTime > timeThreshold && arrayCounter2 == 3) {
+        else if (audioProcessor.playedNote != "E" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 3) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1478,7 +1478,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "3";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "D" && passedTime > timeThreshold && arrayCounter2 == 4) {
+        else if (audioProcessor.playedNote != "D" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 4) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1487,7 +1487,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "2";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "C" && passedTime > timeThreshold && arrayCounter2 == 5) {
+        else if (audioProcessor.playedNote != "C" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 5) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1496,7 +1496,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "1";
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "B" && passedTime > timeThreshold && arrayCounter2 == 6) {
+        else if (audioProcessor.playedNote != "B" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 6) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
@@ -1508,7 +1508,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesDescending.setColour(remainingNotes.textColourId, Colours::green);
             arrayCounter2 = arrayCounter2 + 1;
         }
-        else if (audioProcessor.playedNote != "A" && passedTime > timeThreshold && arrayCounter2 == 7) {
+        else if (audioProcessor.playedNote != "A" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 7) {
             audioProcessor.pageNum = 13;
             attemptsRemaining = attemptsRemaining - 1;
         }
