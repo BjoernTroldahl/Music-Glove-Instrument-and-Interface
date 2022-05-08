@@ -163,6 +163,7 @@ public:
     Label remainingChords2;
     TextButton doneChords5;
     TextButton nameOfChord;
+    Label trueTestcurrentChord;
 
 
     String A_min_scalenotes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};

@@ -676,7 +676,10 @@ void RandomNameAudioProcessorEditor::configGUI() {
     nameOfChord.setColour(nameOfChord.buttonColourId, Colours::green);
     nameOfChord.changeWidthToFitText();
 
-
+    addAndMakeVisible(trueTestcurrentChord);
+    trueTestcurrentChord.setVisible(false);
+    trueTestcurrentChord.setText("Currently playing: " + stringChord, dontSendNotification);
+    trueTestcurrentChord.setFont(40);
 
 }
 
@@ -803,6 +806,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nameOfChord.setVisible(false);
             stringtoTrim = "Remaining notes ";
             remainingNotesA = "8";
+            trueTestcurrentChord.setVisible(false);
 
             break;
 
@@ -1120,6 +1124,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C - F - G chord progression pause page
         case 20:
+            chordNoteCounter = 0;
             playChords.setVisible(true);
             startChords.setVisible(true);
 
@@ -1133,7 +1138,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             remainingChords.setVisible(true);
             doneChords3.setVisible(true);
-
+            trueTestcurrentChord.setVisible(true);
+            trueTestcurrentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
 
             playChords.setVisible(false);
             startChords.setVisible(false);
@@ -1624,11 +1630,81 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         //(Triad_Chord_notes.length());
         }
+    if (audioProcessor.pageNum == 21 && audioProcessor.playedNote != " ") {
+
+        stringChord = audioProcessor.playedNote;
+
+
+        if (chordNoteCounter == 0 && stringChord != " ") {
+            Triad_Chord_notes[0] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            first_note = stringChord;
+        }
+
+        if (chordNoteCounter == 1 && first_note != stringChord && stringChord != " ") {
+            Triad_Chord_notes[1] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            second_note = stringChord;
+        }
+
+        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord && stringChord != " ") {
+            Triad_Chord_notes[2] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            third_note = stringChord;
+        }
+
+        if (chordNoteCounter == 3 && third_note != stringChord && stringChord != " ") {
+            chordNoteCounter = 0;
+            Triad_Chord_notes[0] = "";
+            Triad_Chord_notes[1] = "";
+            Triad_Chord_notes[2] = "";
+            nameOfChord.setButtonText("*");
+        }
+
+        trueTestcurrentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
+
+        String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
+
+        if (FullChord.contains("A") && FullChord.contains("C") && FullChord.contains("E")) {
+            nameOfChord.setButtonText("A-minor");
+        }
+
+        if (FullChord.contains("B") && FullChord.contains("D") && FullChord.contains("F")) {
+            nameOfChord.setButtonText("B-diminished");
+        }
+
+        if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G")) {
+            nameOfChord.setButtonText("C-major");
+        }
+
+        if (FullChord.contains("D") && FullChord.contains("F") && FullChord.contains("A")) {
+            nameOfChord.setButtonText("D-minor");
+        }
+
+        if (FullChord.contains("E") && FullChord.contains("G") && FullChord.contains("B")) {
+            nameOfChord.setButtonText("E-minor");
+        }
+
+        if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C")) {
+            nameOfChord.setButtonText("F-major");
+        }
+
+        if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D")) {
+            nameOfChord.setButtonText("G-major");
+        }
+        //Triad_Chord_notes.resize(3, chordnote);
+        //DBG(Triad_Chord_notes[i]);
+
+        //(Triad_Chord_notes.length());
+    }
+
     
     //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote
     //audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 }
+
+
 
 //==============================================================================
 void RandomNameAudioProcessorEditor::paint(juce::Graphics& g)
@@ -1734,5 +1810,6 @@ void RandomNameAudioProcessorEditor::resized()
     remainingAttemptsCDescending.setBounds(350, 450, 500, 40);
     tryAgainCDescending.setBounds(450, 550, 100, 100);
     nameOfChord.setBounds(450, 350, 100, 100);
+    trueTestcurrentChord.setBounds(300, 350, 300, 100); //CHANGE
 }
 
