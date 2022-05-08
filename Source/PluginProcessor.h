@@ -269,7 +269,7 @@ private:
                         start = clock();
                     }
 
-                    //LAV OGSÅ FOR E, F OG G******
+                   
 
                     else if (ringNum <= 420 && ringNum >= 380) {
                         updateNoteE = true;

@@ -867,6 +867,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         case 6:
 
+            currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
             practiceChords.setVisible(true);
             currentChord.setVisible(true);
             doneChords1.setVisible(true);
@@ -1512,6 +1513,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
     if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " ") {
 
         stringChord = audioProcessor.playedNote;
+        
 
         if (chordNoteCounter==0) {
             Triad_Chord_notes[0] = stringChord;
