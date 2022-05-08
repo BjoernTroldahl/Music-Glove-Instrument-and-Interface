@@ -882,7 +882,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-        //Chords intro screen
+        //Chords practical intro screen
         case 6:
         
             currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
@@ -1105,7 +1105,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             SuceededCDescending.setVisible(false);
             break;
 
-
+        //C - F - G chord progression intro
         case 19:
 
             chordProgression.setVisible(true);
@@ -1114,11 +1114,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             practiceChords.setVisible(false);
             currentChord.setVisible(false);
             doneChords1.setVisible(false);
-
+            nameOfChord.setVisible(false);
 
             break;
 
-
+        //C - F - G chord progression pause page
         case 20:
             playChords.setVisible(true);
             startChords.setVisible(true);
@@ -1128,7 +1128,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-
+        //C - F - G chord progression true test
         case 21:
 
             remainingChords.setVisible(true);
@@ -1140,7 +1140,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
 
-
+        //A - D - E chord progression intro
         case 22:
             doneChords4.setVisible(true);
             chordProgression2.setVisible(true);
@@ -1149,7 +1149,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             doneChords3.setVisible(false);
             break;
 
-
+        //A - D - E chord progression pause page
         case 23:
             startChords2.setVisible(true); 
             playChords2.setVisible(true);
@@ -1159,7 +1159,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             chordProgression2.setVisible(false);
 
             break;
-
+        
+        //A - D - E chord progression true test
         case 24:
             remainingChords2.setVisible(true);
             doneChords5.setVisible(true);
