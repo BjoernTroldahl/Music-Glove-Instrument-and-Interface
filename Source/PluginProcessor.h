@@ -241,8 +241,7 @@ private:
                     else {
                         fUI->setParamValue("rel", 0.5);
                     }
-                    //CONCATENATE
-                    //upToFirstOccurrenceOf()
+                    
                     //DBG(playedNote);
 
                     
