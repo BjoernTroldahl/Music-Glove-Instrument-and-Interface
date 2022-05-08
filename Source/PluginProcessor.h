@@ -87,6 +87,9 @@ public:
     bool updateNoteB = false;
     bool updateNoteC = false;
     bool updateNoteD = false;
+    bool updateNoteE = false;
+    bool updateNoteF = false;
+    bool updateNoteG = false;
     clock_t start, end, startA, startB, startC, startD;
     float elapsedTime;
     float timeLimit = 200;
@@ -205,15 +208,17 @@ private:
                     //DBG(ring);
                     ringNum = ring.getFloatValue();
 
-                    if (ringNum <= 420 && ringNum >=380) {
+                    if (updateNoteE && elapsedTime> timeLimit) {
                         //DBG("E");
+                        fUI->setParamValue("F",0);
                         playedNote = "E";
                         fUI->setParamValue("E",1);
                     }
-                    if (ringNum <= 380) {
+                    if (updateNoteF && elapsedTime > timeLimit) {
                         //DBG("F");
+                        fUI->setParamValue("E",0);
                         playedNote = "F";
-                        fUI->setParamValue("F", 1);
+                        fUI->setParamValue("F",1);
                     }
 
                     //PINKY FINGER
@@ -221,7 +226,7 @@ private:
                     //DBG(pinky);
                     pinkyNum=pinky.getFloatValue();
 
-                    if (pinkyNum <= 430) {
+                    if (updateNoteG && elapsedTime > timeLimit) {
                         //DBG("G");
                         playedNote = "G";
                         fUI->setParamValue("G", 1);
@@ -266,11 +271,29 @@ private:
 
                     //LAV OGSÅ FOR E, F OG G******
 
+                    else if (ringNum <= 420 && ringNum >= 380) {
+                        updateNoteE = true;
+                        start = clock();
+                    }
+
+                    else if (ringNum <= 380) {
+                        updateNoteF = true;
+                        start = clock();
+                    }
+
+                    else if (pinkyNum <= 430) {
+                        updateNoteG = true;
+                        start = clock();
+                    }
+
                     else {
                         updateNoteA = false;
                         updateNoteB = false;
                         updateNoteC = false;
                         updateNoteD = false;
+                        updateNoteE = false;
+                        updateNoteF = false;
+                        updateNoteG = false;
                         end = clock();
                         start = end;
                         //wait = false;
