@@ -148,7 +148,7 @@ private:
                 {   //This part of the code is what makes us able to read the values from each individual flex sensor
 
                     s = pInputStream->readNextLine();
-                    DBG(s);
+                    //DBG(s);
 
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
@@ -243,7 +243,7 @@ private:
                     }
                     //CONCATENATE
                     //upToFirstOccurrenceOf()
-                    DBG(playedNote);
+                    //DBG(playedNote);
 
                     
 
@@ -301,7 +301,8 @@ private:
                     }
 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
-                    DBG(elapsedTime);
+                    //DBG(elapsedTime);
+                    DBG(pageNum);
                     
                 }
             }

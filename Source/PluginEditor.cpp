@@ -718,11 +718,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
     }
     else
         isPageChanged = false;
+
     //Switch for each possible page
     if (isPageChanged)
     {
         switch (audioProcessor.pageNum)
         {
+        //Start Screen
         case 0:
             
             title.setVisible(true);
@@ -803,6 +805,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesA = "8";
 
             break;
+
+        //Introduction video
         case 1:
             title2.setVisible(true);
             menu.setVisible(true);
@@ -812,6 +816,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             howTo.setVisible(false);
 
             break;
+
+        //Lessons Page
         case 2:
             menu.setVisible(true);
             title3.setVisible(true);
@@ -827,7 +833,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             scalesCompleded.setVisible(false);
 
             break;
-
+        
+        //Chords info screen
         case 3:
 
             title5.setVisible(true);
@@ -839,7 +846,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             scales.setVisible(false);
 
             break;
-
+        
+        //Scales info screen
         case 4:
             title4.setVisible(true);
             scalesTheory.setVisible(true);
@@ -851,6 +859,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
             break;
+
+        //A minor scale ascending intro
         case 5:
             arrayCounter = 0;
             practiceScale.setVisible(true);
@@ -872,9 +882,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-
+        //Chords intro screen
         case 6:
-
+        
             currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
             practiceChords.setVisible(true);
             currentChord.setVisible(true);
@@ -888,7 +898,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-
+        //A minor pause screen
         case 7:
             arrayCounter2 = 0;
             attemptsRemaining = 3;
@@ -910,6 +920,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
+        //A minor scale ascending true test
         case 8:
             remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
             remainingNotes.setVisible(true);
@@ -926,7 +937,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
             
-
+        //A minor scale ascending fail page
         case 9:
 
             remainingAttempts.setText(failed3 + " attempt(s) remaining", dontSendNotification);
@@ -945,7 +956,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
             break;
 
-
+        //A minor scale descending intro
         case 10:
             arrayCounter = 0;
             nextNoteArray = A_min_scalenotes[7];
@@ -966,7 +977,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgain.setVisible(false);
             break;
 
-
+        //A minor scale descending pause screen
         case 11:
             arrayCounter2 = 0;
             attemptsRemaining = 3;
@@ -982,7 +993,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             buttonNoteDescending.setVisible(false);
             doneScalesDescending.setVisible(false);
             break;
-
+        
+        //A minor scale descending true test
         case 12:
             remainingNotesDescending.setVisible(true);
             remainingNotesDescending.setColour(remainingNotes.textColourId, Colours::white);
@@ -998,7 +1010,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgainDescending.setVisible(false);
 
             break;
-
+        
+        //A minor scale descending fail page
         case 13:
             remainingAttemptsDescending.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             failedStringDescending.setVisible(true);
@@ -1016,7 +1029,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
 
             break;
-
+        
+        //C major scale ascending intro
         case 14:
             practiceScaleC.setVisible(true);
             currentNoteC.setVisible(true);
@@ -1032,6 +1046,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             SuceededDescending.setVisible(false);
 
             break;
+
+        //C major scale ascending pause screen
         case 15:
             startScalesC.setVisible(true);
             playScalesC.setVisible(true);
@@ -1044,7 +1060,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             doneScalesC.setVisible(false);
 
             break;
-
+        
+        //C major scale ascending true test
         case 16:
             remainingNotesC.setVisible(true);
             FailedC.setVisible(true);
@@ -1059,7 +1076,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             tryAgainC.setVisible(false);
 
             break;
-
+        
+        //C major scale ascending fail page
         case 17:
             failedStringC.setVisible(true);
             correctnoteWasC.setVisible(true);
@@ -1072,7 +1090,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-
+        //Scales finish page
         case 18:
             finishScale.setVisible(true);
             scalesCompleded.setVisible(true);
@@ -1153,7 +1171,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-
+        //C major scale descending intro
         case 25:
             practiceScaleCDescending.setVisible(true);
             currentNoteCDescending.setVisible(true);
@@ -1168,7 +1186,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             SuceededC.setVisible(false);
             break; 
 
-
+        //C major scale descending pause screen
         case 26:
             playScalesCDescending.setVisible(true);
             startScalesCDescending.setVisible(true);
@@ -1182,7 +1200,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             break;
 
-
+        //C major scale descending true test
         case 27:
             remainingNotesCDescending.setVisible(true);
             FailedCDescending.setVisible(true);
@@ -1197,7 +1215,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
 
-
+        //C major scale descending fail page
         case 28:
             failedStringCDescending.setVisible(true);
             correctnoteWasCDescending.setVisible(true);
@@ -1210,7 +1228,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             SuceededCDescending.setVisible(false);
             break;
 
-
+        //Nothing
         case 29:
 
 
