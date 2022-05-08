@@ -1665,32 +1665,16 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
-        if (FullChord.contains("A") && FullChord.contains("C") && FullChord.contains("E")) {
-            nameOfChord.setButtonText("A-minor");
-        }
-
-        if (FullChord.contains("B") && FullChord.contains("D") && FullChord.contains("F")) {
-            nameOfChord.setButtonText("B-diminished");
-        }
-
         if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G")) {
-            nameOfChord.setButtonText("C-major");
-        }
-
-        if (FullChord.contains("D") && FullChord.contains("F") && FullChord.contains("A")) {
-            nameOfChord.setButtonText("D-minor");
-        }
-
-        if (FullChord.contains("E") && FullChord.contains("G") && FullChord.contains("B")) {
-            nameOfChord.setButtonText("E-minor");
+            remainingChords.setColour(remainingChords.textColourId, Colours::green);
         }
 
         if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C")) {
-            nameOfChord.setButtonText("F-major");
+            
         }
 
         if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D")) {
-            nameOfChord.setButtonText("G-major");
+            
         }
         //Triad_Chord_notes.resize(3, chordnote);
         //DBG(Triad_Chord_notes[i]);
