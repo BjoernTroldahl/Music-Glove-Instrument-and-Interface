@@ -234,7 +234,7 @@ private:
 
                     
                     if (pageNum == 6) {
-                        fUI->setParamValue("rel", 5);
+                        fUI->setParamValue("rel", 6);
                         timeLimit = 300;
                     }
 
