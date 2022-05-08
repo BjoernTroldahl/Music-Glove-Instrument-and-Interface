@@ -162,6 +162,7 @@ public:
     TextButton startChords2;
     Label remainingChords2;
     TextButton doneChords5;
+    TextButton nameOfChord;
 
 
     String A_min_scalenotes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};
