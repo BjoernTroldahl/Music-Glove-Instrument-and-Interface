@@ -508,7 +508,8 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(remainingChords);
     remainingChords.setVisible(false);
-    remainingChords.setText("Remaining Chords:                    C MAJOR - F MAJOR - G MAJOR", dontSendNotification);
+    bigString = "Remaining Chords:                    C MAJOR - F MAJOR - G MAJOR";
+    remainingChords.setText(bigString, dontSendNotification);
     remainingChords.setFont(40);
 
     //skal nok ikke være en knap men bare gå direkte videre når alle tre chords er blevet spillet

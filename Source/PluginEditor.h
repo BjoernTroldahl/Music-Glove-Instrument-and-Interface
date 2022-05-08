@@ -164,7 +164,7 @@ public:
     TextButton doneChords5;
     TextButton nameOfChord;
     Label trueTestcurrentChord;
-
+    String bigString;
 
     String A_min_scalenotes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};
     String C_maj_scalenotes[8] = { "c", "d", "e", "f", "g", "a", "b", "c" };
