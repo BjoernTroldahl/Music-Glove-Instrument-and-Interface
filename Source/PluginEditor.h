@@ -168,6 +168,7 @@ public:
     Label secondChord;
     Label thirdChord;
     Label fourthChord;
+    TextButton backtoChords;
 
     Label failedChord;
     Label attemptsRemainingChords;

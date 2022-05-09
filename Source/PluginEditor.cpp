@@ -703,15 +703,25 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(failedChord);
     failedChord.setVisible(false);
-    failedChord.setText("You played a wrong chord", dontSendNotification);
+    failedChord.setText("You played a wrong chord, try again! ", dontSendNotification);
     failedChord.setFont(40);
-    failedChord.setColour(failedChord.textColourId, Colours::red);
+    //failedChord.setColour(failedChord.textColourId, Colours::red);
 
     addAndMakeVisible(attemptsRemainingChords);
     attemptsRemainingChords.setVisible(false);
     attemptsRemainingChords.setText(failed3+" attempt(s) remaining", dontSendNotification);
     attemptsRemainingChords.setFont(40);
-    attemptsRemainingChords.setColour(attemptsRemainingChords.textColourId, Colours::red);
+    //attemptsRemainingChords.setColour(attemptsRemainingChords.textColourId, Colours::red);
+
+    addAndMakeVisible(backtoChords);
+    backtoChords.setVisible(false);
+    backtoChords.setButtonText("Try again!");
+    backtoChords.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    backtoChords.changeWidthToFitText();
+    backtoChords.onClick = [this] {
+        audioProcessor.pageNum = 21;
+    };
+
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -844,6 +854,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
             failedChord.setVisible(false);
+            backtoChords.setVisible(false);
 
             break;
 
@@ -1193,6 +1204,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemainingChords.setVisible(false);
             playChords.setVisible(false);
             startChords.setVisible(false);
+            backtoChords.setVisible(false);
             break;
 
 
@@ -1296,8 +1308,15 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             failedChord.setVisible(true);
             attemptsRemainingChords.setVisible(true);
+            backtoChords.setVisible(true);
 
-
+            remainingChords.setVisible(false);
+            doneChords3.setVisible(false);
+            trueTestcurrentChord.setVisible(false);
+            firstChord.setVisible(false);
+            secondChord.setVisible(false);
+            thirdChord.setVisible(false);
+            fourthChord.setVisible(false);
             break; 
 
 
@@ -1736,7 +1755,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
             else {
             audioProcessor.pageNum = 29;
             attemptsRemaining = attemptsRemaining - 1;
-            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             }
 
             if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C") && numOfCorrectChords==1) {
@@ -1879,7 +1897,8 @@ void RandomNameAudioProcessorEditor::resized()
     secondChord.setBounds(285, 200, 300, 100);
     thirdChord.setBounds(465, 200, 300, 100);
     fourthChord.setBounds(650, 200, 300, 100);
-    failedChord.setBounds(100, 400, 600, 100);
-    attemptsRemainingChords.setBounds(100, 450, 300, 100);
+    failedChord.setBounds(350, 200, 500, 40);
+    attemptsRemainingChords.setBounds(350, 300, 500, 40);
+    backtoChords.setBounds(450, 550, 100, 100);
 }
 
