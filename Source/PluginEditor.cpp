@@ -523,7 +523,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(chordProgression2);
     chordProgression2.setVisible(false);
-    chordProgression2.setText("Well done! Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these three chords in order:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B", dontSendNotification);
+    chordProgression2.setText("Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these three chords in order:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B", dontSendNotification);
     chordProgression2.setFont(40);
 
     addAndMakeVisible(doneChords4);
@@ -722,6 +722,11 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 21;
     };
 
+    addAndMakeVisible(CompletedChords);
+    CompletedChords.setVisible(false);
+    CompletedChords.setText("GOOD JOB! You may continue to the next page", dontSendNotification);
+    CompletedChords.setColour(CompletedChords.textColourId, Colours::lightgreen);
+    CompletedChords.setFont(40);
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -868,6 +873,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemainingChords.setVisible(false);
             failedChord.setVisible(false);
             backtoChords.setVisible(false);
+            CompletedChords.setVisible(false);
 
             break;
 
@@ -1213,6 +1219,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(true);
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
 
+            CompletedChords.setVisible(false);
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
             playChords.setVisible(false);
@@ -1235,6 +1242,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
             backtoChords.setVisible(false);
+            CompletedChords.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1797,7 +1805,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             }
 
             if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==3) {
+            numOfCorrectChords = 4;
             fourthChord.setColour(fourthChord.textColourId, Colours::green);
+            CompletedChords.setVisible(true);
             //DO STUFF
             }
             else if (numOfCorrectChords == 3 && oldNote != stringChord) {
@@ -1933,5 +1943,6 @@ void RandomNameAudioProcessorEditor::resized()
     failedChord.setBounds(350, 200, 500, 40);
     attemptsRemainingChords.setBounds(350, 300, 500, 40);
     backtoChords.setBounds(450, 550, 100, 100);
+    CompletedChords.setBounds(100, 400, 800, 100);
 }
 

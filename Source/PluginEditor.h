@@ -172,6 +172,7 @@ public:
 
     Label failedChord;
     Label attemptsRemainingChords;
+    Label CompletedChords;
 
     int numOfCorrectChords;
     int chordLives=5;

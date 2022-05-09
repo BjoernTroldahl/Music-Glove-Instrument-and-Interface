@@ -148,7 +148,7 @@ private:
                 {   //This part of the code is what makes us able to read the values from each individual flex sensor
 
                     s = pInputStream->readNextLine();
-                    //DBG(s);
+                    DBG(s);
 
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
@@ -242,11 +242,11 @@ private:
                         fUI->setParamValue("rel", 0.5);
                     }
                     
-                    //DBG(playedNote);
+                    DBG(playedNote);
 
                     
 
-                    if (indexNum < 350 && indexNum > 330) {
+                    if (indexNum < 350 && indexNum > 310) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
@@ -254,7 +254,7 @@ private:
                         
                     }
 
-                    else if (indexNum < 330) {
+                    else if (indexNum < 310) {
                         updateNoteB = true;
                         start = clock();
                     }
@@ -271,17 +271,17 @@ private:
 
                    
 
-                    else if (ringNum <= 420 && ringNum >= 380) {
+                    else if (ringNum <= 410 && ringNum >= 370) {
                         updateNoteE = true;
                         start = clock();
                     }
 
-                    else if (ringNum <= 380) {
+                    else if (ringNum <= 370) {
                         updateNoteF = true;
                         start = clock();
                     }
 
-                    else if (pinkyNum <= 420) {
+                    else if (pinkyNum <= 400) {
                         updateNoteG = true;
                         start = clock();
                     }
