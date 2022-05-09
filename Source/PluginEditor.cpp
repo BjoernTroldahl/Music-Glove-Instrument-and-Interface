@@ -1771,6 +1771,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
+
         if(chordNoteCounter==3){
 
             if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==0) {
