@@ -1188,9 +1188,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(true);
             thirdChord.setVisible(true);
             fourthChord.setVisible(true);
-            failedChord.setVisible(true);
-            attemptsRemainingChords.setVisible(true);
 
+            failedChord.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
             playChords.setVisible(false);
             startChords.setVisible(false);
             break;
@@ -1695,6 +1695,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             Triad_Chord_notes[0] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             first_note = stringChord;
+            failedChord.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
         }
 
         if (chordNoteCounter == 1 && first_note != stringChord && stringChord != " ") {
@@ -1721,28 +1723,37 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
-        if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==0) {
+        if(chordNoteCounter==3){
+
+            if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==0) {
             firstChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 1;
-        }
+            }
 
-        if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C") && numOfCorrectChords==1) {
+            else {
+            failedChord.setVisible(true);
+            attemptsRemainingChords.setVisible(true);
+            }
+
+            if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C") && numOfCorrectChords==1) {
             secondChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 2;
-        }
+            }
 
-        if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D") && numOfCorrectChords==2) {
+            if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D") && numOfCorrectChords==2) {
             thirdChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 3;
-        }
+            }
 
-        if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==3) {
+            if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==3) {
             fourthChord.setColour(fourthChord.textColourId, Colours::green);
             //DO STUFF
+            }
         }
         //Triad_Chord_notes.resize(3, chordnote);
         //DBG(Triad_Chord_notes[i]);
-        DBG(numOfCorrectChords);
+        //DBG(numOfCorrectChords);
+        DBG(chordNoteCounter);
         //(Triad_Chord_notes.length());
     }
 
