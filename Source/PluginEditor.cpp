@@ -1750,9 +1750,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==0) {
             firstChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 1;
+            oldNote = stringChord;
             }
 
-            else {
+            else if (numOfCorrectChords==0 && oldNote != stringChord){
             audioProcessor.pageNum = 29;
             attemptsRemaining = attemptsRemaining - 1;
             }
@@ -1760,16 +1761,31 @@ void RandomNameAudioProcessorEditor::timerCallback()
             if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C") && numOfCorrectChords==1) {
             secondChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 2;
+            oldNote = stringChord;
+            }
+
+            else if (numOfCorrectChords == 1 && oldNote != stringChord) {
+            audioProcessor.pageNum = 29;
+            attemptsRemaining = attemptsRemaining - 1;
             }
 
             if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D") && numOfCorrectChords==2) {
             thirdChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 3;
+            oldNote = stringChord;
+            }
+            else if (numOfCorrectChords == 2 && oldNote != stringChord) {
+            audioProcessor.pageNum = 29;
+            attemptsRemaining = attemptsRemaining - 1;
             }
 
             if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==3) {
             fourthChord.setColour(fourthChord.textColourId, Colours::green);
             //DO STUFF
+            }
+            else if (numOfCorrectChords == 3 && oldNote != stringChord) {
+            audioProcessor.pageNum = 29;
+            attemptsRemaining = attemptsRemaining - 1;
             }
         }
         //Triad_Chord_notes.resize(3, chordnote);
