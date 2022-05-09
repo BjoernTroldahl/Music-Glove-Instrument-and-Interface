@@ -756,6 +756,19 @@ void RandomNameAudioProcessorEditor::timerCallback()
         };
     }
 
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 21) {
+
+        failedChord.setColour(failedString.textColourId, Colours::red);
+        failedChord.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        attemptsRemainingChords.setColour(correctnoteWas.textColourId, Colours::red);
+        attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+        //remainingAttemptsDescending.setText("", dontSendNotification);
+        backtoChords.setButtonText("Next page");
+        backtoChords.onClick = [this] {
+            audioProcessor.pageNum = 22;
+        };
+    }
+
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {
         isPageChanged = true;
@@ -1221,6 +1234,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(false);
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
+            backtoChords.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1310,6 +1324,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemainingChords.setVisible(true);
             backtoChords.setVisible(true);
 
+            if (attemptsRemaining == 0) {
+                attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+            }
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
             trueTestcurrentChord.setVisible(false);
