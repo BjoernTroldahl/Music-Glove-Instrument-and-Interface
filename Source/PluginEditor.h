@@ -168,7 +168,13 @@ public:
     Label secondChord;
     Label thirdChord;
     Label fourthChord;
+
+    Label failedChord;
+    Label attemptsRemainingChords;
+
     int numOfCorrectChords;
+    int chordLives=5;
+    String chordLivesSTR;
     //PRØV AT LAVE EN ATTRIBUTEDSTRING
 
     String A_min_scalenotes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};

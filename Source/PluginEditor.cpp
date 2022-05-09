@@ -701,6 +701,18 @@ void RandomNameAudioProcessorEditor::configGUI() {
     fourthChord.setText("C MAJOR", dontSendNotification);
     fourthChord.setFont(40);
 
+    addAndMakeVisible(failedChord);
+    failedChord.setVisible(false);
+    failedChord.setText("You played a wrong chord", dontSendNotification);
+    failedChord.setFont(40);
+    failedChord.setColour(failedChord.textColourId, Colours::red);
+
+    addAndMakeVisible(attemptsRemainingChords);
+    chordLivesSTR = to_string(chordLives);
+    attemptsRemainingChords.setVisible(false);
+    attemptsRemainingChords.setText(chordLivesSTR+" attempt(s) remaining", dontSendNotification);
+    attemptsRemainingChords.setFont(40);
+    attemptsRemainingChords.setColour(attemptsRemainingChords.textColourId, Colours::red);
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -831,6 +843,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
+            failedChord.setVisible(false);
 
             break;
 
@@ -1153,6 +1167,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             Triad_Chord_notes[0] = "";
             Triad_Chord_notes[1] = "";
             Triad_Chord_notes[2] = "";
+            chordLives = 3;
+
             playChords.setVisible(true);
             startChords.setVisible(true);
 
@@ -1172,6 +1188,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(true);
             thirdChord.setVisible(true);
             fourthChord.setVisible(true);
+            failedChord.setVisible(true);
+            attemptsRemainingChords.setVisible(true);
 
             playChords.setVisible(false);
             startChords.setVisible(false);
@@ -1189,6 +1207,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
+            failedChord.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1843,5 +1863,7 @@ void RandomNameAudioProcessorEditor::resized()
     secondChord.setBounds(285, 200, 300, 100);
     thirdChord.setBounds(465, 200, 300, 100);
     fourthChord.setBounds(650, 200, 300, 100);
+    failedChord.setBounds(100, 400, 600, 100);
+    attemptsRemainingChords.setBounds(100, 450, 300, 100);
 }
 
