@@ -235,7 +235,7 @@ private:
                     //If you are on the chord pages, you get more sustain and have more time to select your notes
                     if (pageNum == 3 || pageNum == 6 || pageNum == 19 || pageNum == 20 || pageNum == 21 || pageNum == 22 || pageNum == 23 || pageNum == 24) {
                         fUI->setParamValue("rel", 6);
-                        timeLimit = 400;
+                        timeLimit = 300;
                     }
 
                     else {

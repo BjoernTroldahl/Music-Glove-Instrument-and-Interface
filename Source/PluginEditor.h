@@ -164,7 +164,10 @@ public:
     TextButton doneChords5;
     TextButton nameOfChord;
     Label trueTestcurrentChord;
-    String bigString;
+    Label firstChord;
+    Label secondChord;
+    Label thirdChord;
+    int numOfCorrectChords;
     //PRØV AT LAVE EN ATTRIBUTEDSTRING
 
     String A_min_scalenotes[8] = { "a", "b", "c", "d", "e", "f", "g", "a"};

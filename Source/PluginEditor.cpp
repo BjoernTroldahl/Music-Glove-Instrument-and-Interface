@@ -508,8 +508,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(remainingChords);
     remainingChords.setVisible(false);
-    bigString = "Remaining Chords:                    C MAJOR - F MAJOR - G MAJOR";
-    remainingChords.setText(bigString, dontSendNotification);
+    remainingChords.setText("Remaining Chords: ", dontSendNotification);
     remainingChords.setFont(40);
 
     //skal nok ikke være en knap men bare gå direkte videre når alle tre chords er blevet spillet
@@ -682,6 +681,16 @@ void RandomNameAudioProcessorEditor::configGUI() {
     trueTestcurrentChord.setText("Currently playing: " + stringChord, dontSendNotification);
     trueTestcurrentChord.setFont(40);
 
+    addAndMakeVisible(firstChord);
+    firstChord.setVisible(false);
+    firstChord.setText("C MAJOR - ", dontSendNotification);
+    firstChord.setFont(40);
+
+    addAndMakeVisible(secondChord);
+    secondChord.setVisible(false);
+    secondChord.setText("F MAJOR - ", dontSendNotification);
+    secondChord.setFont(40);
+
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -808,6 +817,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             stringtoTrim = "Remaining notes ";
             remainingNotesA = "8";
             trueTestcurrentChord.setVisible(false);
+            firstChord.setVisible(false);
+            secondChord.setVisible(false);
 
             break;
 
@@ -1126,6 +1137,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //C - F - G chord progression pause page
         case 20:
             chordNoteCounter = 0;
+            Triad_Chord_notes[0] = "";
+            Triad_Chord_notes[1] = "";
+            Triad_Chord_notes[2] = "";
             playChords.setVisible(true);
             startChords.setVisible(true);
 
@@ -1140,7 +1154,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingChords.setVisible(true);
             doneChords3.setVisible(true);
             trueTestcurrentChord.setVisible(true);
-            trueTestcurrentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
+            trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
+            firstChord.setVisible(true);
+            secondChord.setVisible(true);
 
             playChords.setVisible(false);
             startChords.setVisible(false);
@@ -1154,6 +1170,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
+            firstChord.setVisible(false);
+            secondChord.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1667,11 +1685,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
         if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G")) {
-            remainingChords.setColour(remainingChords.textColourId, Colours::green);
+            firstChord.setColour(remainingChords.textColourId, Colours::green);
+            numOfCorrectChords = 1;
         }
 
-        if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C")) {
-            
+        if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C") && numOfCorrectChords==1) {
+            secondChord.setColour(remainingChords.textColourId, Colours::green);
+            numOfCorrectChords = 2;
         }
 
         if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D")) {
@@ -1795,6 +1815,8 @@ void RandomNameAudioProcessorEditor::resized()
     remainingAttemptsCDescending.setBounds(350, 450, 500, 40);
     tryAgainCDescending.setBounds(450, 550, 100, 100);
     nameOfChord.setBounds(450, 350, 100, 100);
-    trueTestcurrentChord.setBounds(300, 350, 300, 100); //CHANGE
+    trueTestcurrentChord.setBounds(300, 400, 300, 100);
+    firstChord.setBounds(300, 310, 300, 100);
+    secondChord.setBounds(485, 310, 300, 100);
 }
 
