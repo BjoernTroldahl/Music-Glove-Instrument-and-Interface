@@ -1233,6 +1233,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             doneChords4.setVisible(true);
             chordProgression2.setVisible(true);
 
+            trueTestcurrentChord.setVisible(false);
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
             firstChord.setVisible(false);
