@@ -696,6 +696,11 @@ void RandomNameAudioProcessorEditor::configGUI() {
     thirdChord.setText("G MAJOR - ", dontSendNotification);
     thirdChord.setFont(40);
 
+    addAndMakeVisible(fourthChord);
+    fourthChord.setVisible(false);
+    fourthChord.setText("C MAJOR", dontSendNotification);
+    fourthChord.setFont(40);
+
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -825,6 +830,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             firstChord.setVisible(false);
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
+            fourthChord.setVisible(false);
 
             break;
 
@@ -1143,6 +1149,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //C - F - G chord progression pause page
         case 20:
             chordNoteCounter = 0;
+            numOfCorrectChords = 0;
             Triad_Chord_notes[0] = "";
             Triad_Chord_notes[1] = "";
             Triad_Chord_notes[2] = "";
@@ -1164,6 +1171,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             firstChord.setVisible(true);
             secondChord.setVisible(true);
             thirdChord.setVisible(true);
+            fourthChord.setVisible(true);
 
             playChords.setVisible(false);
             startChords.setVisible(false);
@@ -1180,6 +1188,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             firstChord.setVisible(false);
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
+            fourthChord.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1692,7 +1701,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
-        if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G")) {
+        if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==0) {
             firstChord.setColour(remainingChords.textColourId, Colours::green);
             numOfCorrectChords = 1;
         }
@@ -1707,12 +1716,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             numOfCorrectChords = 3;
         }
 
-        if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D") && numOfCorrectChords==3) {
+        if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==3) {
+            fourthChord.setColour(fourthChord.textColourId, Colours::green);
             //DO STUFF
         }
         //Triad_Chord_notes.resize(3, chordnote);
         //DBG(Triad_Chord_notes[i]);
-
+        DBG(numOfCorrectChords);
         //(Triad_Chord_notes.length());
     }
 
@@ -1832,5 +1842,6 @@ void RandomNameAudioProcessorEditor::resized()
     firstChord.setBounds(100, 200, 300, 100);
     secondChord.setBounds(285, 200, 300, 100);
     thirdChord.setBounds(465, 200, 300, 100);
+    fourthChord.setBounds(650, 200, 300, 100);
 }
 

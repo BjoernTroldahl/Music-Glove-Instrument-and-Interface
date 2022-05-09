@@ -167,6 +167,7 @@ public:
     Label firstChord;
     Label secondChord;
     Label thirdChord;
+    Label fourthChord;
     int numOfCorrectChords;
     //PRØV AT LAVE EN ATTRIBUTEDSTRING
 
