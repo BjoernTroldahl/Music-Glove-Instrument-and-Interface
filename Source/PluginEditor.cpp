@@ -523,7 +523,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(chordProgression2);
     chordProgression2.setVisible(false);
-    chordProgression2.setText("Well done! Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these three chords in order:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B", dontSendNotification);
+    chordProgression2.setText("Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these three chords in order:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B", dontSendNotification);
     chordProgression2.setFont(40);
 
     addAndMakeVisible(doneChords4);
@@ -753,6 +753,20 @@ void RandomNameAudioProcessorEditor::timerCallback()
         tryAgainDescending.setButtonText("Next page");
         tryAgainDescending.onClick = [this] {
             audioProcessor.pageNum = 14;
+        };
+    }
+
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 21) {
+
+        failedChord.setColour(failedString.textColourId, Colours::red);
+        failedChord.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        attemptsRemainingChords.setColour(correctnoteWas.textColourId, Colours::red);
+        attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+        //remainingAttemptsDescending.setVisible(false);
+        //remainingAttemptsDescending.setText("", dontSendNotification);
+        backtoChords.setButtonText("Next page");
+        backtoChords.onClick = [this] {
+            audioProcessor.pageNum = 22;
         };
     }
 
@@ -1198,7 +1212,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(true);
             thirdChord.setVisible(true);
             fourthChord.setVisible(true);
-            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            //attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
 
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
@@ -1212,6 +1226,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 22:
             doneChords4.setVisible(true);
             chordProgression2.setVisible(true);
+            attemptsRemaining = 5;
 
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
@@ -1221,6 +1236,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(false);
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
+            backtoChords.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1309,6 +1325,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             failedChord.setVisible(true);
             attemptsRemainingChords.setVisible(true);
             backtoChords.setVisible(true);
+
+            if (attemptsRemaining == 0) {
+                attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+            }
 
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
