@@ -708,9 +708,8 @@ void RandomNameAudioProcessorEditor::configGUI() {
     failedChord.setColour(failedChord.textColourId, Colours::red);
 
     addAndMakeVisible(attemptsRemainingChords);
-    chordLivesSTR = to_string(chordLives);
     attemptsRemainingChords.setVisible(false);
-    attemptsRemainingChords.setText(chordLivesSTR+" attempt(s) remaining", dontSendNotification);
+    attemptsRemainingChords.setText(failed3+" attempt(s) remaining", dontSendNotification);
     attemptsRemainingChords.setFont(40);
     attemptsRemainingChords.setColour(attemptsRemainingChords.textColourId, Colours::red);
 }
@@ -1168,6 +1167,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             Triad_Chord_notes[1] = "";
             Triad_Chord_notes[2] = "";
             chordLives = 3;
+            attemptsRemaining = 5;
 
             playChords.setVisible(true);
             startChords.setVisible(true);
@@ -1179,7 +1179,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C - F - G chord progression true test
         case 21:
-
             remainingChords.setVisible(true);
             doneChords3.setVisible(true);
             trueTestcurrentChord.setVisible(true);
@@ -1188,6 +1187,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(true);
             thirdChord.setVisible(true);
             fourthChord.setVisible(true);
+            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
 
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
@@ -1291,8 +1291,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             SuceededCDescending.setVisible(false);
             break;
 
-        //Nothing
+        //Chords FAIL "page"
         case 29:
+            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            failedChord.setVisible(true);
+            attemptsRemainingChords.setVisible(true);
 
 
             break; 
@@ -1731,8 +1734,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             }
 
             else {
-            failedChord.setVisible(true);
-            attemptsRemainingChords.setVisible(true);
+            audioProcessor.pageNum = 29;
+            attemptsRemaining = attemptsRemaining - 1;
+            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             }
 
             if (FullChord.contains("F") && FullChord.contains("A") && FullChord.contains("C") && numOfCorrectChords==1) {
@@ -1753,7 +1757,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //Triad_Chord_notes.resize(3, chordnote);
         //DBG(Triad_Chord_notes[i]);
         //DBG(numOfCorrectChords);
-        DBG(chordNoteCounter);
+        //DBG(chordNoteCounter);
+        DBG(attemptsRemaining);
         //(Triad_Chord_notes.length());
     }
 
