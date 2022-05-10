@@ -156,6 +156,7 @@ private:
                     indexNum = index.getFloatValue();
 
                     playedNote = " ";
+                    //start = clock();
                     
                     fUI->setParamValue("A",0);
                     fUI->setParamValue("B",0);
@@ -246,7 +247,7 @@ private:
 
                     
 
-                    if (indexNum < 350 && indexNum > 310) {
+                    if (indexNum < 350 && indexNum > 330) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
@@ -254,29 +255,29 @@ private:
                         
                     }
 
-                    else if (indexNum < 310) {
+                    else if (indexNum < 315) {
                         updateNoteB = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 380 && middleNum >= 360) {
+                    else if (middleNum <= 375 && middleNum >= 350) {
                         updateNoteC = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 360) {
+                    else if (middleNum <= 340) {
                         updateNoteD = true;
                         start = clock();
                     }
 
                    
 
-                    else if (ringNum <= 410 && ringNum >= 370) {
+                    else if (ringNum <= 420 && ringNum >= 370) {
                         updateNoteE = true;
                         start = clock();
                     }
 
-                    else if (ringNum <= 370) {
+                    else if (ringNum <= 360) {
                         updateNoteF = true;
                         start = clock();
                     }
@@ -300,7 +301,7 @@ private:
                     }
 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
-                    //DBG(elapsedTime);
+                    DBG(elapsedTime);
                     //DBG(pageNum);
                     
                 }
