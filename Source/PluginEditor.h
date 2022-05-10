@@ -184,6 +184,7 @@ public:
     String C_maj_scalenotes[8] = { "c", "d", "e", "f", "g", "a", "b", "c" };
 
     String nextNoteArray="a";
+    String nextNoteArrayC = "c";
     int arrayCounter = 0;
     int arrayCounter2 = 0;
 

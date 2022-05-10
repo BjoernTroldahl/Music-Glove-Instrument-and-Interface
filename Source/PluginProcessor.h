@@ -247,7 +247,7 @@ private:
 
                     
 
-                    if (indexNum < 350 && indexNum > 330) {
+                    if (indexNum < 370 && indexNum > 340) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
@@ -255,34 +255,34 @@ private:
                         
                     }
 
-                    else if (indexNum < 315) {
+                    else if (indexNum < 330) {
                         updateNoteB = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 375 && middleNum >= 350) {
+                    else if (middleNum <= 380 && middleNum >= 370) {
                         updateNoteC = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 340) {
+                    else if (middleNum <= 360) {
                         updateNoteD = true;
                         start = clock();
                     }
 
                    
 
-                    else if (ringNum <= 420 && ringNum >= 370) {
+                    else if (ringNum <= 430 && ringNum >= 380) {
                         updateNoteE = true;
                         start = clock();
                     }
 
-                    else if (ringNum <= 360) {
+                    else if (ringNum <= 370) {
                         updateNoteF = true;
                         start = clock();
                     }
 
-                    else if (pinkyNum <= 400) {
+                    else if (pinkyNum <= 420) {
                         updateNoteG = true;
                         start = clock();
                     }
@@ -301,8 +301,8 @@ private:
                     }
 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
-                    DBG(elapsedTime);
-                    //DBG(pageNum);
+                    //DBG(elapsedTime);
+                    DBG(pageNum);
                     
                 }
             }

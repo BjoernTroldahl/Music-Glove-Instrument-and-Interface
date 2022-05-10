@@ -353,11 +353,11 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(buttonNoteC);
     buttonNoteC.setVisible(false);
-    buttonNoteC.setButtonText("C");
+    buttonNoteC.setButtonText("c");
     buttonNoteC.changeWidthToFitText();
     buttonNoteC.setColour(chords.buttonColourId, Colours::dodgerblue);
     buttonNoteC.onClick = [this] {
-        buttonNoteC.setButtonText("D");
+        buttonNoteC.setButtonText("d");
     };
 
     addAndMakeVisible(doneScalesC);
@@ -1097,12 +1097,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesDescending.setVisible(false);
             FailedDescending.setVisible(false);
             SuceededDescending.setVisible(false);
-
-
             break;
         
         //C major scale ascending intro
         case 14:
+            arrayCounter = 0;
             practiceScaleC.setVisible(true);
             currentNoteC.setVisible(true);
             nextNoteC.setVisible(true);
@@ -1666,6 +1665,58 @@ void RandomNameAudioProcessorEditor::timerCallback()
         remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
 
     }
+
+    if (audioProcessor.pageNum == 14) {
+
+        stringNoteC = audioProcessor.playedNote;
+        currentNoteC.setText("Currently playing " + stringNoteC, dontSendNotification);
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 0) {
+            nextNoteArrayC = C_maj_scalenotes[1];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "D" && arrayCounter == 1) {
+            nextNoteArrayC = C_maj_scalenotes[2];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter == 2) {
+            nextNoteArrayC = C_maj_scalenotes[3];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "F" && arrayCounter == 3) {
+            nextNoteArrayC = C_maj_scalenotes[4];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter == 4) {
+            nextNoteArrayC = C_maj_scalenotes[5];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 5) {
+            nextNoteArrayC = C_maj_scalenotes[6];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter == 6) {
+            nextNoteArrayC = C_maj_scalenotes[7];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 7) {
+            nextNoteArrayC = "task completed";
+            buttonNoteC.setColour(chords.buttonColourId, Colours::green);
+
+        }
+
+
+        buttonNoteC.setButtonText(nextNoteArrayC);
+
+    }
+
     //CHORDS-----------------------------------------------------------
     if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " ") {
 
@@ -1817,11 +1868,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemaining = attemptsRemaining - 1;
             }
         }
+        //DBG(pageNum);
         //Triad_Chord_notes.resize(3, chordnote);
         //DBG(Triad_Chord_notes[i]);
         //DBG(numOfCorrectChords);
         //DBG(chordNoteCounter);
-        DBG(attemptsRemaining);
+        //DBG(attemptsRemaining);
         //(Triad_Chord_notes.length());
     }
 
