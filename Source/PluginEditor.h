@@ -172,6 +172,7 @@ public:
     Label fourthChord;
     TextButton backtoChords;
     TextButton backtoChords2;
+    TextButton goToWinChords;
 
     Label failedChord;
     Label attemptsRemainingChords;

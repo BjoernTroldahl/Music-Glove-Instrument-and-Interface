@@ -739,6 +739,15 @@ void RandomNameAudioProcessorEditor::configGUI() {
     backtoChords2.onClick = [this] {
         audioProcessor.pageNum = 24;
     };
+
+    addAndMakeVisible(goToWinChords);
+    goToWinChords.setVisible(false);
+    goToWinChords.setButtonText("Next page");
+    goToWinChords.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    goToWinChords.changeWidthToFitText();
+    goToWinChords.onClick = [this] {
+        audioProcessor.pageNum = 31;
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -915,6 +924,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             CompletedChords.setVisible(false);
             scalesTheory2.setVisible(false);
             backtoChords2.setVisible(false);
+            goToWinChords.setVisible(false);
 
             break;
 
@@ -1318,7 +1328,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //A - D - E chord progression true test
         case 24:
             remainingChords.setVisible(true);
-            doneChords3.setVisible(true);
+            goToWinChords.setVisible(true);
             trueTestcurrentChord.setVisible(true);
             trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
             firstChord.setVisible(true);
@@ -1430,6 +1440,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
+            goToWinChords.setVisible(false);
             break;
         
         //Chords WIN page
@@ -1437,7 +1448,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
             backtoChords2.setVisible(false);
             attemptsRemainingChords.setVisible(false);
             failedChord.setVisible(false);
-
+            goToWinChords.setVisible(false);
+            remainingChords.setVisible(false);
+            goToWinChords.setVisible(false);
+            trueTestcurrentChord.setVisible(false);
+            firstChord.setVisible(false);
+            secondChord.setVisible(false);
+            thirdChord.setVisible(false);
+            fourthChord.setVisible(false);
             break;
         }
     }
@@ -2280,5 +2298,6 @@ void RandomNameAudioProcessorEditor::resized()
     backtoChords.setBounds(450, 550, 100, 100);
     backtoChords2.setBounds(450, 550, 100, 100);
     CompletedChords.setBounds(100, 400, 800, 100);
+    goToWinChords.setBounds(850, 600, 100, 100);
 }
 
