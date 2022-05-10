@@ -799,6 +799,19 @@ void RandomNameAudioProcessorEditor::timerCallback()
         };
     }
 
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 24) {
+
+        failedChord.setColour(failedString.textColourId, Colours::red);
+        failedChord.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        attemptsRemainingChords.setColour(correctnoteWas.textColourId, Colours::red);
+        attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+        //remainingAttemptsDescending.setText("", dontSendNotification);
+        backtoChords2.setButtonText("Next page");
+        backtoChords2.onClick = [this] {
+            audioProcessor.pageNum = 31;
+        };
+    }
+
     if (audioProcessor.pageNum != audioProcessor.pageNum_OLD)
     {
         isPageChanged = true;
@@ -1421,6 +1434,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         //Chords WIN page
         case 31:
+            backtoChords2.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
+            failedChord.setVisible(false);
 
             break;
         }
