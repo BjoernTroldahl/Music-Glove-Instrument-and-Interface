@@ -1900,9 +1900,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         //(Triad_Chord_notes.length());
         }
-    if (audioProcessor.pageNum == 21 && audioProcessor.playedNote != " ") {
+    if (audioProcessor.pageNum == 21 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime > timeThreshold) {
 
         stringChord = audioProcessor.playedNote;
+        timeThreshold = 300;
 
 
         if (chordNoteCounter == 0 && stringChord != " ") {
@@ -1931,6 +1932,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             Triad_Chord_notes[1] = "";
             Triad_Chord_notes[2] = "";
             nameOfChord.setButtonText("*");
+            oldNote = " ";
         }
 
         trueTestcurrentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
