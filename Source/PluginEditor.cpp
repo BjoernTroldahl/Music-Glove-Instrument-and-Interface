@@ -1832,8 +1832,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
     }
 
     //CHORDS-----------------------------------------------------------
-    if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " ") {
+    if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime>timeThreshold) {
 
+        timeThreshold = 300;
         stringChord = audioProcessor.playedNote;
         
 

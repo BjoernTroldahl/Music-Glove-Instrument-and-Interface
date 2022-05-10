@@ -247,42 +247,47 @@ private:
 
                     
 
-                    if (indexNum < 340 && indexNum > 320) {
+                    if (indexNum < 350 && indexNum > 310) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
-                        
+                        //updateNoteB = false;
                         
                     }
 
-                    else if (indexNum < 320) {
+                    else if (indexNum < 310) {
                         updateNoteB = true;
                         start = clock();
+                        //updateNoteA = false;
                     }
 
                     else if (middleNum <= 380 && middleNum >= 350) {
                         updateNoteC = true;
                         start = clock();
+                        //updateNoteD = false;
                     }
 
                     else if (middleNum <= 350) {
                         updateNoteD = true;
                         start = clock();
+                        //updateNoteC = false;
                     }
 
                    
 
-                    else if (ringNum <= 410 && ringNum >= 370) {
+                    else if (ringNum <= 420 && ringNum >= 350) {
                         updateNoteE = true;
                         start = clock();
+                        //updateNoteF = false;
                     }
 
-                    else if (ringNum <= 370) {
+                    else if (ringNum <= 350) {
                         updateNoteF = true;
                         start = clock();
+                        //updateNoteE = false;
                     }
 
-                    else if (pinkyNum <= 410) {
+                    else if (pinkyNum <= 430) {
                         updateNoteG = true;
                         start = clock();
                     }
@@ -301,8 +306,8 @@ private:
                     }
 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
-                    //DBG(elapsedTime);
-                    DBG(pageNum);
+                    DBG(elapsedTime);
+                    //DBG(pageNum);
                     
                 }
             }
