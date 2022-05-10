@@ -100,11 +100,11 @@ void RandomNameAudioProcessorEditor::configGUI() {
     title4.setFont(40);
     addAndMakeVisible(scalesTheory);
     scalesTheory.setVisible(false);
-    scalesTheory.setText("To learn what a scale is it is first needed to know what a note is. When you press a key on a piano a sound is played, that sound is called a note similarly when bending a finger with your musicglove depending on which finger you are bending and the amount you are bending it a specific note will be played. The notes are named after the 7 first letters of the alphabet A,B,C,D,E,F,G. Depending on which part of the piano you press different variations of these notes will be played.  A scale is a group of consecutive notes.In this lesson we are going to have to confine ourselves to the two most - frequently used scales : the major and the minor scale.", dontSendNotification);
+    scalesTheory.setText("To learn what a scale is it is first needed to know what a note is. When you press a key on a piano a sound is played, that sound is called a note similarly when bending a finger with your musicglove depending on which finger you are bending and the amount you are bending it a specific note will be played. The notes are named after the 7 first letters of the alphabet A,B,C,D,E,F,G. A scale is a group of consecutive notes. In this lesson we are going to have to confine ourselves to the two most - frequently used scales : the major and the minor scale.", dontSendNotification);
     scalesTheory.setFont(20);
     addAndMakeVisible(scalesTheory2);
     scalesTheory2.setVisible(false);
-    scalesTheory2.setText("The name of the scale determines the first note in the scale. for example the C - Major scale will be as follows : C, D, E, F, G, A, B, C The scale will continue until you return to your starting note, in this example C. \n Scales can also be ascending or descending which decides in which direction the scale is played.Another scale is the A - Minor scale, in ascending the scale goes : A, B, C, D, E, F, G, Aand descending : A, G, F, E, D, C, B, A", dontSendNotification);
+    scalesTheory2.setText("The name of the scale determines the first note in the scale. for example the C - Major scale will be as follows : C, D, E, F, G, A, B, C The scale will continue until you return to your starting note, in this example C. Scales can also be ascending or descending which decides in which direction the scale is played.", dontSendNotification);
     scalesTheory2.setFont(20);
     addAndMakeVisible(tryScales);
     tryScales.setVisible(false);
@@ -116,12 +116,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     };
     addAndMakeVisible(title5);
     title5.setVisible(false);
-    title5.setText("Chords", dontSendNotification);
+    title5.setText("Chords Theory", dontSendNotification);
     title5.setFont(40);
     addAndMakeVisible(chordsTheory);
     chordsTheory.setVisible(false);
-    chordsTheory.setText("Chords Theory. What is a chord? Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat n", dontSendNotification);
-    chordsTheory.setFont(30);
+    chordsTheory.setText("A chord is, quite simply, several notes played simultaneously. In this lesson we will focus on triads which is a chord played with three notes. The root of the chord gives the name to the chord. When you know the root of the chord the two remaining notes can also be decided by the 1-3-5 principle. if the root of the chord is A the two remaining notes can be found by moving up the scale twice, the second note will therefore be C and the third note will be E. To play the chords with your musicglove you will have to play one note at a timeand the application will automatically sustain the notes until all three notes of the chord are playing simultaneously.", dontSendNotification);
+    chordsTheory.setFont(25);
     addAndMakeVisible(tryChords);
     tryChords.setVisible(false);
     tryChords.setButtonText("Try it yourself!");
@@ -890,6 +890,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             failedChord.setVisible(false);
             backtoChords.setVisible(false);
             CompletedChords.setVisible(false);
+            scalesTheory2.setVisible(false);
 
             break;
 
@@ -2159,10 +2160,10 @@ void RandomNameAudioProcessorEditor::resized()
     scales.setBounds(500, 300, 100, 50);
     title4.setBounds(500, 10, 500, 40);
     scalesTheory.setBounds(100, 10, 500, 500);
-    scalesTheory2.setBounds(100, 250, 500, 500);
+    scalesTheory2.setBounds(100, 200, 500, 500);
     tryScales.setBounds(850, 600, 100, 100);
     title5.setBounds(500, 10, 500, 40);
-    chordsTheory.setBounds(100, 10, 500, 700);
+    chordsTheory.setBounds(100, 10, 600, 700);
     tryChords.setBounds(850, 600, 100, 100);
     practiceScale.setBounds(200, 10, 700, 200);
     currentNote.setBounds(200, 200, 300, 100);
