@@ -2149,8 +2149,8 @@ void RandomNameAudioProcessorEditor::resized()
     title2.setBounds(325, 10, 500, 40);
     menu.setBounds(1000, 10, 100, 40);
     title3.setBounds(325, 10, 500, 40);
-    chords.setBounds(500, 300, 100, 50);
-    scales.setBounds(500, 400, 100, 50);
+    chords.setBounds(500, 400, 100, 50);
+    scales.setBounds(500, 300, 100, 50);
     title4.setBounds(500, 10, 500, 40);
     scalesTheory.setBounds(100, 10, 500, 700);
     tryScales.setBounds(850, 600, 100, 100);
