@@ -1348,6 +1348,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C major scale descending intro
         case 25:
+
+            arrayCounter = 0;
             practiceScaleCDescending.setVisible(true);
             currentNoteCDescending.setVisible(true);
             nextNoteCDescending.setVisible(true);
@@ -1961,7 +1963,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         if (audioProcessor.playedNote == "C" && arrayCounter == 7) {
             nextNoteArrayC = "task completed";
-            buttonNoteC.setColour(chords.buttonColourId, Colours::green);
+            buttonNoteCDescending.setColour(chords.buttonColourId, Colours::green);
 
         }
 
