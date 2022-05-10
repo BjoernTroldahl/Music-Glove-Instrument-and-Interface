@@ -58,7 +58,8 @@ public:
     TextButton startScales;
     Label remainingNotes;
     String remainingNotesA = "8";
-    String stringtoTrim = "Remaining Notes ";
+    String remainingNotesC_str = "8";
+    String stringtoTrim = "Remaining notes ";
     TextButton Failed;
     TextButton Suceeded;
     String stringNote;
