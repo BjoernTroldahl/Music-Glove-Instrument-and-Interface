@@ -1273,13 +1273,28 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             doneChords4.setVisible(false);
             chordProgression2.setVisible(false);
+            firstChord.setColour(firstChord.textColourId, Colours::white);
+            secondChord.setColour(firstChord.textColourId, Colours::white);
+            thirdChord.setColour(firstChord.textColourId, Colours::white);
+            fourthChord.setColour(firstChord.textColourId, Colours::white);
+            firstChord.setText("A MINOR - ", dontSendNotification);
+            secondChord.setText("D MINOR - ", dontSendNotification);
+            thirdChord.setText("E MINOR - ", dontSendNotification);
+            fourthChord.setText("A MINOR", dontSendNotification);
 
             break;
         
         //A - D - E chord progression true test
         case 24:
-            remainingChords2.setVisible(true);
-            doneChords5.setVisible(true);
+            remainingChords.setVisible(true);
+            doneChords3.setVisible(true);
+            trueTestcurrentChord.setVisible(true);
+            trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
+            firstChord.setVisible(true);
+            secondChord.setVisible(true);
+            thirdChord.setVisible(true);
+            fourthChord.setVisible(true);
+            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
 
 
             startChords2.setVisible(false);
@@ -1347,7 +1362,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             SuceededCDescending.setVisible(false);
             break;
 
-        //Chords FAIL "page"
+        //Chords C-F-G FAIL page
         case 29:
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             failedChord.setVisible(true);
@@ -1365,8 +1380,27 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
             break; 
+        //Chords A-D-E FAIL page
+        case 30:
+            attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            failedChord.setVisible(true);
+            attemptsRemainingChords.setVisible(true);
+            backtoChords.setVisible(true);
 
-
+            if (attemptsRemaining == 0) {
+                attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+            }
+            remainingChords.setVisible(false);
+            doneChords3.setVisible(false);
+            trueTestcurrentChord.setVisible(false);
+            firstChord.setVisible(false);
+            secondChord.setVisible(false);
+            thirdChord.setVisible(false);
+            fourthChord.setVisible(false);
+            break;
+        
+        //Chords WIN page
+        //case 31:
 
         }
     }
@@ -1993,7 +2027,99 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //DBG(attemptsRemaining);
         //(Triad_Chord_notes.length());
     }
+    if (audioProcessor.pageNum == 24 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime > timeThreshold) {
 
+        stringChord = audioProcessor.playedNote;
+        timeThreshold = 300;
+
+
+        if (chordNoteCounter == 0 && stringChord != " ") {
+            Triad_Chord_notes[0] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            first_note = stringChord;
+            failedChord.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
+        }
+
+        if (chordNoteCounter == 1 && first_note != stringChord && stringChord != " ") {
+            Triad_Chord_notes[1] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            second_note = stringChord;
+        }
+
+        if (chordNoteCounter == 2 && first_note != stringChord && second_note != stringChord && stringChord != " ") {
+            Triad_Chord_notes[2] = stringChord;
+            chordNoteCounter = chordNoteCounter + 1;
+            third_note = stringChord;
+        }
+
+        if (chordNoteCounter == 3 && third_note != stringChord && stringChord != " ") {
+            chordNoteCounter = 0;
+            Triad_Chord_notes[0] = "";
+            Triad_Chord_notes[1] = "";
+            Triad_Chord_notes[2] = "";
+            nameOfChord.setButtonText("*");
+            oldNote = " ";
+        }
+
+        trueTestcurrentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
+
+        String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
+
+
+        if (chordNoteCounter == 3) {
+
+            if (FullChord.contains("A") && FullChord.contains("C") && FullChord.contains("E") && numOfCorrectChords == 0) {
+                firstChord.setColour(remainingChords.textColourId, Colours::green);
+                numOfCorrectChords = 1;
+                oldNote = stringChord;
+            }
+
+            else if (numOfCorrectChords == 0 && oldNote != stringChord) {
+                audioProcessor.pageNum = 30;
+                attemptsRemaining = attemptsRemaining - 1;
+            }
+
+            if (FullChord.contains("D") && FullChord.contains("F") && FullChord.contains("A") && numOfCorrectChords == 1) {
+                secondChord.setColour(remainingChords.textColourId, Colours::green);
+                numOfCorrectChords = 2;
+                oldNote = stringChord;
+            }
+
+            else if (numOfCorrectChords == 1 && oldNote != stringChord) {
+                audioProcessor.pageNum = 30;
+                attemptsRemaining = attemptsRemaining - 1;
+            }
+
+            if (FullChord.contains("E") && FullChord.contains("G") && FullChord.contains("B") && numOfCorrectChords == 2) {
+                thirdChord.setColour(remainingChords.textColourId, Colours::green);
+                numOfCorrectChords = 3;
+                oldNote = stringChord;
+            }
+            else if (numOfCorrectChords == 2 && oldNote != stringChord) {
+                audioProcessor.pageNum = 30;
+                attemptsRemaining = attemptsRemaining - 1;
+            }
+
+            if (FullChord.contains("A") && FullChord.contains("C") && FullChord.contains("E") && numOfCorrectChords == 3) {
+                numOfCorrectChords = 4;
+                fourthChord.setColour(fourthChord.textColourId, Colours::green);
+                CompletedChords.setVisible(true);
+                //DO STUFF
+            }
+            else if (numOfCorrectChords == 3 && oldNote != stringChord) {
+                audioProcessor.pageNum = 30;
+                attemptsRemaining = attemptsRemaining - 1;
+            }
+        }
+        //DBG(pageNum);
+        //Triad_Chord_notes.resize(3, chordnote);
+        //DBG(Triad_Chord_notes[i]);
+        //DBG(numOfCorrectChords);
+        //DBG(chordNoteCounter);
+        //DBG(attemptsRemaining);
+        //(Triad_Chord_notes.length());
+    }
     
     //DBG(arrayCounter2);
     //Same logic as with the page number, this is just for playedNote
