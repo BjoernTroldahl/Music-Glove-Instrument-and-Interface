@@ -1919,6 +1919,56 @@ void RandomNameAudioProcessorEditor::timerCallback()
         remainingNotesC.setText(stringtoTrim + remainingNotesC_str, dontSendNotification);
 
     }
+    if (audioProcessor.pageNum == 25) {
+
+        stringNoteC = audioProcessor.playedNote;
+        currentNoteCDescending.setText("Currently playing " + stringNoteC, dontSendNotification);
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 0) {
+            nextNoteArrayC = C_maj_scalenotes[6];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter == 1) {
+            nextNoteArrayC = C_maj_scalenotes[5];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "A" && arrayCounter == 2) {
+            nextNoteArrayC = C_maj_scalenotes[4];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter == 3) {
+            nextNoteArrayC = C_maj_scalenotes[3];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "F" && arrayCounter == 4) {
+            nextNoteArrayC = C_maj_scalenotes[2];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter == 5) {
+            nextNoteArrayC = C_maj_scalenotes[1];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "D" && arrayCounter == 6) {
+            nextNoteArrayC = C_maj_scalenotes[0];
+            arrayCounter = arrayCounter + 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter == 7) {
+            nextNoteArrayC = "task completed";
+            buttonNoteC.setColour(chords.buttonColourId, Colours::green);
+
+        }
+
+
+        buttonNoteCDescending.setButtonText(nextNoteArrayC);
+
+    }
 
     //CHORDS-----------------------------------------------------------
     if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime>timeThreshold) {
