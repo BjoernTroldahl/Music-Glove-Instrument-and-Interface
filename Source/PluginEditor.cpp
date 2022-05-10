@@ -760,6 +760,19 @@ void RandomNameAudioProcessorEditor::timerCallback()
         };
     }
 
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 16) {
+
+        failedStringC.setColour(failedString.textColourId, Colours::red);
+        failedStringC.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        correctnoteWasC.setColour(correctnoteWas.textColourId, Colours::red);
+        correctnoteWasC.setText("Continue to the next page", dontSendNotification);
+        remainingAttemptsC.setVisible(false);
+        tryAgainC.setButtonText("Next page");
+        tryAgainC.onClick = [this] {
+            audioProcessor.pageNum = 25;
+        };
+    }
+
     if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 21) {
 
         failedChord.setColour(failedString.textColourId, Colours::red);
@@ -1119,6 +1132,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //C major scale ascending pause screen
         case 15:
             arrayCounter2 = 0;
+            attemptsRemaining = 3;
             startScalesC.setVisible(true);
             playScalesC.setVisible(true);
 
@@ -1157,7 +1171,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesC.setVisible(false);
             FailedC.setVisible(false);
             SuceededC.setVisible(false);
-
+            remainingAttemptsC.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            
+            if (attemptsRemaining==0) {
+                remainingAttemptsC.setVisible(false);
+            }
+            
             break;
 
         //Scales finish page
@@ -1276,8 +1295,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             buttonNoteCDescending.setVisible(true);
             doneScalesCDescending.setVisible(true);
 
-
-
+            failedStringC.setVisible(false);
+            correctnoteWasC.setVisible(false);
+            remainingAttemptsC.setVisible(false);
+            tryAgainC.setVisible(false);
             remainingNotesC.setVisible(false);
             FailedC.setVisible(false);
             SuceededC.setVisible(false);
