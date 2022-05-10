@@ -1133,6 +1133,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 15:
             arrayCounter2 = 0;
             attemptsRemaining = 3;
+            stringtoTrim = "Remaining notes ";
             startScalesC.setVisible(true);
             playScalesC.setVisible(true);
 
