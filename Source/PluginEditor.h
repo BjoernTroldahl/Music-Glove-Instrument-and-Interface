@@ -44,6 +44,7 @@ public:
     TextButton chords;
     Label title4;
     Label scalesTheory;
+    Label scalesTheory2;
     TextButton tryScales;
     Label title5;
     Label chordsTheory;

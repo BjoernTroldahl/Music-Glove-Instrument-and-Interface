@@ -89,19 +89,23 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(scales);
     scales.setVisible(false);
     scales.setColour(scales.buttonColourId, Colours::rebeccapurple);
-    scales.setButtonText("Scales");
+    scales.setButtonText("Scales ");
     scales.changeWidthToFitText();
     scales.onClick = [this] {
         audioProcessor.pageNum = 4;
     };
     addAndMakeVisible(title4);
     title4.setVisible(false);
-    title4.setText("Scales", dontSendNotification);
+    title4.setText("Scales Theory", dontSendNotification);
     title4.setFont(40);
     addAndMakeVisible(scalesTheory);
     scalesTheory.setVisible(false);
-    scalesTheory.setText("Scales theory. What is a scale? Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat n", dontSendNotification);
-    scalesTheory.setFont(30);
+    scalesTheory.setText("To learn what a scale is it is first needed to know what a note is. When you press a key on a piano a sound is played, that sound is called a note similarly when bending a finger with your musicglove depending on which finger you are bending and the amount you are bending it a specific note will be played. The notes are named after the 7 first letters of the alphabet A,B,C,D,E,F,G. Depending on which part of the piano you press different variations of these notes will be played.  A scale is a group of consecutive notes.In this lesson we are going to have to confine ourselves to the two most - frequently used scales : the major and the minor scale.", dontSendNotification);
+    scalesTheory.setFont(20);
+    addAndMakeVisible(scalesTheory2);
+    scalesTheory2.setVisible(false);
+    scalesTheory2.setText("The name of the scale determines the first note in the scale. for example the C - Major scale will be as follows : C, D, E, F, G, A, B, C The scale will continue until you return to your starting note, in this example C. \n Scales can also be ascending or descending which decides in which direction the scale is played.Another scale is the A - Minor scale, in ascending the scale goes : A, B, C, D, E, F, G, Aand descending : A, G, F, E, D, C, B, A", dontSendNotification);
+    scalesTheory2.setFont(20);
     addAndMakeVisible(tryScales);
     tryScales.setVisible(false);
     tryScales.setButtonText("Try it yourself!");
@@ -934,6 +938,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 4:
             title4.setVisible(true);
             scalesTheory.setVisible(true);
+            scalesTheory2.setVisible(true);
             tryScales.setVisible(true);
 
             chords.setVisible(false);
@@ -959,6 +964,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             title4.setVisible(false);
             scalesTheory.setVisible(false);
+            scalesTheory2.setVisible(false);
             tryScales.setVisible(false);
 
 
@@ -2152,7 +2158,8 @@ void RandomNameAudioProcessorEditor::resized()
     chords.setBounds(500, 400, 100, 50);
     scales.setBounds(500, 300, 100, 50);
     title4.setBounds(500, 10, 500, 40);
-    scalesTheory.setBounds(100, 10, 500, 700);
+    scalesTheory.setBounds(100, 10, 500, 500);
+    scalesTheory2.setBounds(100, 250, 500, 500);
     tryScales.setBounds(850, 600, 100, 100);
     title5.setBounds(500, 10, 500, 40);
     chordsTheory.setBounds(100, 10, 500, 700);
