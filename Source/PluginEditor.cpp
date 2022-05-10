@@ -730,6 +730,15 @@ void RandomNameAudioProcessorEditor::configGUI() {
     CompletedChords.setText("GOOD JOB! You may continue to the next page", dontSendNotification);
     CompletedChords.setColour(CompletedChords.textColourId, Colours::lightgreen);
     CompletedChords.setFont(40);
+
+    addAndMakeVisible(backtoChords2);
+    backtoChords2.setVisible(false);
+    backtoChords2.setButtonText("Try again!");
+    backtoChords2.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    backtoChords2.changeWidthToFitText();
+    backtoChords2.onClick = [this] {
+        audioProcessor.pageNum = 24;
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -889,8 +898,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemainingChords.setVisible(false);
             failedChord.setVisible(false);
             backtoChords.setVisible(false);
+            backtoChords2.setVisible(false);
             CompletedChords.setVisible(false);
             scalesTheory2.setVisible(false);
+            backtoChords2.setVisible(false);
 
             break;
 
@@ -1303,9 +1314,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(true);
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
 
-
+            failedChord.setVisible(false);
+            attemptsRemainingChords.setVisible(false);
             startChords2.setVisible(false);
             playChords2.setVisible(false);
+            backtoChords2.setVisible(false);
 
 
             break;
@@ -1392,7 +1405,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             failedChord.setVisible(true);
             attemptsRemainingChords.setVisible(true);
-            backtoChords.setVisible(true);
+            backtoChords2.setVisible(true);
 
             if (attemptsRemaining == 0) {
                 attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
@@ -1407,8 +1420,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
         
         //Chords WIN page
-        //case 31:
+        case 31:
 
+            break;
         }
     }
     //Whenever a switch happens pageNum_OLD is overwrited to the value of pageNum.
@@ -2248,6 +2262,7 @@ void RandomNameAudioProcessorEditor::resized()
     failedChord.setBounds(350, 200, 500, 40);
     attemptsRemainingChords.setBounds(350, 300, 500, 40);
     backtoChords.setBounds(450, 550, 100, 100);
+    backtoChords2.setBounds(450, 550, 100, 100);
     CompletedChords.setBounds(100, 400, 800, 100);
 }
 
