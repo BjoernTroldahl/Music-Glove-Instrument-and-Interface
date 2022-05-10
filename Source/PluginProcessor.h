@@ -247,7 +247,7 @@ private:
 
                     
 
-                    if (indexNum < 370 && indexNum > 340) {
+                    if (indexNum < 340 && indexNum > 320) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
@@ -255,24 +255,24 @@ private:
                         
                     }
 
-                    else if (indexNum < 330) {
+                    else if (indexNum < 320) {
                         updateNoteB = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 380 && middleNum >= 370) {
+                    else if (middleNum <= 380 && middleNum >= 350) {
                         updateNoteC = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 360) {
+                    else if (middleNum <= 350) {
                         updateNoteD = true;
                         start = clock();
                     }
 
                    
 
-                    else if (ringNum <= 430 && ringNum >= 380) {
+                    else if (ringNum <= 410 && ringNum >= 370) {
                         updateNoteE = true;
                         start = clock();
                     }
@@ -282,7 +282,7 @@ private:
                         start = clock();
                     }
 
-                    else if (pinkyNum <= 450) {
+                    else if (pinkyNum <= 410) {
                         updateNoteG = true;
                         start = clock();
                     }
