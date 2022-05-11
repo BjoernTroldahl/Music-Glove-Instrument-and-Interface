@@ -485,7 +485,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     };
     addAndMakeVisible(chordProgression);
     chordProgression.setVisible(false);
-    chordProgression.setText("A typical chord progression is: c major , f major, g major                                                                       Try playing these three chords in order:                             C-major: C + E + G                                  F-major: F + A + C                                 G-major: G + B + D", dontSendNotification);
+    chordProgression.setText("A typical chord progression is: C major , F major, G major                                                                       Try playing these four chords in order on the next page:                             C-major: C + E + G                                  F-major: F + A + C                                 G-major: G + B + D                                 C-major: C + E + G", dontSendNotification);
     chordProgression.setFont(40);
 
     addAndMakeVisible(doneChords2);
@@ -494,7 +494,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     doneChords2.setColour(doneScales1.buttonColourId, Colours::deepskyblue);
     doneChords2.changeWidthToFitText();
     doneChords2.onClick = [this] {
-        audioProcessor.pageNum = 20;
+        audioProcessor.pageNum = 21;
     };
 
     addAndMakeVisible(playChords);
@@ -527,7 +527,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(chordProgression2);
     chordProgression2.setVisible(false);
-    chordProgression2.setText("Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these three chords in order:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B", dontSendNotification);
+    chordProgression2.setText("Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these four chords in order on the next page:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B                               A-minor: A + C + E", dontSendNotification);
     chordProgression2.setFont(40);
 
     addAndMakeVisible(doneChords4);
@@ -1295,6 +1295,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             chordProgression.setVisible(true);
             doneChords2.setVisible(true);
+            chordNoteCounter = 0;
+            numOfCorrectChords = 0;
+            Triad_Chord_notes[0] = "";
+            Triad_Chord_notes[1] = "";
+            Triad_Chord_notes[2] = "";
+            chordLives = 3;
+            attemptsRemaining = 5;
 
             practiceChords.setVisible(false);
             currentChord.setVisible(false);
@@ -1305,14 +1312,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C - F - G chord progression pause page
         case 20:
-            chordNoteCounter = 0;
-            numOfCorrectChords = 0;
-            Triad_Chord_notes[0] = "";
-            Triad_Chord_notes[1] = "";
-            Triad_Chord_notes[2] = "";
-            chordLives = 3;
-            attemptsRemaining = 5;
-
+            
             playChords.setVisible(true);
             startChords.setVisible(true);
 
@@ -1340,6 +1340,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             playChords.setVisible(false);
             startChords.setVisible(false);
             backtoChords.setVisible(false);
+            chordProgression.setVisible(false);
+            doneChords2.setVisible(false);
             break;
 
 
