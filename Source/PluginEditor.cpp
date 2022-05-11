@@ -423,14 +423,14 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(failedStringC);
     auto failedC = String(wrongNoteC);
     failedStringC.setVisible(false);
-    failedStringC.setText("Try again! you played " + failedC, dontSendNotification);
+    failedStringC.setText("You played a wrong note try again!", dontSendNotification);
     failedStringC.setFont(40);
 
     //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
     addAndMakeVisible(correctnoteWasC);
     auto failed2C = String(correctNoteC);
     correctnoteWasC.setVisible(false);
-    correctnoteWasC.setText("The correct note was " + failed2C, dontSendNotification);
+    correctnoteWasC.setText("Remember sequence C-D-E-F-G-A-B-C", dontSendNotification);
     correctnoteWasC.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
@@ -973,6 +973,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             newGame.setVisible(false);
             finishScale.setVisible(false);
             scalesCompleded.setVisible(false);
+            FinishedChordsLesson.setVisible(false);
 
             break;
         
@@ -1354,9 +1355,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setColour(firstChord.textColourId, Colours::white);
             thirdChord.setColour(firstChord.textColourId, Colours::white);
             fourthChord.setColour(firstChord.textColourId, Colours::white);
-            firstChord.setText("A MINOR - ", dontSendNotification);
-            secondChord.setText("D MINOR - ", dontSendNotification);
-            thirdChord.setText("E MINOR - ", dontSendNotification);
+            firstChord.setText("A MINOR -", dontSendNotification);
+            secondChord.setText("D MINOR -", dontSendNotification);
+            thirdChord.setText("E MINOR -", dontSendNotification);
             fourthChord.setText("A MINOR", dontSendNotification);
 
             break;
@@ -1387,6 +1388,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             arrayCounter = 0;
             remainingNotesC_str = "8";
+            attemptsRemaining = 3;
             practiceScaleCDescending.setVisible(true);
             currentNoteCDescending.setVisible(true);
             nextNoteCDescending.setVisible(true);
