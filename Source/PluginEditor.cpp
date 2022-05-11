@@ -1343,6 +1343,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             chordLives = 3;
             attemptsRemaining = 5;
 
+            resetChord.setVisible(false);
             trueTestcurrentChord.setVisible(false);
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
@@ -1385,6 +1386,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(true);
             thirdChord.setVisible(true);
             fourthChord.setVisible(true);
+            resetChord.setVisible(true);
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
 
             failedChord.setVisible(false);
@@ -1481,6 +1483,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
+            resetChord.setVisible(false);
             break; 
         //Chords A-D-E FAIL page
         case 30:
@@ -1500,6 +1503,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
             goToWinChords.setVisible(false);
+            resetChord.setVisible(false);
             break;
         
         //Chords WIN page
@@ -1507,6 +1511,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             FinishedChordsLesson.setVisible(true);
             finishScale.setVisible(true);
 
+            resetChord.setVisible(false);
             backtoChords2.setVisible(false);
             attemptsRemainingChords.setVisible(false);
             failedChord.setVisible(false);
