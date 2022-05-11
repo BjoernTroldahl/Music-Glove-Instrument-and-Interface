@@ -214,7 +214,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(correctnoteWas);
     //auto failed2 = String(correctNote);
     correctnoteWas.setVisible(false);
-    correctnoteWas.setText("Remember scale steps: A-B-C-D-E-F-G-A", dontSendNotification);
+    correctnoteWas.setText("Remember sequence: A-B-C-D-E-F-G-A", dontSendNotification);
     correctnoteWas.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
