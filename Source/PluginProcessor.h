@@ -247,7 +247,7 @@ private:
 
                     
 
-                    if (indexNum < 360 && indexNum > 320) {
+                    if (indexNum < 330 && indexNum > 300) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
@@ -255,19 +255,19 @@ private:
                         
                     }
 
-                    else if (indexNum < 320) {
+                    else if (indexNum < 300) {
                         updateNoteB = true;
                         start = clock();
                         //updateNoteA = false;
                     }
 
-                    else if (middleNum <= 380 && middleNum >= 350) {
+                    else if (middleNum <= 360 && middleNum >= 330) {
                         updateNoteC = true;
                         start = clock();
                         //updateNoteD = false;
                     }
 
-                    else if (middleNum <= 350) {
+                    else if (middleNum <= 330) {
                         updateNoteD = true;
                         start = clock();
                         //updateNoteC = false;

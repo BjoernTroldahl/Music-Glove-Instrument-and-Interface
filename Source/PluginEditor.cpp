@@ -1983,7 +1983,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "C" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 0 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
@@ -1993,7 +1993,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "B" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 1 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
@@ -2004,7 +2004,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "A" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 2 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
@@ -2014,7 +2014,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "G" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 3 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
@@ -2024,7 +2024,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "F" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 4 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
@@ -2034,7 +2034,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "E" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 5 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
@@ -2044,7 +2044,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = audioProcessor.playedNote;
         }
         else if (audioProcessor.playedNote != "D" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 6 && audioProcessor.playedNote != oldNote) {
-            audioProcessor.pageNum = 17;
+            audioProcessor.pageNum = 28;
             attemptsRemaining = attemptsRemaining - 1;
         }
 
