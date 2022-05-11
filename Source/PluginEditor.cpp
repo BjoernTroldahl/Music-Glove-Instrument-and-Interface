@@ -100,7 +100,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     title4.setFont(40);
     addAndMakeVisible(scalesTheory);
     scalesTheory.setVisible(false);
-    scalesTheory.setText("To learn what a scale is it is first needed to know what a note is. When you press a key on a piano a sound is played, that sound is called a note similarly when bending a finger with your musicglove depending on which finger you are bending and the amount you are bending it a specific note will be played. The notes are named after the 7 first letters of the alphabet A,B,C,D,E,F,G. A scale is a group of consecutive notes. In this lesson we are going to have to confine ourselves to the two most - frequently used scales : the major and the minor scale.", dontSendNotification);
+    scalesTheory.setText("To learn what a scale is, it is first needed to know what a note is. When you press a key on a piano a sound is played, that sound is called a note. Similarly when bending a finger with your musicglove - depending on which finger you are bending and the amount you are bending it - a specific note will be played. The notes are named after the 7 first letters of the alphabet A,B,C,D,E,F,G. A scale is a group of consecutive notes. In this lesson we are going to have to confine ourselves to the two most - frequently used scales : the major and the minor scale.", dontSendNotification);
     scalesTheory.setFont(20);
     addAndMakeVisible(scalesTheory2);
     scalesTheory2.setVisible(false);
