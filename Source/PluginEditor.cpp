@@ -1056,11 +1056,20 @@ void RandomNameAudioProcessorEditor::timerCallback()
         //Chords practical intro screen
         case 6:
         
-            currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
+            currentChord.setText("Currently playing: - - ", dontSendNotification);
             practiceChords.setVisible(true);
             currentChord.setVisible(true);
             doneChords1.setVisible(true);
+            nameOfChord.setButtonText("*");
             nameOfChord.setVisible(true);
+            firstChord.setColour(firstChord.textColourId, Colours::white);
+            secondChord.setColour(firstChord.textColourId, Colours::white);
+            thirdChord.setColour(firstChord.textColourId, Colours::white);
+            fourthChord.setColour(firstChord.textColourId, Colours::white);
+            firstChord.setText("C MAJOR -", dontSendNotification);
+            secondChord.setText("C MAJOR -", dontSendNotification);
+            thirdChord.setText("C MAJOR -", dontSendNotification);
+            fourthChord.setText("C MAJOR", dontSendNotification);
 
             backtoChordsIntro.setVisible(false);
             title5.setVisible(false);
@@ -1532,6 +1541,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
             resetChord.setVisible(false);
+            backtoChordsIntro.setVisible(false);
             break; 
         //Chords A-D-E FAIL page
         case 30:
@@ -1552,6 +1562,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(false);
             goToWinChords.setVisible(false);
             resetChord.setVisible(false);
+            backtoChordsIntro.setVisible(false);
             break;
         
         //Chords WIN page
