@@ -1367,6 +1367,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C major scale descending pause screen
         case 26:
+            arrayCounter2 = 0;
             playScalesCDescending.setVisible(true);
             startScalesCDescending.setVisible(true);
 
@@ -1971,6 +1972,98 @@ void RandomNameAudioProcessorEditor::timerCallback()
         buttonNoteCDescending.setButtonText(nextNoteArrayC);
 
     }
+
+    if (audioProcessor.pageNum == 27 && audioProcessor.playedNote != " ") {
+
+        timeThreshold = 1000;
+
+        if (audioProcessor.playedNote == "C" && arrayCounter2 == 0) {
+            remainingNotesC_str = "7";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "C" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 0 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "B" && arrayCounter2 == 1) {
+            remainingNotesC_str = "6";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "B" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 1 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+
+        if (audioProcessor.playedNote == "A" && arrayCounter2 == 2) {
+            remainingNotesC_str = "5";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "A" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 2 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "G" && arrayCounter2 == 3) {
+            remainingNotesC_str = "4";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "G" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 3 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "F" && arrayCounter2 == 4) {
+            remainingNotesC_str = "3";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "F" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 4 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "E" && arrayCounter2 == 5) {
+            remainingNotesC_str = "2";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "E" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 5 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "D" && arrayCounter2 == 6) {
+            remainingNotesC_str = "1";
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "D" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 6 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        if (audioProcessor.playedNote == "C" && arrayCounter2 == 7) {
+            stringtoTrim.clear();
+            remainingNotesC_str = "WELL DONE!";
+            remainingNotesCDescending.setBounds(440, 300, 500, 40);
+            remainingNotesCDescending.setColour(remainingNotes.textColourId, Colours::green);
+            arrayCounter2 = arrayCounter2 + 1;
+            oldNote = audioProcessor.playedNote;
+        }
+        else if (audioProcessor.playedNote != "C" && audioProcessor.elapsedTime > timeThreshold && arrayCounter2 == 7 && audioProcessor.playedNote != oldNote) {
+            audioProcessor.pageNum = 17;
+            attemptsRemaining = attemptsRemaining - 1;
+        }
+
+        remainingNotesCDescending.setText(stringtoTrim + remainingNotesC_str, dontSendNotification);
+    }
+
 
     //CHORDS-----------------------------------------------------------
     if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime>timeThreshold) {

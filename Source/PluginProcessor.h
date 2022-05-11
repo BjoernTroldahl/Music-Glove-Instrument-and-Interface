@@ -287,7 +287,7 @@ private:
                         //updateNoteE = false;
                     }
 
-                    else if (pinkyNum <= 430) {
+                    else if (pinkyNum <= 410) {
                         updateNoteG = true;
                         start = clock();
                     }
