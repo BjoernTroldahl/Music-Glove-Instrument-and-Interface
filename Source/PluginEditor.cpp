@@ -647,14 +647,14 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(failedStringCDescending);
     auto failedCDescending = String(wrongNoteCDescending);
     failedStringCDescending.setVisible(false);
-    failedStringCDescending.setText("Try again! you played " + failedCDescending, dontSendNotification);
+    failedStringCDescending.setText("You played a wrong note, try again!", dontSendNotification);
     failedStringCDescending.setFont(40);
 
     //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
     addAndMakeVisible(correctnoteWasCDescending);
     auto failed2CDescending = String(correctNoteCDescending);
     correctnoteWasCDescending.setVisible(false);
-    correctnoteWasCDescending.setText("The correct note was " + failed2CDescending, dontSendNotification);
+    correctnoteWasCDescending.setText("Remember sequence C-B-A-G-F-E-D-C", dontSendNotification);
     correctnoteWasCDescending.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
@@ -1399,6 +1399,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 28:
             failedStringCDescending.setVisible(true);
             correctnoteWasCDescending.setVisible(true);
+            remainingAttemptsCDescending.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             remainingAttemptsCDescending.setVisible(true);
             tryAgainCDescending.setVisible(true);
 
