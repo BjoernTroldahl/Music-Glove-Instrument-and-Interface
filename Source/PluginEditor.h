@@ -138,6 +138,7 @@ public:
     Label correctnoteWasCDescending;
     String correctNoteCDescending = "F";
     TextButton tryAgainCDescending;
+    TextButton backtoChordsIntro;
     
     //chords
     String first_note;

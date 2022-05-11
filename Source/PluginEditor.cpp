@@ -767,6 +767,17 @@ void RandomNameAudioProcessorEditor::configGUI() {
         Triad_Chord_notes[2] = "";
         trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
     };
+
+    addAndMakeVisible(backtoChordsIntro);
+    backtoChordsIntro.setVisible(false);
+    backtoChordsIntro.setButtonText("Back to intro");
+    backtoChordsIntro.setColour(backtoChordsIntro.buttonColourId, Colours::deepskyblue);
+    backtoChordsIntro.changeWidthToFitText();
+    backtoChordsIntro.onClick = [this] {
+
+        audioProcessor.pageNum = 6;
+
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -1051,10 +1062,22 @@ void RandomNameAudioProcessorEditor::timerCallback()
             doneChords1.setVisible(true);
             nameOfChord.setVisible(true);
 
-
+            backtoChordsIntro.setVisible(false);
             title5.setVisible(false);
             chordsTheory.setVisible(false);
             tryChords.setVisible(false);
+            remainingChords.setVisible(false);
+            doneChords3.setVisible(false);
+            trueTestcurrentChord.setVisible(false);
+            //trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
+            firstChord.setVisible(false);
+            secondChord.setVisible(false);
+            thirdChord.setVisible(false);
+            fourthChord.setVisible(false);
+            //attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            resetChord.setVisible(false);
+            backtoChordsIntro.setVisible(false);
+            goToWinChords.setVisible(false);
 
             break;
 
@@ -1333,6 +1356,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(true);
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             resetChord.setVisible(true);
+            backtoChordsIntro.setVisible(true);
 
             CompletedChords.setVisible(false);
             failedChord.setVisible(false);
@@ -1365,6 +1389,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setText("E MINOR -", dontSendNotification);
             fourthChord.setText("A MINOR", dontSendNotification);
 
+            backtoChordsIntro.setVisible(false);
             resetChord.setVisible(false);
             trueTestcurrentChord.setVisible(false);
             remainingChords.setVisible(false);
@@ -1403,6 +1428,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(true);
             resetChord.setVisible(true);
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            backtoChordsIntro.setVisible(true);
 
             failedChord.setVisible(false);
             attemptsRemainingChords.setVisible(false);
@@ -1546,6 +1572,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
             CompletedChords.setVisible(false);
+            backtoChordsIntro.setVisible(false);
             break;
         }
     }
@@ -2533,5 +2560,6 @@ void RandomNameAudioProcessorEditor::resized()
     goToWinChords.setBounds(850, 600, 100, 100);
     FinishedChordsLesson.setBounds(150, 10, 900, 200);
     resetChord.setBounds(450, 550, 100, 100);
+    backtoChordsIntro.setBounds(100, 600, 100, 100);
 }
 
