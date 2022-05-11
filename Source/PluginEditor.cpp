@@ -184,12 +184,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
     addAndMakeVisible(Failed);
     Failed.setVisible(false);
-    Failed.setButtonText("Failed");
+    Failed.setButtonText("Back to intro");
     Failed.setColour(Failed.buttonColourId, Colours::deepskyblue);
     Failed.changeWidthToFitText();
     Failed.onClick = [this] {
 
-        audioProcessor.pageNum = 9;
+        audioProcessor.pageNum = 5;
 
     };
 
@@ -290,12 +290,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
     addAndMakeVisible(FailedDescending);
     FailedDescending.setVisible(false);
-    FailedDescending.setButtonText("Failed");
+    FailedDescending.setButtonText("Back to intro");
     FailedDescending.setColour(FailedDescending.buttonColourId, Colours::deepskyblue);
     FailedDescending.changeWidthToFitText();
     FailedDescending.onClick = [this] {
 
-        audioProcessor.pageNum = 13;
+        audioProcessor.pageNum = 10;
 
     };
 
@@ -1034,6 +1034,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             scalesTheory.setVisible(false);
             scalesTheory2.setVisible(false);
             tryScales.setVisible(false);
+            remainingNotes.setVisible(false);
+            Failed.setVisible(false);
+            Suceeded.setVisible(false);
 
 
 
@@ -1060,9 +1063,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             arrayCounter2 = 0;
             attemptsRemaining = 3;
             remainingNotes.setColour(remainingNotes.textColourId, Colours::white);
-            //remainingNotesA = "8";
-            //stringtoTrim = "Remaining Notes ";
-            //remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
+            remainingNotesA = "8";
+            stringtoTrim = "Remaining Notes ";
+            remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
             startScales.setVisible(true);
             playScales.setVisible(true);
 
@@ -1132,6 +1135,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             correctnoteWas.setVisible(false);
             remainingAttempts.setVisible(false);
             tryAgain.setVisible(false);
+            remainingNotesDescending.setVisible(false);
+            FailedDescending.setVisible(false);
+            SuceededDescending.setVisible(false);
             break;
 
         //A minor scale descending pause screen

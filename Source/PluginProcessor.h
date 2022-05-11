@@ -257,7 +257,7 @@ private:
 
                     
 
-                    if (indexNum < 350 && indexNum > 310) {
+                    if (indexNum < 340 && indexNum > 310) {
                         updateNoteA = true;
                         //DBG("updated");
                         start = clock();
