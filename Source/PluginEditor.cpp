@@ -536,7 +536,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     doneChords4.setColour(doneChords4.buttonColourId, Colours::deepskyblue);
     doneChords4.changeWidthToFitText();
     doneChords4.onClick = [this] {
-        audioProcessor.pageNum = 23;
+        audioProcessor.pageNum = 24;
     };
 
     addAndMakeVisible(playChords2);
@@ -758,7 +758,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(resetChord);
     resetChord.setVisible(false);
     resetChord.setButtonText("Reset chord");
-    resetChord.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    resetChord.setColour(tryAgain.buttonColourId, Colours::red);
     resetChord.changeWidthToFitText();
     resetChord.onClick = [this] {
         chordNoteCounter = 0;
@@ -1356,6 +1356,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
             Triad_Chord_notes[2] = "";
             chordLives = 3;
             attemptsRemaining = 5;
+            firstChord.setColour(firstChord.textColourId, Colours::white);
+            secondChord.setColour(firstChord.textColourId, Colours::white);
+            thirdChord.setColour(firstChord.textColourId, Colours::white);
+            fourthChord.setColour(firstChord.textColourId, Colours::white);
+            firstChord.setText("A MINOR -", dontSendNotification);
+            secondChord.setText("D MINOR -", dontSendNotification);
+            thirdChord.setText("E MINOR -", dontSendNotification);
+            fourthChord.setText("A MINOR", dontSendNotification);
 
             resetChord.setVisible(false);
             trueTestcurrentChord.setVisible(false);
@@ -1379,14 +1387,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             doneChords4.setVisible(false);
             chordProgression2.setVisible(false);
-            firstChord.setColour(firstChord.textColourId, Colours::white);
-            secondChord.setColour(firstChord.textColourId, Colours::white);
-            thirdChord.setColour(firstChord.textColourId, Colours::white);
-            fourthChord.setColour(firstChord.textColourId, Colours::white);
-            firstChord.setText("A MINOR -", dontSendNotification);
-            secondChord.setText("D MINOR -", dontSendNotification);
-            thirdChord.setText("E MINOR -", dontSendNotification);
-            fourthChord.setText("A MINOR", dontSendNotification);
+            
 
             break;
         
@@ -1408,6 +1409,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             startChords2.setVisible(false);
             playChords2.setVisible(false);
             backtoChords2.setVisible(false);
+            doneChords4.setVisible(false);
+            chordProgression2.setVisible(false);
 
 
             break;
