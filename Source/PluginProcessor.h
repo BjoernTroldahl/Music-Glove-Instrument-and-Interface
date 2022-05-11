@@ -233,6 +233,16 @@ private:
                         fUI->setParamValue("G", 1);
                     }
 
+                    if (pageNum == 0 || pageNum == 1 || pageNum ==2 ) {
+                        fUI->setParamValue("A", 0);
+                        fUI->setParamValue("B", 0);
+                        fUI->setParamValue("C", 0);
+                        fUI->setParamValue("D", 0);
+                        fUI->setParamValue("E", 0);
+                        fUI->setParamValue("F", 0);
+                        fUI->setParamValue("G", 0);
+                    }
+
                     //If you are on the chord pages, you get more sustain and have more time to select your notes
                     if (pageNum == 3 || pageNum == 6 || pageNum == 19 || pageNum == 20 || pageNum == 21 || pageNum == 22 || pageNum == 23 || pageNum == 24) {
                         fUI->setParamValue("rel", 6);

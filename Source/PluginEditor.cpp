@@ -748,6 +748,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
     goToWinChords.onClick = [this] {
         audioProcessor.pageNum = 31;
     };
+
+    addAndMakeVisible(FinishedChordsLesson);
+    FinishedChordsLesson.setVisible(false);
+    FinishedChordsLesson.setText("Congratulations you finished the CHORDS lesson", dontSendNotification);
+    FinishedChordsLesson.setColour(FinishedChordsLesson.textColourId, Colours::white);
+    FinishedChordsLesson.setFont(40);
+    
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -938,7 +945,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             scalesTheory2.setVisible(false);
             backtoChords2.setVisible(false);
             goToWinChords.setVisible(false);
-
+            FinishedChordsLesson.setVisible(false);
             break;
 
         //Introduction video
@@ -1174,6 +1181,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             buttonNoteC.setVisible(true);
             doneScalesC.setVisible(true);
 
+            arrayCounter = 0;
+            arrayCounter2 = 0;
+            attemptsRemaining = 3;
+            stringtoTrim = "Remaining notes ";
+            remainingNotesA = "8";
             failedStringDescending.setVisible(false);
             correctnoteWasDescending.setVisible(false);
             tryAgainDescending.setVisible(false);
@@ -1205,7 +1217,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesC.setVisible(true);
             FailedC.setVisible(true);
             SuceededC.setVisible(true);
-
+            nextNoteArrayC = "c";
 
             startScalesC.setVisible(false);
             playScalesC.setVisible(false);
@@ -1238,7 +1250,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 18:
             finishScale.setVisible(true);
             scalesCompleded.setVisible(true);
-
+            timeThreshold = 300;
 
 
             remainingNotesC.setVisible(false);
@@ -1374,6 +1386,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 25:
 
             arrayCounter = 0;
+            remainingNotesC_str = "8";
             practiceScaleCDescending.setVisible(true);
             currentNoteCDescending.setVisible(true);
             nextNoteCDescending.setVisible(true);
@@ -1401,6 +1414,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nextNoteCDescending.setVisible(false);
             buttonNoteCDescending.setVisible(false);
             doneScalesCDescending.setVisible(false);
+            stringtoTrim = "Remaining notes ";
 
             break;
 
@@ -1475,6 +1489,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         //Chords WIN page
         case 31:
+            FinishedChordsLesson.setVisible(true);
+            finishScale.setVisible(true);
+
             backtoChords2.setVisible(false);
             attemptsRemainingChords.setVisible(false);
             failedChord.setVisible(false);
@@ -1486,6 +1503,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
+            CompletedChords.setVisible(false);
             break;
         }
     }
@@ -2471,5 +2489,6 @@ void RandomNameAudioProcessorEditor::resized()
     backtoChords2.setBounds(450, 550, 100, 100);
     CompletedChords.setBounds(100, 400, 800, 100);
     goToWinChords.setBounds(850, 600, 100, 100);
+    FinishedChordsLesson.setBounds(150, 10, 900, 200);
 }
 
