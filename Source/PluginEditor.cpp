@@ -755,6 +755,18 @@ void RandomNameAudioProcessorEditor::configGUI() {
     FinishedChordsLesson.setColour(FinishedChordsLesson.textColourId, Colours::white);
     FinishedChordsLesson.setFont(40);
     
+    addAndMakeVisible(resetChord);
+    resetChord.setVisible(false);
+    resetChord.setButtonText("Reset chord");
+    resetChord.setColour(tryAgain.buttonColourId, Colours::deepskyblue);
+    resetChord.changeWidthToFitText();
+    resetChord.onClick = [this] {
+        chordNoteCounter = 0;
+        Triad_Chord_notes[0] = "";
+        Triad_Chord_notes[1] = "";
+        Triad_Chord_notes[2] = "";
+        trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -1308,6 +1320,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setVisible(true);
             fourthChord.setVisible(true);
             attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
+            resetChord.setVisible(true);
 
             CompletedChords.setVisible(false);
             failedChord.setVisible(false);
@@ -2492,5 +2505,6 @@ void RandomNameAudioProcessorEditor::resized()
     CompletedChords.setBounds(100, 400, 800, 100);
     goToWinChords.setBounds(850, 600, 100, 100);
     FinishedChordsLesson.setBounds(150, 10, 900, 200);
+    resetChord.setBounds(450, 550, 100, 100);
 }
 

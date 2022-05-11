@@ -114,6 +114,7 @@ public:
     float passedTime=0;
     bool wait = false;
     string chordnote;
+    TextButton resetChord;
 
     clock_t start, end;
     int timeThreshold;
