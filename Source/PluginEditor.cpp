@@ -795,6 +795,19 @@ void RandomNameAudioProcessorEditor::timerCallback()
         };
     }
 
+    if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 27) {
+
+        failedStringCDescending.setColour(failedString.textColourId, Colours::red);
+        failedStringCDescending.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
+        correctnoteWasCDescending.setColour(correctnoteWas.textColourId, Colours::red);
+        correctnoteWasCDescending.setText("Continue to the next page", dontSendNotification);
+        remainingAttemptsCDescending.setVisible(false);
+        tryAgainCDescending.setButtonText("Next page");
+        tryAgainCDescending.onClick = [this] {
+            audioProcessor.pageNum = 18;
+        };
+    }
+
     if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD == 21) {
 
         failedChord.setColour(failedString.textColourId, Colours::red);
@@ -1234,6 +1247,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesCDescending.setVisible(false);
             FailedCDescending.setVisible(false);
             SuceededCDescending.setVisible(false);
+            failedStringCDescending.setVisible(false);
+            correctnoteWasCDescending.setVisible(false);
+            remainingAttemptsCDescending.setVisible(false);
+            tryAgainCDescending.setVisible(false);
             break;
 
         //C - F - G chord progression intro
@@ -1403,7 +1420,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingAttemptsCDescending.setVisible(true);
             tryAgainCDescending.setVisible(true);
 
-
+            if (attemptsRemaining == 0) {
+                remainingAttemptsCDescending.setVisible(false);
+            }
             remainingNotesCDescending.setVisible(false);
             FailedCDescending.setVisible(false);
             SuceededCDescending.setVisible(false);
