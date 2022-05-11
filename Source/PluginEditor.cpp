@@ -806,6 +806,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     ChordTheoryFail.setText("Remember that a chord contains a ROOT (letter in chord) THIRD (two notes up from root) and FIFTH (two notes up from third)", dontSendNotification);
     ChordTheoryFail.setColour(ChordTheoryFail.textColourId, Colours::white);
     ChordTheoryFail.setFont(30);
+
     
 }
 
