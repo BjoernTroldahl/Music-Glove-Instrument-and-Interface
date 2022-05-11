@@ -397,12 +397,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
     addAndMakeVisible(FailedC);
     FailedC.setVisible(false);
-    FailedC.setButtonText("Failed");
+    FailedC.setButtonText("Back to intro");
     FailedC.setColour(FailedC.buttonColourId, Colours::deepskyblue);
     FailedC.changeWidthToFitText();
     FailedC.onClick = [this] {
 
-        audioProcessor.pageNum = 17;
+        audioProcessor.pageNum = 14;
 
     };
 
@@ -624,12 +624,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
     //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
     addAndMakeVisible(FailedCDescending);
     FailedCDescending.setVisible(false);
-    FailedCDescending.setButtonText("Failed");
+    FailedCDescending.setButtonText("Back to intro");
     FailedCDescending.setColour(FailedCDescending.buttonColourId, Colours::deepskyblue);
     FailedCDescending.changeWidthToFitText();
     FailedCDescending.onClick = [this] {
 
-        audioProcessor.pageNum = 28;
+        audioProcessor.pageNum = 25;
 
     };
 
@@ -1197,6 +1197,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             practiceScaleC.setVisible(true);
             currentNoteC.setVisible(true);
             nextNoteC.setVisible(true);
+            buttonNoteC.setColour(buttonNoteC.buttonColourId, Colours::deepskyblue);
             buttonNoteC.setVisible(true);
             doneScalesC.setVisible(true);
 
@@ -1211,6 +1212,9 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingNotesDescending.setVisible(false);
             FailedDescending.setVisible(false);
             SuceededDescending.setVisible(false);
+            remainingNotesC.setVisible(false);
+            FailedC.setVisible(false);
+            SuceededC.setVisible(false);
 
             break;
 
@@ -1219,6 +1223,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             arrayCounter2 = 0;
             attemptsRemaining = 3;
             stringtoTrim = "Remaining notes ";
+            remainingNotesC_str = "8";
             startScalesC.setVisible(true);
             playScalesC.setVisible(true);
 
@@ -1233,6 +1238,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         
         //C major scale ascending true test
         case 16:
+            remainingNotesC.setText(stringtoTrim + remainingNotesC_str, dontSendNotification);
             remainingNotesC.setVisible(true);
             FailedC.setVisible(true);
             SuceededC.setVisible(true);
@@ -1406,16 +1412,20 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C major scale descending intro
         case 25:
-
+            nextNoteArrayC = "c";
             arrayCounter = 0;
             remainingNotesC_str = "8";
             attemptsRemaining = 3;
             practiceScaleCDescending.setVisible(true);
             currentNoteCDescending.setVisible(true);
             nextNoteCDescending.setVisible(true);
+            buttonNoteCDescending.setColour(chords.buttonColourId, Colours::deepskyblue);
             buttonNoteCDescending.setVisible(true);
             doneScalesCDescending.setVisible(true);
 
+            remainingNotesCDescending.setVisible(false);
+            FailedCDescending.setVisible(false);
+            SuceededCDescending.setVisible(false);
             failedStringC.setVisible(false);
             correctnoteWasC.setVisible(false);
             remainingAttemptsC.setVisible(false);
@@ -1443,6 +1453,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
         //C major scale descending true test
         case 27:
+            remainingNotesCDescending.setText(stringtoTrim+remainingNotesC_str, dontSendNotification);
             remainingNotesCDescending.setVisible(true);
             FailedCDescending.setVisible(true);
             SuceededCDescending.setVisible(true);
