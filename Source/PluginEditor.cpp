@@ -1309,6 +1309,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
         case 22:
             doneChords4.setVisible(true);
             chordProgression2.setVisible(true);
+            chordNoteCounter = 0;
+            numOfCorrectChords = 0;
+            Triad_Chord_notes[0] = "";
+            Triad_Chord_notes[1] = "";
+            Triad_Chord_notes[2] = "";
+            chordLives = 3;
+            attemptsRemaining = 5;
 
             trueTestcurrentChord.setVisible(false);
             remainingChords.setVisible(false);
