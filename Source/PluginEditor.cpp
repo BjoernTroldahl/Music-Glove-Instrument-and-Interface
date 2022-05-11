@@ -800,6 +800,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 22;
 
     };
+
+    addAndMakeVisible(ChordTheoryFail);
+    ChordTheoryFail.setVisible(false);
+    ChordTheoryFail.setText("Remember that a chord contains a ROOT (letter in chord) THIRD (two notes up from root) and FIFTH (two notes up from third)", dontSendNotification);
+    ChordTheoryFail.setColour(ChordTheoryFail.textColourId, Colours::white);
+    ChordTheoryFail.setFont(30);
+    
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -1420,6 +1427,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             backtoChords.setVisible(false);
             chordProgression.setVisible(false);
             doneChords2.setVisible(false);
+            ChordTheoryFail.setVisible(false);
             break;
 
 
@@ -1496,7 +1504,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             backtoChords2.setVisible(false);
             doneChords4.setVisible(false);
             chordProgression2.setVisible(false);
-
+            ChordTheoryFail.setVisible(false);
 
             break;
 
@@ -1564,6 +1572,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingAttemptsCDescending.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             remainingAttemptsCDescending.setVisible(true);
             tryAgainCDescending.setVisible(true);
+            
 
             if (attemptsRemaining == 0) {
                 remainingAttemptsCDescending.setVisible(false);
@@ -1579,6 +1588,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             failedChord.setVisible(true);
             attemptsRemainingChords.setVisible(true);
             backtoChords.setVisible(true);
+            ChordTheoryFail.setVisible(true);
 
             if (attemptsRemaining == 0) {
                 attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
@@ -1599,6 +1609,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             failedChord.setVisible(true);
             attemptsRemainingChords.setVisible(true);
             backtoChords2.setVisible(true);
+            ChordTheoryFail.setVisible(true);
 
             if (attemptsRemaining == 0) {
                 attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
@@ -1613,6 +1624,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             goToWinChords.setVisible(false);
             resetChord.setVisible(false);
             backtoChordsIntro.setVisible(false);
+            backtoChordsIntro2.setVisible(false);
             break;
         
         //Chords WIN page
@@ -2625,5 +2637,6 @@ void RandomNameAudioProcessorEditor::resized()
     backtoChordsIntro.setBounds(100, 600, 100, 100);
     backtoChordsIntro2.setBounds(100, 600, 100, 100);
     to_A.setBounds(850, 600, 100, 100);
+    ChordTheoryFail.setBounds(350, 350, 600, 200);
 }
 

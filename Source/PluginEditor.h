@@ -141,6 +141,7 @@ public:
     TextButton backtoChordsIntro;
     TextButton backtoChordsIntro2;
     TextButton to_A;
+    Label ChordTheoryFail;
     
     //chords
     String first_note;
