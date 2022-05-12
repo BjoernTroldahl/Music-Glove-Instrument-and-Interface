@@ -1100,8 +1100,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setColour(firstChord.textColourId, Colours::white);
             fourthChord.setColour(firstChord.textColourId, Colours::white);
             firstChord.setText("C MAJOR -", dontSendNotification);
-            secondChord.setText("C MAJOR -", dontSendNotification);
-            thirdChord.setText("C MAJOR -", dontSendNotification);
+            secondChord.setText("D MAJOR -", dontSendNotification);
+            thirdChord.setText("G MAJOR -", dontSendNotification);
             fourthChord.setText("C MAJOR", dontSendNotification);
 
             backtoChordsIntro.setVisible(false);
