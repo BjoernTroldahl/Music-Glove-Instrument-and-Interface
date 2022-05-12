@@ -104,7 +104,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     scalesTheory.setFont(20);
     addAndMakeVisible(scalesTheory2);
     scalesTheory2.setVisible(false);
-    scalesTheory2.setText("The name of the scale determines the first note in the scale. for example the C - Major scale will be as follows : C, D, E, F, G, A, B, C The scale will continue until you return to your starting note, in this example C. Scales can also be ascending or descending which decides in which direction the scale is played.", dontSendNotification);
+    scalesTheory2.setText("The name of the scale determines the first note in the scale. For example the C - Major scale will be as follows: C, D, E, F, G, A, B, C The scale will continue until you return to your starting note, in this example C. Scales can also be ascending or descending which decides in which direction the scale is played. If it is ascending, the note sequence will be written as 1-2-3-4-5-6-7-1 and if it's descending the note sequence will be written as 1-7-6-5-4-3-2-1.", dontSendNotification);
     scalesTheory2.setFont(20);
     addAndMakeVisible(tryScales);
     tryScales.setVisible(false);
@@ -166,7 +166,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     };
     addAndMakeVisible(playScales);
     playScales.setVisible(false);
-    playScales.setText("Now try playing the notes of an A-minor scale in ascending order without assistance.", dontSendNotification);
+    playScales.setText("Now try playing the notes of an A-minor scale in ascending order (A-B-C-D-E-F-G-A) without assistance.", dontSendNotification);
     playScales.setFont(40);
     addAndMakeVisible(startScales);
     startScales.setVisible(false);
@@ -214,7 +214,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(correctnoteWas);
     //auto failed2 = String(correctNote);
     correctnoteWas.setVisible(false);
-    correctnoteWas.setText("Remember sequence: A-B-C-D-E-F-G-A", dontSendNotification);
+    correctnoteWas.setText("Remember that the root is A and the sequence is 1-2-3-4-5-6-7-1", dontSendNotification);
     correctnoteWas.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
@@ -269,7 +269,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(playScalesDescending);
     playScalesDescending.setVisible(false);
-    playScalesDescending.setText("Now try playing the notes of an A-minor scale in DESCENDING order without assistance.", dontSendNotification);
+    playScalesDescending.setText("Now try playing the notes of an A-minor scale in DESCENDING order (A-G-F-E-D-C-B-A) without assistance.", dontSendNotification);
     playScalesDescending.setFont(40);
 
 
@@ -320,7 +320,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(correctnoteWasDescending);
     //auto failed2Descending = String(correctNoteDescending);
     correctnoteWasDescending.setVisible(false);
-    correctnoteWasDescending.setText("Remember sequence: A-G-F-E-D-C-B-A", dontSendNotification);
+    correctnoteWasDescending.setText("Remember that the root is A and the sequence is 1-7-6-5-4-3-2-1", dontSendNotification);
     correctnoteWasDescending.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
@@ -341,7 +341,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(practiceScaleC);
     practiceScaleC.setVisible(false);
-    practiceScaleC.setText("Good job. Now practice playing the notes of an C-MAJOR scale in ASCENDING order", dontSendNotification);
+    practiceScaleC.setText("Good job. Now practice playing the notes of a C-MAJOR scale in ASCENDING order", dontSendNotification);
     practiceScaleC.setFont(40);
 
     addAndMakeVisible(currentNoteC);
@@ -375,7 +375,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(playScalesC);
     playScalesC.setVisible(false);
-    playScalesC.setText("Now try playing the notes of a C-major scale in ASCENDING order without assistance.", dontSendNotification);
+    playScalesC.setText("Now try playing the notes of a C-major scale in ASCENDING order (C-D-E-F-G-A-B-C) without assistance.", dontSendNotification);
     playScalesC.setFont(40);
 
 
@@ -430,7 +430,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(correctnoteWasC);
     auto failed2C = String(correctNoteC);
     correctnoteWasC.setVisible(false);
-    correctnoteWasC.setText("Remember sequence C-D-E-F-G-A-B-C", dontSendNotification);
+    correctnoteWasC.setText("Remember that C is the root and note sequence is 1-2-3-4-5-6-7-1", dontSendNotification);
     correctnoteWasC.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
@@ -603,7 +603,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(playScalesCDescending);
     playScalesCDescending.setVisible(false);
-    playScalesCDescending.setText("Now try playing the notes of an C-MAJOR scale in DESCENDING order without assistance.", dontSendNotification);
+    playScalesCDescending.setText("Now try playing the notes of a C-MAJOR scale in DESCENDING order (C-B-A-G-F-E-D-C) without assistance.", dontSendNotification);
     playScalesCDescending.setFont(40);
 
 
@@ -654,7 +654,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(correctnoteWasCDescending);
     auto failed2CDescending = String(correctNoteCDescending);
     correctnoteWasCDescending.setVisible(false);
-    correctnoteWasCDescending.setText("Remember sequence C-B-A-G-F-E-D-C", dontSendNotification);
+    correctnoteWasCDescending.setText("Remember that the root is C and the sequence is 1-7-6-5-4-3-2-1", dontSendNotification);
     correctnoteWasCDescending.setFont(40);
 
     //failed 3 skal gå én ned når man fäiler
@@ -803,7 +803,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(ChordTheoryFail);
     ChordTheoryFail.setVisible(false);
-    ChordTheoryFail.setText("Remember that a chord contains a ROOT (letter in chord) THIRD (two notes up from root) and FIFTH (two notes up from third)", dontSendNotification);
+    ChordTheoryFail.setText("Remember the 1-3-5 principle: a chord contains a ROOT (letter in chord name) THIRD (two notes up from root) and FIFTH (two notes up from third)", dontSendNotification);
     ChordTheoryFail.setColour(ChordTheoryFail.textColourId, Colours::white);
     ChordTheoryFail.setFont(30);
 
@@ -1100,10 +1100,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setColour(firstChord.textColourId, Colours::white);
             fourthChord.setColour(firstChord.textColourId, Colours::white);
             firstChord.setText("C MAJOR -", dontSendNotification);
-            secondChord.setText("D MAJOR -", dontSendNotification);
+            secondChord.setText("F MAJOR -", dontSendNotification);
             thirdChord.setText("G MAJOR -", dontSendNotification);
             fourthChord.setText("C MAJOR", dontSendNotification);
 
+            CompletedChords.setVisible(false);
             backtoChordsIntro.setVisible(false);
             title5.setVisible(false);
             chordsTheory.setVisible(false);
@@ -1389,6 +1390,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             thirdChord.setColour(firstChord.textColourId, Colours::white);
             fourthChord.setColour(firstChord.textColourId, Colours::white);
 
+            CompletedChords.setVisible(false);
             chordProgression.setVisible(false);
             doneChords2.setVisible(false);
             backtoChordsIntro2.setVisible(false);
@@ -2559,7 +2561,7 @@ void RandomNameAudioProcessorEditor::resized()
     Suceeded.setBounds(850, 600, 100, 100);
     Failed.setBounds(100, 600, 100, 100);
     failedString.setBounds(350, 200, 500, 40);
-    correctnoteWas.setBounds(350, 250, 500, 40);
+    correctnoteWas.setBounds(350, 250, 600, 100);
     remainingAttempts.setBounds(350, 450, 500, 40);
     tryAgain.setBounds(450, 550, 100, 100);
     practiceScaleDescending.setBounds(200, 10, 700, 200);
@@ -2573,7 +2575,7 @@ void RandomNameAudioProcessorEditor::resized()
     SuceededDescending.setBounds(850, 600, 100, 100);
     FailedDescending.setBounds(100, 600, 100, 100);
     failedStringDescending.setBounds(350, 200, 500, 40);
-    correctnoteWasDescending.setBounds(350, 250, 500, 40);
+    correctnoteWasDescending.setBounds(350, 250, 600, 100);
     remainingAttemptsDescending.setBounds(350, 450, 500, 40);
     tryAgainDescending.setBounds(450, 550, 100, 100);
     practiceScaleC.setBounds(200, 10, 700, 200);
@@ -2587,7 +2589,7 @@ void RandomNameAudioProcessorEditor::resized()
     SuceededC.setBounds(850, 600, 100, 100);
     FailedC.setBounds(100, 600, 100, 100);
     failedStringC.setBounds(350, 200, 500, 40);
-    correctnoteWasC.setBounds(350, 250, 500, 40);
+    correctnoteWasC.setBounds(350, 250, 600, 100);
     remainingAttemptsC.setBounds(350, 450, 500, 40);
     tryAgainC.setBounds(450, 550, 100, 100);
     finishScale.setBounds(450, 400, 100, 100);
@@ -2618,7 +2620,7 @@ void RandomNameAudioProcessorEditor::resized()
     SuceededCDescending.setBounds(850, 600, 100, 100);
     FailedCDescending.setBounds(100, 600, 100, 100);
     failedStringCDescending.setBounds(350, 200, 500, 40);
-    correctnoteWasCDescending.setBounds(350, 250, 500, 40);
+    correctnoteWasCDescending.setBounds(350, 250, 600, 100);
     remainingAttemptsCDescending.setBounds(350, 450, 500, 40);
     tryAgainCDescending.setBounds(450, 550, 100, 100);
     nameOfChord.setBounds(450, 350, 100, 100);

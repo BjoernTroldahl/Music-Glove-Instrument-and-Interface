@@ -271,13 +271,13 @@ private:
                         //updateNoteA = false;
                     }
 
-                    else if (middleNum <= 380 && middleNum >= 350) {
+                    else if (middleNum <= 380 && middleNum >= 340) {
                         updateNoteC = true;
                         start = clock();
                         //updateNoteD = false;
                     }
 
-                    else if (middleNum <= 350) {
+                    else if (middleNum <= 340) {
                         updateNoteD = true;
                         start = clock();
                         //updateNoteC = false;
@@ -297,7 +297,7 @@ private:
                         //updateNoteE = false;
                     }
 
-                    else if (pinkyNum <= 420) {
+                    else if (pinkyNum <= 460) {
                         updateNoteG = true;
                         start = clock();
                     }
