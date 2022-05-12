@@ -485,7 +485,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     };
     addAndMakeVisible(chordProgression);
     chordProgression.setVisible(false);
-    chordProgression.setText("A typical chord progression is: C major , F major, G major                                                                       Try playing these four chords in order on the next page:                             C-major: C + E + G                                  F-major: F + A + C                                 G-major: G + B + D                                 C-major: C + E + G", dontSendNotification);
+    chordProgression.setText("A typical chord progression is the major I-IV-V-I progression: In the key of C that will be C-major, F-major and G-major followed by C-major again.                                                                   Try playing these four chords in order on the next page:                             C-major: C + E + G                                  F-major: F + A + C                                 G-major: G + B + D                                 C-major: C + E + G", dontSendNotification);
     chordProgression.setFont(40);
 
     addAndMakeVisible(doneChords2);
@@ -527,7 +527,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(chordProgression2);
     chordProgression2.setVisible(false);
-    chordProgression2.setText("Another typical chord progression is: A minor, D minor, E minor                                                                      Try playing these four chords in order on the next page:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B                               A-minor: A + C + E", dontSendNotification);
+    chordProgression2.setText("Another typical chord progression is the minor I-IV-V-I progression: In the key of Am that will be A-minor, D-minor and E-minor followed by A-minor again.                                                                     Try playing these four chords in order on the next page:                               A-minor: A + C + E                                  D-minor: D + F + A                                E-minor: E + G + B                               A-minor: A + C + E", dontSendNotification);
     chordProgression2.setFont(40);
 
     addAndMakeVisible(doneChords4);
