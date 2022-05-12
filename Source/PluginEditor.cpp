@@ -569,7 +569,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(practiceScaleCDescending);
     practiceScaleCDescending.setVisible(false);
-    practiceScaleCDescending.setText("Good job. Now practice playing the notes of an C-MAJOR scale in DESCENDING order", dontSendNotification);
+    practiceScaleCDescending.setText("Good job. Now practice playing the notes of a C-MAJOR scale in DESCENDING order", dontSendNotification);
     practiceScaleCDescending.setFont(40);
 
     addAndMakeVisible(currentNoteCDescending);
@@ -1471,6 +1471,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             currentChord.setVisible(false);
             to_A.setVisible(false);
             nameOfChord.setVisible(false);
+            ChordTheoryFail.setVisible(false);
             break;
 
         //A - D - E chord progression pause page
@@ -1595,6 +1596,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             if (attemptsRemaining == 0) {
                 attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+                ChordTheoryFail.setVisible(false);
             }
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
@@ -1605,6 +1607,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             fourthChord.setVisible(false);
             resetChord.setVisible(false);
             backtoChordsIntro.setVisible(false);
+            
             break; 
         //Chords A-D-E FAIL page
         case 30:
@@ -1616,6 +1619,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
             if (attemptsRemaining == 0) {
                 attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
+                ChordTheoryFail.setVisible(false);
             }
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
@@ -1628,6 +1632,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             resetChord.setVisible(false);
             backtoChordsIntro.setVisible(false);
             backtoChordsIntro2.setVisible(false);
+            
             break;
         
         //Chords WIN page
@@ -1650,6 +1655,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             CompletedChords.setVisible(false);
             backtoChordsIntro.setVisible(false);
             backtoChordsIntro2.setVisible(false);
+            ChordTheoryFail.setVisible(false);
             break;
         }
     }
