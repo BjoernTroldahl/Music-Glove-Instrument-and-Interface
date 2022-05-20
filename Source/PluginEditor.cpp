@@ -1741,8 +1741,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
     if (audioProcessor.pageNum == 8 && audioProcessor.playedNote != " ") {
         
         timeThreshold = 1000;
-         
-        //DBG(timeThreshold);
 
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
