@@ -2324,11 +2324,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         if (FullChord.contains("G") && FullChord.contains("B") && FullChord.contains("D")) {
             nameOfChord.setButtonText("G-major");
         }
-        //Triad_Chord_notes.resize(3, chordnote);
-        //DBG(Triad_Chord_notes[i]);
-        
-        //(Triad_Chord_notes.length());
-        }
+    }
     if (audioProcessor.pageNum == 21 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime > timeThreshold) {
 
         stringChord = audioProcessor.playedNote;
@@ -2407,20 +2403,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             numOfCorrectChords = 4;
             fourthChord.setColour(fourthChord.textColourId, Colours::green);
             CompletedChords.setVisible(true);
-            //DO STUFF
+           
             }
             else if (numOfCorrectChords == 3 && oldNote != stringChord) {
             audioProcessor.pageNum = 29;
             attemptsRemaining = attemptsRemaining - 1;
             }
         }
-        //DBG(pageNum);
-        //Triad_Chord_notes.resize(3, chordnote);
-        //DBG(Triad_Chord_notes[i]);
-        //DBG(numOfCorrectChords);
-        //DBG(chordNoteCounter);
-        //DBG(attemptsRemaining);
-        //(Triad_Chord_notes.length());
     }
     if (audioProcessor.pageNum == 24 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime > timeThreshold) {
 
