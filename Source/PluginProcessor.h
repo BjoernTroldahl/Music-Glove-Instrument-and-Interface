@@ -152,11 +152,9 @@ private:
 
                     //INDEX FINGER
                     index = s.upToFirstOccurrenceOf(",", false, true);
-                    //DBG(index);
                     indexNum = index.getFloatValue();
 
                     playedNote = " ";
-                    //start = clock();
                     
                     fUI->setParamValue("A",0);
                     fUI->setParamValue("B",0);
@@ -168,7 +166,6 @@ private:
 
                     if (updateNoteA && elapsedTime > timeLimit) {
                         fUI->setParamValue("B", 0);
-                        //DBG("A");
                         playedNote = "A";
                         fUI->setParamValue("A",1);
                         
@@ -176,7 +173,6 @@ private:
 
                     if (updateNoteB && elapsedTime > timeLimit){
                         fUI->setParamValue("A", 0);
-                        //DBG("B");
                         playedNote = "B";
                         fUI->setParamValue("B",1);
                         
@@ -184,20 +180,16 @@ private:
 
                     //MIDDLE FINGER
                     String temp1 = s.fromFirstOccurrenceOf(",", false, true);
-                    middle = temp1.upToFirstOccurrenceOf(",", false, true);
-                    //DBG(temp1);
-                    //DBG(middle); 
+                    middle = temp1.upToFirstOccurrenceOf(",", false, true); 
                     middleNum = middle.getFloatValue();
 
                     if (updateNoteC && elapsedTime>timeLimit){
                         fUI->setParamValue("D",0);
-                        //DBG("C");
                         playedNote = "C";
                         fUI->setParamValue("C",1);
                     }
                     if (updateNoteD && elapsedTime> timeLimit) {
                         fUI->setParamValue("C",0);
-                        ///DBG("D");
                         playedNote = "D";
                         fUI->setParamValue("D",1);
                     }
@@ -205,18 +197,14 @@ private:
                     //RING FINGER
                     String temp2 = temp1.fromFirstOccurrenceOf(",", false, true);
                     ring = temp2.upToFirstOccurrenceOf(",", false, true);
-                    //DBG(temp2);
-                    //DBG(ring);
                     ringNum = ring.getFloatValue();
 
                     if (updateNoteE && elapsedTime> timeLimit) {
-                        //DBG("E");
                         fUI->setParamValue("F",0);
                         playedNote = "E";
                         fUI->setParamValue("E",1);
                     }
                     if (updateNoteF && elapsedTime > timeLimit) {
-                        //DBG("F");
                         fUI->setParamValue("E",0);
                         playedNote = "F";
                         fUI->setParamValue("F",1);
@@ -224,11 +212,9 @@ private:
 
                     //PINKY FINGER
                     pinky = s.fromLastOccurrenceOf(",", false, true);
-                    //DBG(pinky);
                     pinkyNum=pinky.getFloatValue();
 
                     if (updateNoteG && elapsedTime > timeLimit) {
-                        //DBG("G");
                         playedNote = "G";
                         fUI->setParamValue("G", 1);
                     }
@@ -259,28 +245,23 @@ private:
 
                     if (indexNum < 310 && indexNum > 230) {
                         updateNoteA = true;
-                        //DBG("updated");
                         start = clock();
-                        //updateNoteB = false;
                         
                     }
 
                     else if (indexNum < 230) {
                         updateNoteB = true;
                         start = clock();
-                        //updateNoteA = false;
                     }
 
                     else if (middleNum <= 360 && middleNum >= 330) {
                         updateNoteC = true;
                         start = clock();
-                        //updateNoteD = false;
                     }
 
                     else if (middleNum <= 330) {
                         updateNoteD = true;
                         start = clock();
-                        //updateNoteC = false;
                     }
 
                    
@@ -288,13 +269,11 @@ private:
                     else if (ringNum <= 400 && ringNum >= 350) {
                         updateNoteE = true;
                         start = clock();
-                        //updateNoteF = false;
                     }
 
                     else if (ringNum <= 350) {
                         updateNoteF = true;
                         start = clock();
-                        //updateNoteE = false;
                     }
 
                     else if (pinkyNum <= 410) {
@@ -312,7 +291,6 @@ private:
                         updateNoteG = false;
                         end = clock();
                         start = end;
-                        //wait = false;
                     }
 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
