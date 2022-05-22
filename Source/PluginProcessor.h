@@ -294,8 +294,8 @@ private:
                     }
 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
-                    DBG(elapsedTime);
-                    DBG(pageNum);
+                    //DBG(elapsedTime);
+                    //DBG(pageNum);
                     
                 }
             }
