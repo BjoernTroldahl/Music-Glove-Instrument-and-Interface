@@ -305,7 +305,8 @@ private:
                     }
 
                     //The formula that calculates the value of the milliseconds that pass whenever the timer is 
-                    //active. The timer is only active when you are bending a finger and/or playing a note. 
+                    //active. The timer is only active when you are bending a finger within a threshold and/or
+                    //playing a note.
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
                     
                 }
