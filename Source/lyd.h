@@ -1038,6 +1038,7 @@ class mydsp : public dsp {
 	
 	virtual int getSampleRate() {
 		return fSampleRate;
+		
 	}
 	
 	virtual void buildUserInterface(UI* ui_interface) {

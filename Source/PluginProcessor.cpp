@@ -25,7 +25,7 @@ RandomNameAudioProcessor::RandomNameAudioProcessor()
 {
     initSerialPort();
 
-    // START THE HIGH RESOLUTION TIMER AT A RATE OF 100 Hz (Or it runs every 10 ms)
+    // START THE HIGH RESOLUTION TIMER AT A RATE OF 80 Hz (Or it runs every 8 ms)
     startTimer(8);
 }
 
