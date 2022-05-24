@@ -150,10 +150,12 @@ private:
                     s = pInputStream->readNextLine();
                     DBG(s);
 
-                    //INDEX FINGER
+                    //INDEX FINGER individual string value
                     index = s.upToFirstOccurrenceOf(",", false, true);
                     indexNum = index.getFloatValue();
 
+                    //Turns off all musical note buttons and resets the playedNote variable when a flex sensor is not 
+                    //within its thresholds and timeLimit has not been passed.
                     playedNote = " ";
                     
                     fUI->setParamValue("A",0);
@@ -164,6 +166,7 @@ private:
                     fUI->setParamValue("F",0);
                     fUI->setParamValue("G",0);
 
+                    //Plays the notes from the index finger if the timer is above timeLimit (milliseconds)
                     if (updateNoteA && elapsedTime > timeLimit) {
                         fUI->setParamValue("B", 0);
                         playedNote = "A";
@@ -178,11 +181,12 @@ private:
                         
                     }
 
-                    //MIDDLE FINGER
+                    //MIDDLE FINGER individual string value
                     String temp1 = s.fromFirstOccurrenceOf(",", false, true);
                     middle = temp1.upToFirstOccurrenceOf(",", false, true); 
                     middleNum = middle.getFloatValue();
 
+                    //Plays the notes from the middle finger if the timer is above timeLimit (milliseconds)
                     if (updateNoteC && elapsedTime>timeLimit){
                         fUI->setParamValue("D",0);
                         playedNote = "C";
@@ -194,11 +198,12 @@ private:
                         fUI->setParamValue("D",1);
                     }
 
-                    //RING FINGER
+                    //RING FINGER individual string value
                     String temp2 = temp1.fromFirstOccurrenceOf(",", false, true);
                     ring = temp2.upToFirstOccurrenceOf(",", false, true);
                     ringNum = ring.getFloatValue();
 
+                    //Plays the notes from the ring finger if the timer is above timeLimit (milliseconds)
                     if (updateNoteE && elapsedTime> timeLimit) {
                         fUI->setParamValue("F",0);
                         playedNote = "E";
@@ -210,10 +215,11 @@ private:
                         fUI->setParamValue("F",1);
                     }
 
-                    //PINKY FINGER
+                    //PINKY FINGER individual string value
                     pinky = s.fromLastOccurrenceOf(",", false, true);
                     pinkyNum=pinky.getFloatValue();
 
+                    //Plays the notes from the pinky finger if the timer is above timeLimit (milliseconds)
                     if (updateNoteG && elapsedTime > timeLimit) {
                         playedNote = "G";
                         fUI->setParamValue("G", 1);
@@ -235,14 +241,17 @@ private:
                         timeLimit = 300;
                     }
 
+                    //Otherwise the sustain is set low, so you can focus more on each individual note on the scale pages
                     else {
                         fUI->setParamValue("rel", 0.5);
                     }
                     
-                    DBG(playedNote);
+                    //DBG(playedNote);
 
                     
-
+                    //All if and else if statements below check that the flex sensors have been bent within
+                    //their threshold values before calling the if-statements above that play the notes. Note
+                    //that it also starts the timer here
                     if (indexNum < 310 && indexNum > 230) {
                         updateNoteA = true;
                         start = clock();
@@ -281,6 +290,8 @@ private:
                         start = clock();
                     }
 
+                    //If none of the above are true, then all the booleans that trigger the note-playing
+                    //if statements are set to false and the timer is ended.
                     else {
                         updateNoteA = false;
                         updateNoteB = false;
@@ -293,9 +304,9 @@ private:
                         start = end;
                     }
 
+                    //The formula that calculates the value of the milliseconds that pass whenever the timer is 
+                    //active. The timer is only active when you are bending a finger and/or playing a note. 
                     elapsedTime = (start - end)/(CLOCKS_PER_SEC/1000);
-                    //DBG(elapsedTime);
-                    //DBG(pageNum);
                     
                 }
             }

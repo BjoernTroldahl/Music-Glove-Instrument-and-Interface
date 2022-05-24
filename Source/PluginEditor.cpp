@@ -811,11 +811,12 @@ void RandomNameAudioProcessorEditor::configGUI() {
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
-//The page counter/mechanism that changes the page.
-//If the current page number is not the same as the old page number, then change the page.
+//This is where all the UI callback happens
 {
     failed3 = to_string(attemptsRemaining);
 
+    //Below are all the complete fail pages. They will give you red alarming text and change the buttons
+    //so that they send you to the next page instead of back to the exercise page.
     if (attemptsRemaining == 0 && audioProcessor.pageNum_OLD==8) {
         failedString.setColour(failedString.textColourId, Colours::red);
         failedString.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
@@ -835,7 +836,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
         correctnoteWasDescending.setColour(correctnoteWas.textColourId, Colours::red);
         correctnoteWasDescending.setText("Continue to the next page", dontSendNotification);
         remainingAttemptsDescending.setVisible(false);
-        //remainingAttemptsDescending.setText("", dontSendNotification);
         tryAgainDescending.setButtonText("Next page");
         tryAgainDescending.onClick = [this] {
             audioProcessor.pageNum = 14;
@@ -874,7 +874,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
         failedChord.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
         attemptsRemainingChords.setColour(correctnoteWas.textColourId, Colours::red);
         attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
-        //remainingAttemptsDescending.setText("", dontSendNotification);
         backtoChords.setButtonText("Next page");
         backtoChords.onClick = [this] {
             audioProcessor.pageNum = 22;
@@ -887,7 +886,6 @@ void RandomNameAudioProcessorEditor::timerCallback()
         failedChord.setText("YOU HAVE FAILED THE EXERCISE", dontSendNotification);
         attemptsRemainingChords.setColour(correctnoteWas.textColourId, Colours::red);
         attemptsRemainingChords.setText("Continue to the next page", dontSendNotification);
-        //remainingAttemptsDescending.setText("", dontSendNotification);
         backtoChords2.setButtonText("Next page");
         backtoChords2.onClick = [this] {
             audioProcessor.pageNum = 31;
@@ -1004,7 +1002,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             to_A.setVisible(false);
             break;
 
-        //Introduction video
+        //Introduction page - IS NOT USED
         case 1:
             title2.setVisible(true);
             menu.setVisible(true);
@@ -1112,12 +1110,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingChords.setVisible(false);
             doneChords3.setVisible(false);
             trueTestcurrentChord.setVisible(false);
-            //trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
             firstChord.setVisible(false);
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
-            //attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             resetChord.setVisible(false);
             backtoChordsIntro.setVisible(false);
             goToWinChords.setVisible(false);
@@ -1397,13 +1393,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             remainingChords.setVisible(false);
             goToWinChords.setVisible(false);
             trueTestcurrentChord.setVisible(false);
-            //trueTestcurrentChord.setText("Currently playing:  - - ", dontSendNotification);
             firstChord.setVisible(false);
             secondChord.setVisible(false);
             thirdChord.setVisible(false);
             fourthChord.setVisible(false);
             resetChord.setVisible(false);
-            //attemptsRemainingChords.setText(failed3 + " attempt(s) remaining", dontSendNotification);
             backtoChordsIntro2.setVisible(false);
 
             break;
@@ -1474,8 +1468,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             ChordTheoryFail.setVisible(false);
             break;
 
-        //A - D - E chord progression pause page
-        //BLIVER IKKE BRUGT
+        //A - D - E chord progression pause page - IS NOT USED
         case 23:
             startChords2.setVisible(true); 
             playChords2.setVisible(true);
@@ -1663,35 +1656,24 @@ void RandomNameAudioProcessorEditor::timerCallback()
     //Meaning that the program can then detect that a change in page number has happened.
     audioProcessor.pageNum_OLD = audioProcessor.pageNum;
 
-    //If the program registers that a note has been played, it updates so that the currently played note
-    //is not the same as the previously played note.
-
-    //DBG(passedTime);
-    //DBG(audioProcessor.pageNum);
-    //DBG(failed3);
 
     //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
 
-    if (audioProcessor.playedNote != audioProcessor.playedNoteOLD && updateNote) {
+    /*if (audioProcessor.playedNote != audioProcessor.playedNoteOLD && updateNote) {
         newNote = true;
-        //audioProcessor.playedNoteOLD = oldNote;
-        //DBG(oldNote);
     }
     else {
         newNote = false;
-    }
+    }*/
 
-    
-
-    //DBG(passedTime);
-    
-
-    //audioProcessor.playedNoteOLD = audioProcessor.playedNote;
-    
+    //A minor scale ASCENDING intro page logic
     if (audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
+        //Currently playing shows the note that you are currently playing
         currentNote.setText("Currently playing " + stringNote, dontSendNotification);
 
+        //Each of the if-statements check that you play the notes in the correct order and shows the next
+        //up-coming note.
         if (audioProcessor.playedNote == "A" && arrayCounter == 0) {
             nextNoteArray = A_min_scalenotes[1];
             arrayCounter = arrayCounter + 1;
@@ -1733,20 +1715,30 @@ void RandomNameAudioProcessorEditor::timerCallback()
             
         }
 
-        
+        //Button text is set according to the value of nextNoteArray
         buttonNote.setButtonText(nextNoteArray);
             
     }
 
+    //A minor scale ASCENDING true test page logic
     if (audioProcessor.pageNum == 8 && audioProcessor.playedNote != " ") {
         
+        //Used in the else if statements that check for "fails". You can only fail by playing
+        //a wrong note and sustaining it for 1000 milliseconds.
         timeThreshold = 1000;
 
+        //Very similar to the intro page above, the difference is just that you can also fail on
+        //the true test page
+
+        //Each of the if-statements updates the number of remaining notes you have to play on the screen
+        //for each correct note that is played
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
             oldNote = audioProcessor.playedNote;
         }
+        //Each of the else if-statements send you to the fail page and makes you lose 1 "life" each time
+        //you make a mistake by decrementing attemptsRemaining. 
         else if (audioProcessor.playedNote != "A" && arrayCounter2 == 0 && audioProcessor.elapsedTime> timeThreshold) {
             audioProcessor.pageNum = 9;
             attemptsRemaining = attemptsRemaining - 1;
@@ -1814,6 +1806,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemaining = attemptsRemaining - 1;
         }
 
+        //If you play all notes correct, you win the exercise and some WIN text is displayed to you on screen
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 7) {
             stringtoTrim.clear();
             remainingNotesA = "WELL DONE!";
@@ -1828,12 +1821,17 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemaining = attemptsRemaining - 1;
         }
 
+        //The Label where the remaining notes are displayed
         remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
 
     }
 
+    //SCALES----------------------------------------------------------------------------------------------------------
+    
+    //A minor scale DESCENDING intro page logic
     if (audioProcessor.pageNum == 10) {
         
+        //Uses the exact same template as A minor scale ASCENDING intro page logic
         stringNoteDescending = audioProcessor.playedNote;
         currentNoteDescending.setText("Currently playing " + stringNoteDescending, dontSendNotification);
 
@@ -1883,10 +1881,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
 
+    //A minor scale DESCENDING true test page logic
     if (audioProcessor.pageNum == 12 && audioProcessor.playedNote != " ") {
 
         timeThreshold = 1000;
 
+        //Uses the exact same template as A minor scale ASCENDING true test page logic
         if (audioProcessor.playedNote == "A" && arrayCounter2 == 0) {
             remainingNotesA = "7";
             arrayCounter2 = arrayCounter2 + 1;
@@ -1975,8 +1975,10 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
 
+    //C major scale ASCENDING intro page logic
     if (audioProcessor.pageNum == 14) {
 
+        //Uses the exact same template as A minor scale ASCENDING intro page logic
         stringNoteC = audioProcessor.playedNote;
         currentNoteC.setText("Currently playing " + stringNoteC, dontSendNotification);
 
@@ -2026,10 +2028,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
 
+    //C major scale ASCENDING true test page logic
     if (audioProcessor.pageNum == 16 && audioProcessor.playedNote != " ") {
 
         timeThreshold = 1000;
 
+        //Uses the exact same template as A minor scale ASCENDING true test page logic
         if (audioProcessor.playedNote == "C" && arrayCounter2 == 0) {
             remainingNotesC_str = "7";
             arrayCounter2 = arrayCounter2 + 1;
@@ -2117,8 +2121,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
         remainingNotesC.setText(stringtoTrim + remainingNotesC_str, dontSendNotification);
 
     }
+
+    //C major scale DESCENDING intro page logic
     if (audioProcessor.pageNum == 25) {
 
+        //Uses the exact same template as A minor scale ASCENDING intro page logic
         stringNoteC = audioProcessor.playedNote;
         currentNoteCDescending.setText("Currently playing " + stringNoteC, dontSendNotification);
 
@@ -2168,10 +2175,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     }
 
+    //C major scale DESCENDING true test page logic
     if (audioProcessor.pageNum == 27 && audioProcessor.playedNote != " ") {
 
         timeThreshold = 1000;
 
+        //Uses the exact same template as A minor scale ASCENDING true test page logic
         if (audioProcessor.playedNote == "C" && arrayCounter2 == 0) {
             remainingNotesC_str = "7";
             arrayCounter2 = arrayCounter2 + 1;
@@ -2260,19 +2269,26 @@ void RandomNameAudioProcessorEditor::timerCallback()
     }
 
 
-    //CHORDS-----------------------------------------------------------
+    //CHORDS----------------------------------------------------------------------------------------------------------
+
+    //Chord identifier intro page logic
     if (audioProcessor.pageNum == 6 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime>timeThreshold) {
 
+        //There is a 300 milliseconds delay for playing the notes of the chords, so that the user
+        //has a little more time to select their notes before they are played as part of the chord
         timeThreshold = 300;
         stringChord = audioProcessor.playedNote;
         
-
+        //Each if-statement checks that the notes that the user has played and adds them to a String array
+        //with a fixed size of 3. Each String corresponds to one of the three notes in a triad
         if (chordNoteCounter==0 && stringChord != " ") {
             Triad_Chord_notes[0] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
             first_note = stringChord;
         }
 
+        //Only goes to the next notes in the array if the currently played note is not the same as the previously
+        //played note - so that you can't get duplicates of the same note within the chord.
         if (chordNoteCounter == 1 && first_note != stringChord && stringChord != " ") {
             Triad_Chord_notes[1] = stringChord;
             chordNoteCounter = chordNoteCounter + 1;
@@ -2285,6 +2301,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             third_note = stringChord;
         }
 
+        //If you have played three notes in total and they play a fourth that is not the same as the last note,
+        //you will reset the whole chord. So that you can start another chord when you are done with the current chord
         if (chordNoteCounter == 3 && third_note != stringChord && stringChord != " ") {
             chordNoteCounter = 0;
             Triad_Chord_notes[0] = "";
@@ -2293,10 +2311,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nameOfChord.setButtonText("*");
         }
 
+        //Label that sets part of the text according to the notes that you are currently playing to form a chord
         currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
 
+        //FullChord collects all of your chord tones and combines them into a single string
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
+        //All the if-statements check for the chord tone combnations that are "valid" and sets the text of the
+        //button to match the name of the chord that's been played
         if (FullChord.contains("A") && FullChord.contains("C") && FullChord.contains("E")) {
             nameOfChord.setButtonText("A-minor");
         }
@@ -2325,11 +2347,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nameOfChord.setButtonText("G-major");
         }
     }
+
+    //C-F-G-C chord progression true test page logic
     if (audioProcessor.pageNum == 21 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime > timeThreshold) {
 
         stringChord = audioProcessor.playedNote;
         timeThreshold = 300;
-
+        //Very similar to the Chord identifier intro page logic above, the difference is just that you can fail here
 
         if (chordNoteCounter == 0 && stringChord != " ") {
             Triad_Chord_notes[0] = stringChord;
@@ -2373,6 +2397,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             oldNote = stringChord;
             }
 
+            //The else if statements trigger whenever you play a wrong chord. You are then taken to a fail page and you lose
+            //1 "life" each time you fail, when attemptReamining is decremented
             else if (numOfCorrectChords==0 && oldNote != stringChord){
             audioProcessor.pageNum = 29;
             attemptsRemaining = attemptsRemaining - 1;
@@ -2399,6 +2425,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             attemptsRemaining = attemptsRemaining - 1;
             }
 
+            //WIN text is shown when you have completed the exercise
             if (FullChord.contains("C") && FullChord.contains("E") && FullChord.contains("G") && numOfCorrectChords==3) {
             numOfCorrectChords = 4;
             fourthChord.setColour(fourthChord.textColourId, Colours::green);
@@ -2411,11 +2438,13 @@ void RandomNameAudioProcessorEditor::timerCallback()
             }
         }
     }
+
+    //A-D-E-A chord progression true test page logic
     if (audioProcessor.pageNum == 24 && audioProcessor.playedNote != " " && audioProcessor.elapsedTime > timeThreshold) {
 
         stringChord = audioProcessor.playedNote;
         timeThreshold = 300;
-
+        //Uses the exact same template as the C-F-G-C chord progression true test page logic
 
         if (chordNoteCounter == 0 && stringChord != " ") {
             Triad_Chord_notes[0] = stringChord;
@@ -2489,25 +2518,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
                 numOfCorrectChords = 4;
                 fourthChord.setColour(fourthChord.textColourId, Colours::green);
                 CompletedChords.setVisible(true);
-                //DO STUFF
             }
             else if (numOfCorrectChords == 3 && oldNote != stringChord) {
                 audioProcessor.pageNum = 30;
                 attemptsRemaining = attemptsRemaining - 1;
             }
         }
-        //DBG(pageNum);
-        //Triad_Chord_notes.resize(3, chordnote);
-        //DBG(Triad_Chord_notes[i]);
-        //DBG(numOfCorrectChords);
-        //DBG(chordNoteCounter);
-        //DBG(attemptsRemaining);
-        //(Triad_Chord_notes.length());
+        
     }
-    
-    //DBG(arrayCounter2);
-    //Same logic as with the page number, this is just for playedNote
-    //audioProcessor.playedNoteOLD = audioProcessor.playedNote;
 }
 
 
@@ -2520,7 +2538,7 @@ void RandomNameAudioProcessorEditor::paint(juce::Graphics& g)
 
     g.setColour(juce::Colours::white);
     g.setFont(15.0f);
-    //g.drawFittedText ("Group 405!", getLocalBounds(), juce::Justification::centred, 1);
+    
 }
 
 void RandomNameAudioProcessorEditor::resized()
