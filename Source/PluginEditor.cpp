@@ -811,10 +811,70 @@ void RandomNameAudioProcessorEditor::configGUI() {
     audioProcessor.IndexUP.setVisible(false);
     audioProcessor.IndexUP.setSliderStyle(Slider::SliderStyle::LinearBar);
     audioProcessor.IndexUP.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
-    audioProcessor.IndexUP.setRange(0.0f, 1023.0f, 1.0f);
-    audioProcessor.IndexUP.setValue(280);
+    audioProcessor.IndexUP.setRange(0.0f, 400.0f, 1.0f);
+    audioProcessor.IndexUP.setValue(270);
     audioProcessor.IndexUP.onValueChange = [this] {
         audioProcessor.indexUpper = audioProcessor.IndexUP.getValue();
+    };
+
+    addAndMakeVisible(audioProcessor.IndexLOW);
+    audioProcessor.IndexLOW.setVisible(false);
+    audioProcessor.IndexLOW.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.IndexLOW.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.IndexLOW.setRange(0.0f, 400.0f, 1.0f);
+    audioProcessor.IndexLOW.setValue(230);
+    audioProcessor.IndexLOW.onValueChange = [this] {
+        audioProcessor.indexLower = audioProcessor.IndexLOW.getValue();
+    };
+
+    addAndMakeVisible(audioProcessor.MiddleUP);
+    audioProcessor.MiddleUP.setVisible(false);
+    audioProcessor.MiddleUP.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.MiddleUP.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.MiddleUP.setRange(0.0f, 500.0f, 1.0f);
+    audioProcessor.MiddleUP.setValue(360);
+    audioProcessor.MiddleUP.onValueChange = [this] {
+        audioProcessor.middleUpper = audioProcessor.MiddleUP.getValue();
+    };
+
+    addAndMakeVisible(audioProcessor.MiddleLOW);
+    audioProcessor.MiddleLOW.setVisible(false);
+    audioProcessor.MiddleLOW.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.MiddleLOW.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.MiddleLOW.setRange(0.0f, 500.0f, 1.0f);
+    audioProcessor.MiddleLOW.setValue(325);
+    audioProcessor.MiddleLOW.onValueChange = [this] {
+        audioProcessor.middleLower = audioProcessor.MiddleLOW.getValue();
+    };
+
+    addAndMakeVisible(audioProcessor.RingUP);
+    audioProcessor.RingUP.setVisible(false);
+    audioProcessor.RingUP.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.RingUP.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.RingUP.setRange(0.0f, 600.0f, 1.0f);
+    audioProcessor.RingUP.setValue(420);
+    audioProcessor.RingUP.onValueChange = [this] {
+        audioProcessor.ringUpper = audioProcessor.RingUP.getValue();
+    };
+
+    addAndMakeVisible(audioProcessor.RingLOW);
+    audioProcessor.RingLOW.setVisible(false);
+    audioProcessor.RingLOW.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.RingLOW.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.RingLOW.setRange(0.0f, 600.0f, 1.0f);
+    audioProcessor.RingLOW.setValue(360);
+    audioProcessor.RingLOW.onValueChange = [this] {
+        audioProcessor.ringLower = audioProcessor.RingLOW.getValue();
+    };
+
+    addAndMakeVisible(audioProcessor.PinkyMID);
+    audioProcessor.PinkyMID.setVisible(false);
+    audioProcessor.PinkyMID.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.PinkyMID.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.PinkyMID.setRange(0.0f, 600.0f, 1.0f);
+    audioProcessor.PinkyMID.setValue(400);
+    audioProcessor.PinkyMID.onValueChange = [this] {
+        audioProcessor.pinkyMid = audioProcessor.PinkyMID.getValue();
     };
 }
 
@@ -1009,6 +1069,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
             backtoChordsIntro.setVisible(false);
             to_A.setVisible(false);
             audioProcessor.IndexUP.setVisible(false);
+            audioProcessor.IndexLOW.setVisible(false);
+            audioProcessor.MiddleLOW.setVisible(false);
+            audioProcessor.MiddleUP.setVisible(false);
+            audioProcessor.RingUP.setVisible(false);
+            audioProcessor.RingLOW.setVisible(false);
+            audioProcessor.PinkyMID.setVisible(false);
             break;
 
         //Introduction page - IS NOT USED
@@ -1016,6 +1082,12 @@ void RandomNameAudioProcessorEditor::timerCallback()
             title2.setVisible(true);
             menu.setVisible(true);
             audioProcessor.IndexUP.setVisible(true);
+            audioProcessor.IndexLOW.setVisible(true);
+            audioProcessor.MiddleLOW.setVisible(true);
+            audioProcessor.MiddleUP.setVisible(true);
+            audioProcessor.RingUP.setVisible(true);
+            audioProcessor.RingLOW.setVisible(true);
+            audioProcessor.PinkyMID.setVisible(true);
 
             title.setVisible(false);
             newGame.setVisible(false);
@@ -2662,6 +2734,12 @@ void RandomNameAudioProcessorEditor::resized()
     backtoChordsIntro2.setBounds(100, 600, 100, 100);
     to_A.setBounds(850, 600, 100, 100);
     ChordTheoryFail.setBounds(350, 350, 600, 200);
-    audioProcessor.IndexUP.setBounds(350, 100, 200, 60);
+    audioProcessor.IndexUP.setBounds(300, 100, 200, 60);
+    audioProcessor.IndexLOW.setBounds(600, 100, 200, 60);
+    audioProcessor.MiddleUP.setBounds(300, 200, 200, 60);
+    audioProcessor.MiddleLOW.setBounds(600, 200, 200, 60);
+    audioProcessor.RingUP.setBounds(300, 300, 200, 60);
+    audioProcessor.RingLOW.setBounds(600, 300, 200, 60);
+    audioProcessor.PinkyMID.setBounds(450, 400, 200, 60);
 }
 

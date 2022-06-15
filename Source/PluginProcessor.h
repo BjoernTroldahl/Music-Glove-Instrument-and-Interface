@@ -102,18 +102,16 @@ public:
     Slider MiddleLOW;
     Slider RingUP;
     Slider RingLOW;
-    Slider PinkyUP;
-    Slider PinkyLOW;
+    Slider PinkyMID;
 
     //Thresholds
-    float indexUpper = 280;
-    float indexLower = 230;
+    float indexUpper;
+    float indexLower;
     float middleUpper;
     float middleLower;
     float ringUpper;
     float ringLower;
-    float pinkyUpper;
-    float pinkyLower;
+    float pinkyMid;
 
 private:
 
@@ -283,29 +281,29 @@ private:
                         start = clock();
                     }
 
-                    else if (middleNum <= 360 && middleNum >= 330) {
+                    else if (middleNum < middleUpper && middleNum > middleLower) {
                         updateNoteC = true;
                         start = clock();
                     }
 
-                    else if (middleNum <= 330) {
+                    else if (middleNum < middleLower) {
                         updateNoteD = true;
                         start = clock();
                     }
 
                    
 
-                    else if (ringNum <= 400 && ringNum >= 350) {
+                    else if (ringNum < ringUpper && ringNum > ringLower) {
                         updateNoteE = true;
                         start = clock();
                     }
 
-                    else if (ringNum <= 350) {
+                    else if (ringNum < ringLower) {
                         updateNoteF = true;
                         start = clock();
                     }
 
-                    else if (pinkyNum <= 410) {
+                    else if (pinkyNum < pinkyMid) {
                         updateNoteG = true;
                         start = clock();
                     }
