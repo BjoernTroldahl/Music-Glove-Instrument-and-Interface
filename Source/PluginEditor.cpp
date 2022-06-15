@@ -817,6 +817,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.indexUpper = audioProcessor.IndexUP.getValue();
     };
 
+    addAndMakeVisible(sliderA);
+    sliderA.setVisible(false);
+    sliderA.setText("Slider for A threshold", dontSendNotification);
+    sliderA.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderA.setFont(20);
+    sliderA.attachToComponent(&audioProcessor.IndexUP, false);
+
     addAndMakeVisible(audioProcessor.IndexLOW);
     audioProcessor.IndexLOW.setVisible(false);
     audioProcessor.IndexLOW.setSliderStyle(Slider::SliderStyle::LinearBar);
@@ -826,6 +833,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
     audioProcessor.IndexLOW.onValueChange = [this] {
         audioProcessor.indexLower = audioProcessor.IndexLOW.getValue();
     };
+
+    addAndMakeVisible(sliderB);
+    sliderB.setVisible(false);
+    sliderB.setText("Slider for B threshold", dontSendNotification);
+    sliderB.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderB.setFont(20);
+    sliderB.attachToComponent(&audioProcessor.IndexLOW, false);
 
     addAndMakeVisible(audioProcessor.MiddleUP);
     audioProcessor.MiddleUP.setVisible(false);
@@ -837,6 +851,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.middleUpper = audioProcessor.MiddleUP.getValue();
     };
 
+    addAndMakeVisible(sliderC);
+    sliderC.setVisible(false);
+    sliderC.setText("Slider for C threshold", dontSendNotification);
+    sliderC.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderC.setFont(20);
+    sliderC.attachToComponent(&audioProcessor.MiddleUP, false);
+
     addAndMakeVisible(audioProcessor.MiddleLOW);
     audioProcessor.MiddleLOW.setVisible(false);
     audioProcessor.MiddleLOW.setSliderStyle(Slider::SliderStyle::LinearBar);
@@ -846,6 +867,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
     audioProcessor.MiddleLOW.onValueChange = [this] {
         audioProcessor.middleLower = audioProcessor.MiddleLOW.getValue();
     };
+
+    addAndMakeVisible(sliderD);
+    sliderD.setVisible(false);
+    sliderD.setText("Slider for D threshold", dontSendNotification);
+    sliderD.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderD.setFont(20);
+    sliderD.attachToComponent(&audioProcessor.MiddleLOW, false);
 
     addAndMakeVisible(audioProcessor.RingUP);
     audioProcessor.RingUP.setVisible(false);
@@ -857,6 +885,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.ringUpper = audioProcessor.RingUP.getValue();
     };
 
+    addAndMakeVisible(sliderE);
+    sliderE.setVisible(false);
+    sliderE.setText("Slider for E threshold", dontSendNotification);
+    sliderE.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderE.setFont(20);
+    sliderE.attachToComponent(&audioProcessor.RingUP, false);
+
     addAndMakeVisible(audioProcessor.RingLOW);
     audioProcessor.RingLOW.setVisible(false);
     audioProcessor.RingLOW.setSliderStyle(Slider::SliderStyle::LinearBar);
@@ -867,6 +902,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.ringLower = audioProcessor.RingLOW.getValue();
     };
 
+    addAndMakeVisible(sliderF);
+    sliderF.setVisible(false);
+    sliderF.setText("Slider for F threshold", dontSendNotification);
+    sliderF.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderF.setFont(20);
+    sliderF.attachToComponent(&audioProcessor.RingLOW, false);
+
     addAndMakeVisible(audioProcessor.PinkyMID);
     audioProcessor.PinkyMID.setVisible(false);
     audioProcessor.PinkyMID.setSliderStyle(Slider::SliderStyle::LinearBar);
@@ -876,6 +918,13 @@ void RandomNameAudioProcessorEditor::configGUI() {
     audioProcessor.PinkyMID.onValueChange = [this] {
         audioProcessor.pinkyMid = audioProcessor.PinkyMID.getValue();
     };
+
+    addAndMakeVisible(sliderG);
+    sliderG.setVisible(false);
+    sliderG.setText("Slider for G threshold", dontSendNotification);
+    sliderG.setColour(ChordTheoryFail.textColourId, Colours::white);
+    sliderG.setFont(20);
+    sliderG.attachToComponent(&audioProcessor.PinkyMID, false);
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -2630,7 +2679,7 @@ void RandomNameAudioProcessorEditor::resized()
     title.setBounds(325, 10, 500, 40);
     newGame.setBounds(450, 400, 50, 50);
     howTo.setBounds(435, 300, 100, 50);
-    title2.setBounds(325, 10, 500, 40);
+    title2.setBounds(300, 10, 500, 40);
     menu.setBounds(1000, 10, 100, 40);
     title3.setBounds(325, 10, 500, 40);
     chords.setBounds(500, 400, 100, 50);
@@ -2734,12 +2783,12 @@ void RandomNameAudioProcessorEditor::resized()
     backtoChordsIntro2.setBounds(100, 600, 100, 100);
     to_A.setBounds(850, 600, 100, 100);
     ChordTheoryFail.setBounds(350, 350, 600, 200);
-    audioProcessor.IndexUP.setBounds(300, 100, 200, 60);
-    audioProcessor.IndexLOW.setBounds(600, 100, 200, 60);
-    audioProcessor.MiddleUP.setBounds(300, 200, 200, 60);
-    audioProcessor.MiddleLOW.setBounds(600, 200, 200, 60);
-    audioProcessor.RingUP.setBounds(300, 300, 200, 60);
-    audioProcessor.RingLOW.setBounds(600, 300, 200, 60);
-    audioProcessor.PinkyMID.setBounds(450, 400, 200, 60);
+    audioProcessor.IndexUP.setBounds(300, 100, 200, 30);
+    audioProcessor.IndexLOW.setBounds(600, 100, 200, 30);
+    audioProcessor.MiddleUP.setBounds(300, 200, 200, 30);
+    audioProcessor.MiddleLOW.setBounds(600, 200, 200, 30);
+    audioProcessor.RingUP.setBounds(300, 300, 200, 30);
+    audioProcessor.RingLOW.setBounds(600, 300, 200, 30);
+    audioProcessor.PinkyMID.setBounds(450, 400, 200, 30);
 }
 

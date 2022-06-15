@@ -197,6 +197,13 @@ public:
     int arrayCounter = 0;
     int arrayCounter2 = 0;
 
+    Label sliderA;
+    Label sliderB;
+    Label sliderC;
+    Label sliderD;
+    Label sliderE;
+    Label sliderF;
+    Label sliderG;
 
 private:
     // This reference is provided as a quick way for your editor to
