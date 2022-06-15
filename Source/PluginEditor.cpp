@@ -925,6 +925,18 @@ void RandomNameAudioProcessorEditor::configGUI() {
     sliderG.setColour(ChordTheoryFail.textColourId, Colours::white);
     sliderG.setFont(20);
     sliderG.attachToComponent(&audioProcessor.PinkyMID, false);
+
+    addAndMakeVisible(analogValues);
+    analogValues.setVisible(false);
+    analogValues.setText("Index: 300 | Middle: 400 | Ring: 450 | Pinky: 400", dontSendNotification);
+    analogValues.setColour(CompletedChords.textColourId, Colours::lightgreen);
+    analogValues.setFont(40);
+
+    addAndMakeVisible(configPlayedNote);
+    configPlayedNote.setVisible(false);
+    configPlayedNote.setText("A", dontSendNotification);
+    configPlayedNote.setColour(configPlayedNote.textColourId, Colours::green);
+    configPlayedNote.setFont(80);
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -1124,9 +1136,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
             audioProcessor.RingUP.setVisible(false);
             audioProcessor.RingLOW.setVisible(false);
             audioProcessor.PinkyMID.setVisible(false);
+            analogValues.setVisible(false);
+            configPlayedNote.setVisible(false);
             break;
 
-        //Introduction page - IS NOT USED
+        //Configuration Page
         case 1:
             title2.setVisible(true);
             menu.setVisible(true);
@@ -1137,6 +1151,8 @@ void RandomNameAudioProcessorEditor::timerCallback()
             audioProcessor.RingUP.setVisible(true);
             audioProcessor.RingLOW.setVisible(true);
             audioProcessor.PinkyMID.setVisible(true);
+            analogValues.setVisible(true);
+            configPlayedNote.setVisible(true);
 
             title.setVisible(false);
             newGame.setVisible(false);
@@ -2790,5 +2806,8 @@ void RandomNameAudioProcessorEditor::resized()
     audioProcessor.RingUP.setBounds(300, 300, 200, 30);
     audioProcessor.RingLOW.setBounds(600, 300, 200, 30);
     audioProcessor.PinkyMID.setBounds(450, 400, 200, 30);
+    analogValues.setBounds(250, 450, 600, 100);
+    configPlayedNote.setBounds(530, 525, 600, 100);
+    
 }
 
