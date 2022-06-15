@@ -49,7 +49,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     };
     //Parameters for the "How to use and setup music glove" button
     addAndMakeVisible(howTo);
-    howTo.setButtonText("How to use and setup music glove");
+    howTo.setButtonText("Set up music glove");
     howTo.changeWidthToFitText();
     howTo.setColour(howTo.buttonColourId, Colours::green);
     howTo.onClick = [this] {
@@ -59,7 +59,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     addAndMakeVisible(title2);
     //It starts off as not visible because we only want it to be visible when pagenum==2
     title2.setVisible(false);
-    title2.setText("Introduction to musicglove", dontSendNotification);
+    title2.setText("Music glove configuration setup", dontSendNotification);
     title2.setFont(40);
     //Parameters for the "Menu" button
     addAndMakeVisible(menu);
@@ -807,7 +807,15 @@ void RandomNameAudioProcessorEditor::configGUI() {
     ChordTheoryFail.setColour(ChordTheoryFail.textColourId, Colours::white);
     ChordTheoryFail.setFont(30);
 
-    
+    addAndMakeVisible(audioProcessor.IndexUP);
+    audioProcessor.IndexUP.setVisible(false);
+    audioProcessor.IndexUP.setSliderStyle(Slider::SliderStyle::LinearBar);
+    audioProcessor.IndexUP.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    audioProcessor.IndexUP.setRange(0.0f, 1023.0f, 1.0f);
+    audioProcessor.IndexUP.setValue(280);
+    audioProcessor.IndexUP.onValueChange = [this] {
+        audioProcessor.indexUpper = audioProcessor.IndexUP.getValue();
+    };
 }
 
 void RandomNameAudioProcessorEditor::timerCallback()
@@ -1000,12 +1008,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
             backtoChordsIntro2.setVisible(false);
             backtoChordsIntro.setVisible(false);
             to_A.setVisible(false);
+            audioProcessor.IndexUP.setVisible(false);
             break;
 
         //Introduction page - IS NOT USED
         case 1:
             title2.setVisible(true);
             menu.setVisible(true);
+            audioProcessor.IndexUP.setVisible(true);
 
             title.setVisible(false);
             newGame.setVisible(false);
@@ -2547,7 +2557,7 @@ void RandomNameAudioProcessorEditor::resized()
     // subcomponents in your editor.. this is where you set height, width etc. of the buttons
     title.setBounds(325, 10, 500, 40);
     newGame.setBounds(450, 400, 50, 50);
-    howTo.setBounds(400, 300, 100, 50);
+    howTo.setBounds(435, 300, 100, 50);
     title2.setBounds(325, 10, 500, 40);
     menu.setBounds(1000, 10, 100, 40);
     title3.setBounds(325, 10, 500, 40);
@@ -2652,5 +2662,6 @@ void RandomNameAudioProcessorEditor::resized()
     backtoChordsIntro2.setBounds(100, 600, 100, 100);
     to_A.setBounds(850, 600, 100, 100);
     ChordTheoryFail.setBounds(350, 350, 600, 200);
+    audioProcessor.IndexUP.setBounds(350, 100, 200, 60);
 }
 

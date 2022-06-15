@@ -197,8 +197,6 @@ public:
     int arrayCounter = 0;
     int arrayCounter2 = 0;
 
-    
-
 
 private:
     // This reference is provided as a quick way for your editor to

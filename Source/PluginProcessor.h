@@ -94,6 +94,27 @@ public:
     float elapsedTime;
     float timeLimit = 200;
 
+    //sliders
+
+    Slider IndexUP;
+    Slider IndexLOW;
+    Slider MiddleUP;
+    Slider MiddleLOW;
+    Slider RingUP;
+    Slider RingLOW;
+    Slider PinkyUP;
+    Slider PinkyLOW;
+
+    //Thresholds
+    float indexUpper = 280;
+    float indexLower = 230;
+    float middleUpper;
+    float middleLower;
+    float ringUpper;
+    float ringLower;
+    float pinkyUpper;
+    float pinkyLower;
+
 private:
 
     MapUI* fUI;
@@ -225,7 +246,7 @@ private:
                         fUI->setParamValue("G", 1);
                     }
 
-                    if (pageNum == 0 || pageNum == 1 || pageNum ==2 ) {
+                    if (pageNum == 0 || pageNum ==2 ) {
                         fUI->setParamValue("A", 0);
                         fUI->setParamValue("B", 0);
                         fUI->setParamValue("C", 0);
@@ -247,18 +268,17 @@ private:
                     }
                     
                     //DBG(playedNote);
-
+                    DBG(pageNum);
                     
                     //All if and else if statements below check that the flex sensors have been bent within
                     //their threshold values before calling the if-statements above that play the notes. Note
                     //that it also starts the timer here
-                    if (indexNum < 310 && indexNum > 230) {
+                    if (indexNum < indexUpper && indexNum > indexLower) {
                         updateNoteA = true;
                         start = clock();
-                        
                     }
 
-                    else if (indexNum < 230) {
+                    else if (indexNum < indexLower) {
                         updateNoteB = true;
                         start = clock();
                     }
