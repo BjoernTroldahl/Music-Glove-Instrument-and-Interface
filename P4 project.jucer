@@ -5,7 +5,6 @@
               pluginCharacteristicsValue="pluginIsSynth">
   <MAINGROUP id="XKjc2J" name="P4 project">
     <GROUP id="{E0037D3C-0002-1C8C-BF86-E692449854BA}" name="Source">
-      <FILE id="vssmX1" name="lyd.h" compile="0" resource="0" file="Source/lyd.h"/>
       <FILE id="Fl4LMH" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="ZqhMYm" name="PluginProcessor.h" compile="0" resource="0"
@@ -14,6 +13,7 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="Ubyghn" name="juce_serialport.h" compile="0" resource="0"
             file="../../../../../JUCE stuff/JUCE/SerialPortTester/Source/juce_serialport.h"/>
+      <FILE id="uZOTIH" name="lyd.h" compile="0" resource="0" file="../../../../../Downloads/lyd.h"/>
       <FILE id="c8N9Ak" name="juce_serialport_Windows.cpp" compile="1" resource="0"
             file="../../../../../JUCE stuff/JUCE/SerialPortTester/Source/juce_serialport_Windows.cpp"/>
       <FILE id="n7FErV" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
