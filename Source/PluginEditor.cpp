@@ -1815,6 +1815,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
 
     //Config page
     if (audioProcessor.pageNum == 1) {
+        //startTimer(100);
         configPlayedNote.setText(audioProcessor.playedNote, dontSendNotification);
         analogValues.setText("Index: " + audioProcessor.index +"| Middle: "+audioProcessor.middle+"| Ring: "+audioProcessor.ring+"| Pinky: "+audioProcessor.pinky, dontSendNotification);
     }
