@@ -1813,6 +1813,11 @@ void RandomNameAudioProcessorEditor::timerCallback()
         newNote = false;
     }*/
 
+    //Config page
+    if (audioProcessor.pageNum == 1) {
+        configPlayedNote.setText(audioProcessor.playedNote, dontSendNotification);
+        analogValues.setText("Index: " + audioProcessor.index +"| Middle: "+audioProcessor.middle+"| Ring: "+audioProcessor.ring+"| Pinky: "+audioProcessor.pinky, dontSendNotification);
+    }
     //A minor scale ASCENDING intro page logic
     if (audioProcessor.pageNum == 5) {
         stringNote = audioProcessor.playedNote;
