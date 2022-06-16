@@ -1141,6 +1141,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
 
         //Configuration Page
+       
         case 1:
             title2.setVisible(true);
             menu.setVisible(true);

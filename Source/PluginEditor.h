@@ -115,6 +115,7 @@ public:
     bool wait = false;
     string chordnote;
     TextButton resetChord;
+    int test;
 
     clock_t start, end;
     int timeThreshold;
