@@ -18,8 +18,6 @@
 
 using namespace juce;
 //==============================================================================
-/**
-*/
 class RandomNameAudioProcessorEditor  : public juce::AudioProcessorEditor, public Timer
 {
 public:
