@@ -193,7 +193,7 @@ void RandomNameAudioProcessor::setStateInformation (const void* data, int sizeIn
 }
 
 //==============================================================================
-// This creates new instances of the plugin..
+// This creates new instances of the plugin.
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new RandomNameAudioProcessor();
