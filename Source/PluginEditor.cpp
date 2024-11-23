@@ -139,21 +139,16 @@ void RandomNameAudioProcessorEditor::configGUI() {
     currentNote.setText("Currently playing ", dontSendNotification);
     currentNote.setFont(40);
 
-    //**
-
-    //teksten skal ændre sig alt efter hvilken note man spiller
+    //The text is changing in real time and showing the note on screen that is currently being played.
     addAndMakeVisible(nextNote);
     nextNote.setVisible(false);
     nextNote.setText("Next note:", dontSendNotification);
     nextNote.setFont(40);
     addAndMakeVisible(buttonNote);
     buttonNote.setVisible(false);
-    buttonNote.setButtonText(nextNoteArray); //DET HER SKAL ÆNDRES TIL EN VARIABLE
+    buttonNote.setButtonText(nextNoteArray);
     buttonNote.changeWidthToFitText();
     buttonNote.setColour(chords.buttonColourId, Colours::dodgerblue);
-    /*buttonNote.onClick = [this] {
-        buttonNote.setButtonText("b");
-    };*/
 
 
     addAndMakeVisible(doneScales1);
@@ -181,7 +176,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     remainingNotes.setText(stringtoTrim + remainingNotesA, dontSendNotification);
     remainingNotes.setFont(40);
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
+    //The failed button is set to only appear and be visible if a level has been failed and it's game over. 
     addAndMakeVisible(Failed);
     Failed.setVisible(false);
     Failed.setButtonText("Back to intro");
@@ -193,7 +188,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     };
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR remainingnotes når 0 SKER SKAL DEN GØRE DET HER
+    //The success button is set to only appear and be visible when a level has been won. 
     addAndMakeVisible(Suceeded);
     Suceeded.setVisible(false);
     Suceeded.setButtonText("Suceeded");
@@ -203,21 +198,19 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 10;
     };
 
-    //her skal failed string ændres til den note man spillede forkert
+    //This is the text that appears on screen in case of a fail.
     addAndMakeVisible(failedString);
-    //auto failed = String(wrongNote);
     failedString.setVisible(false);
     failedString.setText("You played a wrong note, try again! ", dontSendNotification);
     failedString.setFont(40);
 
-    //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
+    //Helping text to guide the player towards the correct note, that also appears in case of a fail.
     addAndMakeVisible(correctnoteWas);
-    //auto failed2 = String(correctNote);
     correctnoteWas.setVisible(false);
     correctnoteWas.setText("Remember that the root is A and the sequence is 1-2-3-4-5-6-7-1", dontSendNotification);
     correctnoteWas.setFont(40);
 
-    //failed 3 skal gå én ned når man fäiler
+    //This controls the remaining attempts that the player has left, before it's game over. 
     addAndMakeVisible(remainingAttempts);
     failed3 = to_string(attemptsRemaining);
     remainingAttempts.setVisible(false);
@@ -240,7 +233,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(currentNoteDescending);
     currentNoteDescending.setVisible(false);
-    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    //The below keeps track of the note that is currently being played and displays it on screen in real-time.
     currentNoteDescending.setText("Currently playing " + stringNoteDescending, dontSendNotification);
     currentNoteDescending.setFont(40);
 
@@ -287,7 +280,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     remainingNotesDescending.setText(stringtoTrim + remainingNotesA, dontSendNotification);
     remainingNotesDescending.setFont(40);
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
+    //Another fail text and button that only appears after the player has failed the exercise and it's game over.
     addAndMakeVisible(FailedDescending);
     FailedDescending.setVisible(false);
     FailedDescending.setButtonText("Back to intro");
@@ -299,7 +292,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     };
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR remainingnotes når 0 SKER SKAL DEN GØRE DET HER
+    //Another success text and button that only appears after the player has succeeded and played the correct notes.
     addAndMakeVisible(SuceededDescending);
     SuceededDescending.setVisible(false);
     SuceededDescending.setButtonText("Suceeded");
@@ -309,21 +302,19 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 14;
     };
 
-    //her skal failed string ændres til den note man spillede forkert
+    //Same thing as the previous exercise, this is a failing text that only appears if an incorrect note is played. 
     addAndMakeVisible(failedStringDescending);
-    //auto failedDescending = String(wrongNoteDescending);
     failedStringDescending.setVisible(false);
     failedStringDescending.setText("You played a wrong note, try again! ", dontSendNotification);
     failedStringDescending.setFont(40);
 
-    //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
+    //Another help text that appears in case of an incorrect note and guides the player towards playing the scale sequence correctly. 
     addAndMakeVisible(correctnoteWasDescending);
-    //auto failed2Descending = String(correctNoteDescending);
     correctnoteWasDescending.setVisible(false);
     correctnoteWasDescending.setText("Remember that the root is A and the sequence is 1-7-6-5-4-3-2-1", dontSendNotification);
     correctnoteWasDescending.setFont(40);
 
-    //failed 3 skal gå én ned når man fäiler
+    //Same thing as the previous exercise, this also controls the remaing attempts that the player has left before it's game over. 
     addAndMakeVisible(remainingAttemptsDescending);
     failed3 = to_string(attemptsRemaining);
     remainingAttemptsDescending.setVisible(false);
@@ -346,7 +337,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(currentNoteC);
     currentNoteC.setVisible(false);
-    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    //variable for the next exercise that keeps track of the note that is currently being played.
     currentNoteC.setText("Currently playing " + stringNoteC, dontSendNotification);
     currentNoteC.setFont(40);
 
@@ -394,7 +385,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     remainingNotesC.setText("Remaining notes "+remainingNotesC_str, dontSendNotification);
     remainingNotesC.setFont(40);
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
+    //This failed button works the same way as the previous ones, it only appears when the player has failed the specific exercise. 
     addAndMakeVisible(FailedC);
     FailedC.setVisible(false);
     FailedC.setButtonText("Back to intro");
@@ -406,7 +397,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     };
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR remainingnotes når 0 SKER SKAL DEN GØRE DET HER
+    //This success button works the same way as the previous ones, it appears as soon as the player has completed the exercise.
     addAndMakeVisible(SuceededC);
     SuceededC.setVisible(false);
     SuceededC.setButtonText("Suceeded");
@@ -419,21 +410,21 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
 
 
-    //her skal failed string ændres til den note man spillede forkert
+    //The failed text for the specific exercise that works the same way as the previous ones, and is set to be visible on fail. 
     addAndMakeVisible(failedStringC);
     auto failedC = String(wrongNoteC);
     failedStringC.setVisible(false);
     failedStringC.setText("You played a wrong note try again!", dontSendNotification);
     failedStringC.setFont(40);
 
-    //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
+    //Guiding text that is also set to be visible on fail.
     addAndMakeVisible(correctnoteWasC);
     auto failed2C = String(correctNoteC);
     correctnoteWasC.setVisible(false);
     correctnoteWasC.setText("Remember that C is the root and note sequence is 1-2-3-4-5-6-7-1", dontSendNotification);
     correctnoteWasC.setFont(40);
 
-    //failed 3 skal gå én ned når man fäiler
+    //Attempt counter text that displays the remaining attempts for the specific exercise.
     addAndMakeVisible(remainingAttemptsC);
     auto failed3C = String(attemptsRemainingC);
     remainingAttemptsC.setVisible(false);
@@ -464,14 +455,14 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 2;
     };
 
-    //her begynder chords delen 
+    //The chords exercises start here 
     addAndMakeVisible(practiceChords);
     practiceChords.setVisible(false);
     practiceChords.setText("Practice playing different chords. Try moving different fingers and play different notes simultaneously. Names of the valid chords you play will be shown below ", dontSendNotification);
     practiceChords.setFont(40);
     addAndMakeVisible(currentChord);
     currentChord.setVisible(false);
-    //stringChord skal ændre sig alt efter hvilken Chord der bliver spillet 
+    //Text that displays the currently played note for the chords. 
     currentChord.setText("Currently playing: " + stringChord, dontSendNotification);
     currentChord.setFont(40);
 
@@ -515,7 +506,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     remainingChords.setText("Remaining Chords: ", dontSendNotification);
     remainingChords.setFont(40);
 
-    //skal nok ikke være en knap men bare gå direkte videre når alle tre chords er blevet spillet
+    //Success button that takes the player to the next page on click. 
     addAndMakeVisible(doneChords3);
     doneChords3.setVisible(false);
     doneChords3.setButtonText("Done/next");
@@ -557,7 +548,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     remainingChords2.setText("Remaining Chords:                    A MINOR - D MINOR - E MINOR", dontSendNotification);
     remainingChords2.setFont(40);
 
-    //skal nok ikke være en knap men bare gå direkte videre når alle tre chords er blevet spillet
+    //Another success button that takes the player to the next page on click. 
     addAndMakeVisible(doneChords5);
     doneChords5.setVisible(false);
     doneChords5.setButtonText("Done/next");
@@ -574,7 +565,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     addAndMakeVisible(currentNoteCDescending);
     currentNoteCDescending.setVisible(false);
-    //stringNote skal ændre sig alt efter hvilken note der bliver spillet 
+    //Text that displays the currently played note for the specific exercise.
     currentNoteCDescending.setText("Currently playing " + stringNoteCDescending, dontSendNotification);
     currentNoteCDescending.setFont(40);
 
@@ -621,7 +612,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
     remainingNotesCDescending.setText("Remaining notes 8", dontSendNotification);
     remainingNotesCDescending.setFont(40);
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR FAILED SKER SKAL DEN GØRE DET HER
+    //Failed button that appears after a failed exercise and game over, and takes the player to the next page on click.
     addAndMakeVisible(FailedCDescending);
     FailedCDescending.setVisible(false);
     FailedCDescending.setButtonText("Back to intro");
@@ -633,7 +624,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
 
     };
 
-    //DET HER SKAL IKKE VÆRE EN KNAP MEN EN TRIGGER NÅR remainingnotes når 0 SKER SKAL DEN GØRE DET HER
+    //Success button that appears after an exercise has been completed, and takes the player to the next page on click.
     addAndMakeVisible(SuceededCDescending);
     SuceededCDescending.setVisible(false);
     SuceededCDescending.setButtonText("Suceeded");
@@ -643,21 +634,21 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 18;
     };
 
-    //her skal failed string ændres til den note man spillede forkert
+    //The failed text that appears after playing an incorrect note.
     addAndMakeVisible(failedStringCDescending);
     auto failedCDescending = String(wrongNoteCDescending);
     failedStringCDescending.setVisible(false);
     failedStringCDescending.setText("You played a wrong note, try again!", dontSendNotification);
     failedStringCDescending.setFont(40);
 
-    //her skal failed 2 ændres til den note der havde været rigtig at spille eller bare fjernes hvis det er for besværligt
+    //Gudiing text that also appears after playing an incorrect note.
     addAndMakeVisible(correctnoteWasCDescending);
     auto failed2CDescending = String(correctNoteCDescending);
     correctnoteWasCDescending.setVisible(false);
     correctnoteWasCDescending.setText("Remember that the root is C and the sequence is 1-7-6-5-4-3-2-1", dontSendNotification);
     correctnoteWasCDescending.setFont(40);
 
-    //failed 3 skal gå én ned når man fäiler
+    //Remaing attempts text that also appears after playing an incorrect note.
     addAndMakeVisible(remainingAttemptsCDescending);
     auto failed3CDescending = String(attemptsRemainingCDescending);
     remainingAttemptsCDescending.setVisible(false);
@@ -673,6 +664,7 @@ void RandomNameAudioProcessorEditor::configGUI() {
         audioProcessor.pageNum = 27;
     };
 
+    //The same as the above in terms of visibility, but this time for the chords exercises instead of the scales.
     addAndMakeVisible(nameOfChord);
     nameOfChord.setVisible(false);
     nameOfChord.setButtonText("*");
@@ -708,13 +700,11 @@ void RandomNameAudioProcessorEditor::configGUI() {
     failedChord.setVisible(false);
     failedChord.setText("You played a wrong chord, try again! ", dontSendNotification);
     failedChord.setFont(40);
-    //failedChord.setColour(failedChord.textColourId, Colours::red);
 
     addAndMakeVisible(attemptsRemainingChords);
     attemptsRemainingChords.setVisible(false);
     attemptsRemainingChords.setText(failed3+" attempt(s) remaining", dontSendNotification);
     attemptsRemainingChords.setFont(40);
-    //attemptsRemainingChords.setColour(attemptsRemainingChords.textColourId, Colours::red);
 
     addAndMakeVisible(backtoChords);
     backtoChords.setVisible(false);
@@ -806,6 +796,8 @@ void RandomNameAudioProcessorEditor::configGUI() {
     ChordTheoryFail.setText("Remember the 1-3-5 principle: a chord contains a ROOT (letter in chord name) THIRD (two notes up from root) and FIFTH (two notes up from third)", dontSendNotification);
     ChordTheoryFail.setColour(ChordTheoryFail.textColourId, Colours::white);
     ChordTheoryFail.setFont(30);
+
+    //The below is all the slider-related code for adjusting the thresholds of the flex sensors through the UI in-game. 
 
     addAndMakeVisible(audioProcessor.IndexUP);
     audioProcessor.IndexUP.setVisible(false);
@@ -1800,23 +1792,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
             break;
         }
     }
-    //Whenever a switch happens pageNum_OLD is overwrited to the value of pageNum.
+    //Whenever a switch happens, pageNum_OLD is overwrited to the value of pageNum.
     //Meaning that the program can then detect that a change in page number has happened.
     audioProcessor.pageNum_OLD = audioProcessor.pageNum;
 
-
-    //If a note has been updated, it sets the letter to update in real time as you play on the scale page.
-
-    /*if (audioProcessor.playedNote != audioProcessor.playedNoteOLD && updateNote) {
-        newNote = true;
-    }
-    else {
-        newNote = false;
-    }*/
+    //If a note has been updated, it sets name of the note to update in real time as you play on the scale page.
 
     //Config page
     if (audioProcessor.pageNum == 1) {
-        //startTimer(100);
         configPlayedNote.setText(audioProcessor.playedNote, dontSendNotification);
         analogValues.setText("Index: " + audioProcessor.index +"| Middle: "+audioProcessor.middle+"| Ring: "+audioProcessor.ring+"| Pinky: "+audioProcessor.pinky, dontSendNotification);
     }
@@ -2433,7 +2416,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
         timeThreshold = 300;
         stringChord = audioProcessor.playedNote;
         
-        //Each if-statement checks that the notes that the user has played and adds them to a String array
+        //Each if-statement checks that the notes the user has played and adds them to a String array
         //with a fixed size of 3. Each String corresponds to one of the three notes in a triad
         if (chordNoteCounter==0 && stringChord != " ") {
             Triad_Chord_notes[0] = stringChord;
@@ -2465,14 +2448,14 @@ void RandomNameAudioProcessorEditor::timerCallback()
             nameOfChord.setButtonText("*");
         }
 
-        //Label that sets part of the text according to the notes that you are currently playing to form a chord
+        //Label that updates the text with the names of the notes that you are currently playing to form a chord
         currentChord.setText("Currently playing: " + Triad_Chord_notes[0] + " - " + Triad_Chord_notes[1] + " - " + Triad_Chord_notes[2], dontSendNotification);
 
         //FullChord collects all of your chord tones and combines them into a single string
         String FullChord = Triad_Chord_notes[0] + Triad_Chord_notes[1] + Triad_Chord_notes[2];
 
         //All the if-statements check for the chord tone combnations that are "valid" and sets the text of the
-        //button to match the name of the chord that's been played
+        //button to match the name of the chord that has been played
         if (FullChord.contains("A") && FullChord.contains("C") && FullChord.contains("E")) {
             nameOfChord.setButtonText("A-minor");
         }
@@ -2552,7 +2535,7 @@ void RandomNameAudioProcessorEditor::timerCallback()
             }
 
             //The else if statements trigger whenever you play a wrong chord. You are then taken to a fail page and you lose
-            //1 "life" each time you fail, when attemptReamining is decremented
+            //1 "life" each time you fail, when attemptsReamining is decremented
             else if (numOfCorrectChords==0 && oldNote != stringChord){
             audioProcessor.pageNum = 29;
             attemptsRemaining = attemptsRemaining - 1;
