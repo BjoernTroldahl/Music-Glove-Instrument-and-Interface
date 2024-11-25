@@ -24,4 +24,5 @@ Components needed:
 
 <img src="https://github.com/user-attachments/assets/47069000-e652-43d5-b2e5-3afc92de898a" width="750" height="351" />
 
-![FlexGlovePCB](https://github.com/user-attachments/assets/af605419-cadd-4eef-b608-3f64d8e49c10)
+![FlexGlovePCB](https://github.com/user-attachments/assets/0c9e31c0-ee40-48e9-82e4-da3759ea5f21)
+
