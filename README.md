@@ -7,5 +7,4 @@ Software consists of a mix between JUCE, Faust and Arduino IDE.
 You interact with the program by using the mouse and bending the fingers of the glove to play the musical notes shown on screen.
 
 ## Circuit diagram for connecting the glove's flex sensors to the Teensy 4.0
-<img src="https://github.com/user-attachments/assets/a9ed9fcd-212c-4f3a-adcd-8bc263555ee1" width="351" height="750" />
-
+<img src="https://github.com/user-attachments/assets/984c83cc-3849-4812-b5a6-802b166a3f22" width="351" height="750" />
