@@ -7,4 +7,21 @@ Software consists of a mix between JUCE, Faust and Arduino IDE.
 You interact with the program by using the mouse and bending the fingers of the glove to play the musical notes shown on screen.
 
 ## Circuit diagram for connecting the glove's flex sensors to the Teensy 4.0
+
+Components needed:
+
+1 x Teensyduino 4.0 microcontroller 
+4 x flex sensors
+4 x 10k Ohm resistors
+1 x duct tape
+1 x work glove
+2 x 20 x 20 mm grove systems
+2 x grove cables
+1 x strip board
+6 x pinheads
+6 x female-female jumper wires
+8 x teflon wires
+
 <img src="https://github.com/user-attachments/assets/47069000-e652-43d5-b2e5-3afc92de898a" width="750" height="351" />
+
+![FlexGlovePCB](https://github.com/user-attachments/assets/af605419-cadd-4eef-b608-3f64d8e49c10)
