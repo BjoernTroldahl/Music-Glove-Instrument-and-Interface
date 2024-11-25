@@ -14,7 +14,7 @@ You interact with the program by using the mouse and bending the fingers of the 
 
 Components needed:
 
-* 1 x Teensyduino 4.0 microcontroller 
+* 1 x Teensy 4.0 microcontroller 
 * 4 x flex sensors
 * 4 x 10k Ohm resistors
 * 1 x duct tape
