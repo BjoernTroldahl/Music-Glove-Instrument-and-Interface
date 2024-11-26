@@ -2,7 +2,7 @@
 
 A school project where I built a musical instrument consisting of flex sensors mounted onto the fingers of a glove. 
 
-The project was made in collaboration with Vincent Clarkfeldt and Christopher Reimers, they did the research and design while I did all the hardware and programming.
+The project was made in collaboration with Vincent Clarkfeldt and Christopher Reimers, they did the research and design while I did the vast majority of all hardware and programming.
 
 Construction-wise, the glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
 
