@@ -6,16 +6,15 @@ The glove is connected to a GUI software that has auditory feedback and plays mu
 
 You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse to click on buttons.
 
-The mapping of the notes are illustrated on the rightmost following image:
+All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
 
+Supports both monophonic (single notes) and polyphonic sounds (chords) with a game mode for each.
+
+The mapping of the notes are illustrated on the rightmost following image:
 
 <img src="https://github.com/user-attachments/assets/e9d852c5-2898-43fa-8360-3d5a6b6b4bde" width="652" height="450" />
 
 <img src="https://github.com/user-attachments/assets/5f10c3c6-4972-41b7-a440-814b8c6c3377" width="315" height="450"/>
-
-
-All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
-Supports both monophonic (single notes) and polyphonic sounds (chords) with a game mode for each.
 
 ## Prerequisites for using the program
 
