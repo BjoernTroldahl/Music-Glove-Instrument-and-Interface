@@ -10,7 +10,7 @@ The mapping of the notes are illustrated on the rightmost following image:
 
 <img src="https://github.com/user-attachments/assets/e9d852c5-2898-43fa-8360-3d5a6b6b4bde" width="742" height="512" />
 
-![FlexGloveMAPPING](https://github.com/user-attachments/assets/5f10c3c6-4972-41b7-a440-814b8c6c3377)
+<img src="https://github.com/user-attachments/assets/5f10c3c6-4972-41b7-a440-814b8c6c3377" />
 
 All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
 Supports both monophonic (single notes) and polyphonic sounds (chords) with a game mode for each.
