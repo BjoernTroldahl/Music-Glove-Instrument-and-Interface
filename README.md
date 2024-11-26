@@ -1,13 +1,17 @@
-# Flex Sensor Music Glove Instrument
+# Flex Sensor Music Glove and GUI
+
+![Chords_TRUE_TEST](https://github.com/user-attachments/assets/3a19acf8-5444-43c8-bfbb-ec26e9801f85)
 
 A musical instrument consisting of flex sensors mounted onto the fingers of a glove. 
 The glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
-All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
 You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse to click on buttons.
 
 The mapping of the notes are illustrated on the following image:
 
 ![FlexGloveMAPPING](https://github.com/user-attachments/assets/5f10c3c6-4972-41b7-a440-814b8c6c3377)
+
+All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
+Supports both monophonic (single notes) and polyphonic sounds (chords) with a game mode for each.
 
 ## Prerequisites for using the program
 
