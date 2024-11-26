@@ -1,8 +1,10 @@
 # Flex Sensor Music Glove and GUI
 
-A musical instrument consisting of flex sensors mounted onto the fingers of a glove. 
+A school project where I built a musical instrument consisting of flex sensors mounted onto the fingers of a glove. 
 
-The glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
+The project was made in collaboration with Vincent Clarkfeldt and Christopher Reimers, they did the research and design while I did all the hardware and programming.
+
+Construction-wise, the glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
 
 You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse on your computer to click on buttons.
 
