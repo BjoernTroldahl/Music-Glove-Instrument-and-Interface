@@ -1,12 +1,12 @@
 # Flex Sensor Music Glove and GUI
 
+<img src="https://github.com/user-attachments/assets/e9d852c5-2898-43fa-8360-3d5a6b6b4bde" width="742" height="512" />
+
 A musical instrument consisting of flex sensors mounted onto the fingers of a glove. 
 
 The glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
 
 You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse to click on buttons.
-
-<img src="https://github.com/user-attachments/assets/e9d852c5-2898-43fa-8360-3d5a6b6b4bde" width="742" height="512" />
 
 The mapping of the notes are illustrated on the following image:
 
