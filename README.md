@@ -4,7 +4,7 @@ A musical instrument consisting of flex sensors mounted onto the fingers of a gl
 
 The glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
 
-You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse to click on buttons.
+You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse on your computer to click on buttons.
 
 All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
 
