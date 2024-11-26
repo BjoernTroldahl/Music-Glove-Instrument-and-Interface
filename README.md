@@ -33,7 +33,7 @@ Hardware omponents needed:
 * 8 x teflon wires
 
 Software components needed (should be installed on your computer prior to running the program):
-* [JUCE](https://juce.com/) (for everything GUI)
+* [JUCE](https://juce.com/) (for everything GUI-related)
 * [Arduino IDE](https://www.arduino.cc/en/software) (serial communication from hardware to software)
 
 ## Circuit diagram for connecting the glove's flex sensors to the Teensy 4.0
