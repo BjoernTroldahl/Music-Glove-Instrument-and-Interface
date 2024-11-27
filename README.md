@@ -1,12 +1,12 @@
 # Flex Sensor Music Glove and GUI
 
-A school project where I built a musical instrument consisting of flex sensors mounted onto the fingers of a glove. 
+A school project where I built a musical instrument with finger-mounted flex sensors on the fingers of a glove. 
 
 The project was made in collaboration with Vincent Clarkfeldt and Christopher Reimers, they did the research and design while I did the vast majority of all hardware and programming.
 
 Construction-wise, the glove is connected to a GUI software that has auditory feedback and plays musical notes whenever you bend the fingers of the glove within a certain threshold.
 
-You interact with the program by bending the fingers of the glove to play the musical notes shown on screen and otherwise using the mouse on your computer to click on buttons.
+You interact with the program by bending the fingers of the glove to play the musical notes shown on screen, and otherwise using the mouse on your computer to click on buttons.
 
 All sound processing is made with the [Faust](https://faust.grame.fr/) programming language.
 
@@ -48,6 +48,13 @@ Software components needed (should be installed on your computer prior to runnin
 
 ## How to download the repository and install properly
 
+1. Download this GitHub repository as a ZIP-file under the Code tab and unzip it into a folder.
+2. Connect the flex sensor glove and Teensy 4.0 circuit to an available USB-port on your computer.
+3. Go to the Arduino folder inside the unzipped GitHub repository folder. Then double-click the P4prototype.ino file and run it.
+4. In JUCE, click Open Existing Project > select the file path of the now unzipped repository folder and then click on the P4 project.jucer file.
+5. Make sure that audio output from your PC speakers is enabled (or whatever audio output device you want to use).
+6. Inside the JUCE project, click on the Run icon to start the program.
+7. Enjoy using the music glove and its GUI! 
 
 
 
