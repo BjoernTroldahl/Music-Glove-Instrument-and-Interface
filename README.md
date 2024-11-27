@@ -49,11 +49,17 @@ Software components needed (should be installed on your computer prior to runnin
 ## How to download the repository and install properly
 
 1. Download this GitHub repository as a ZIP-file under the Code tab and unzip it into a folder.
+   
 2. Connect the flex sensor glove and Teensy 4.0 circuit to an available USB-port on your computer.
+
 3. Go to the Arduino folder inside the unzipped GitHub repository folder. Then double-click the P4prototype.ino file and run it.
+
 4. In JUCE, click Open Existing Project > select the file path of the now unzipped repository folder and then click on the P4 project.jucer file.
+
 5. Make sure that audio output from your PC speakers is enabled (or whatever audio output device you want to use).
+
 6. Inside the JUCE project, click on the Run icon to start the program.
+
 7. Enjoy using the music glove and its GUI! 
 
 
