@@ -14,9 +14,9 @@ Supports both monophonic (single notes) and polyphonic sounds (chords) with a ga
 
 The mapping of the notes are illustrated on the second image below:
 
-<img src="https://github.com/user-attachments/assets/e9d852c5-2898-43fa-8360-3d5a6b6b4bde" width="652" height="450" />
+<img src="https://github.com/user-attachments/assets/e9d852c5-2898-43fa-8360-3d5a6b6b4bde" width="430" height="297" />
 
-<img src="https://github.com/user-attachments/assets/5f10c3c6-4972-41b7-a440-814b8c6c3377" width="315" height="450"/>
+<img src="https://github.com/user-attachments/assets/5f10c3c6-4972-41b7-a440-814b8c6c3377" width="208" height="297"/>
 
 ## Prerequisites for using the program
 
