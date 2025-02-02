@@ -45,6 +45,7 @@ Software components needed (should be installed on your computer prior to runnin
 ## Setup of the glove with self-made and soldered circuit board
 
 ![FlexGlovePCB](https://github.com/user-attachments/assets/0c9e31c0-ee40-48e9-82e4-da3759ea5f21)
+<img src="https://github.com/user-attachments/assets/0c9e31c0-ee40-48e9-82e4-da3759ea5f21" width="750" />
 
 ## How to download the repository and install properly
 
